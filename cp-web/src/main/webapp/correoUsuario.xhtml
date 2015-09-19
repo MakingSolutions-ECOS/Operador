@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="panelMail.xhtml">
+        <ui:define name="body">
+
+
+            <p:growl id="msg" />            
+
+            <p:panelGrid columns="1">
+            <p:panelGrid columns="1"> 
+                <h:form>
+                    <p:commandButton styleClass="header" value="Redactar" onclick="PF('composeDlg').show()" type="button" icon="ui-icon-document"/>
+                
+
+
+                    <p:dataTable var="mail" value="#{carpetaManagedBean.mails}" styleClass="header">
+                        <p:column headerText="De" sortBy="from">
+                            #{mail.from}
+                        </p:column>
+
+                        <p:column headerText="Asunto" sortBy="subject">
+                            #{mail.subject}
+                        </p:column>
+
+                        <p:column headerText="Fecha" sortBy="date">
+                            #{mail.date}
+                        </p:column>
+
+                        <p:column headerText="Ver" width="10%" >
+                            <p:commandButton update=":mailViewer" icon="ui-icon-search" title="View">
+                                <f:setPropertyActionListener value="#{mail }" target="#{carpetaManagedBean.mail}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panelGrid>
+
+
+            <!--<p:layoutUnit position="center">
+                <p:layout>
+                    <p:layoutUnit position="north" size="50%" resizable="true" styleClass="nestedUnit">
+                        <p:tabView>
+                            <p:tab title="Gmail">
+                                <h:form>
+                                    
+                                </h:form>
+                            </p:tab>
+                        </p:tabView>
+                    </p:layoutUnit>-->
+
+            <p:panel   header="Mensaje" class="header">
+                
+                <p:outputPanel id="mailViewer">
+                            <h:outputText value="#{carpetaManagedBean.mail.body}" rendered="#{not empty carpetaManagedBean.mail}" />
+                        </p:outputPanel>
+            </p:panel> 
+                        </p:panelGrid>
+                    
+                <!--</p:layout>
+            </p:layoutUnit>-->
+
+                <p:dialog widgetVar="composeDlg" modal="" header="Nuevo Email" width="530" showEffect="fade" hideEffect="fade" styleClass="header">
+                <h:form>
+                    <h:panelGrid columns="2" cellspacing="5">
+                        <h:outputLabel for="to" value="Para: " />
+                        <p:inputText id="to"/>
+
+                        <h:outputLabel for="cc" value="CC: " />
+                        <p:inputText id="cc"/>
+
+                        <h:outputLabel for="subject" value="Asunto: " />
+                        <p:inputText id="subject" size="50"/>
+                    </h:panelGrid>
+                    <p:separator />
+                    <p:editor widgetVar="editor" />
+                    <p:separator />
+                    <p:commandButton value="Enviar" onclick="PF('composeDlg').hide()" actionListener="#{carpetaManagedBean.send}" update=":msg" process="@this"/>
+                    <p:commandButton value="Cancelar" onclick="PF('composeDlg').hide()" type="button"/>
+                </h:form>
+            </p:dialog>
+
+
+
+        </ui:define>
+    </ui:composition>
+</html>

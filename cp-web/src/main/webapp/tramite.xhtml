@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="panelControl.xhtml">
+        <ui:define name="body">
+            <h:form id="formPanel">
+                <p:growl id="messages" showDetail="false" showSummary="false"/>
+                <p:panel header="Trámite" styleClass="header">
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton type="button" value="Agregar" icon="ui-icon-plus" onclick="PF('idAgregarDlg').show()"/>                                                      
+                        </f:facet>                        
+                    </p:toolbar>
+                    <p:dataTable binding="#{tramiteManagedBean.bindingDataTable}" id="tablaTramite" value="#{tramiteManagedBean.tramites}" var="tramite" selection="#{tramiteManagedBean.selectedFiles}" rowKey="#{tramite.idTramite}"> 
+                        
+                        
+                        <p:column headerText="Nombre" style="width:170px;">
+                            <p:commandLink value="#{tramite.nombreTramite}" />
+                        </p:column>
+                        <p:column headerText="Fecha de solicitud" style="width:60px;text-align:center">
+                            <p:outputLabel value="#{tramite.fechaTramite}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Estado" style="width:80px;text-align:center">
+                            <p:outputLabel value="#{tramite.estadoTramite}" />
+                        </p:column>
+                        <p:column headerText="Entidad" style="width:40px;text-align:center">
+                            <p:outputLabel value="#{tramite.nombreEntidad}"/>
+                        </p:column>
+
+                        <p:column headerText="Documentos relacionados" style="width:40px;text-align:center">
+                            <p:commandButton icon="ui-icon-document"  update=":tramiteDialog"  oncomplete="PF('idTramiteDlg').show()" actionListener="#{tramiteManagedBean.seleccionarTramite}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel> 
+
+                
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogs">
+            <p:dialog resizable="false" width="60%" id="tramiteDialog"  widgetVar="idTramiteDlg" closeOnEscape="true">
+                    <p:panel header="Documentos relacionados con el trámite" styleClass="header">
+                        <p:panelGrid columns="1" styleClass="label">
+                            <p:dataTable id="tablaDocumentos" value="#{tramiteManagedBean.tramiteSeleccionado.documentosTramite}" var="doc" > 
+                                <p:column  headerText="Nombre" style="width:70%;" >
+                                    <p:commandLink value="#{doc.nombreDocumento}" />
+                                </p:column>
+                                 <p:column headerText="Descripción" style="width:70%">
+                                     <p:outputLabel value="#{doc.descripcionDocumento}" />
+                                </p:column>
+                                  <p:column headerText="Fecha última actualización" style="width:40%;text-align: center">
+                                      <p:outputLabel value="#{doc.ultimaActualizacion}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                        <br/>
+                        <center>
+                            <p:commandButton value="Aceptar" onclick="PF('idTramiteDlg').hide()"/>
+                        </center>
+                        
+                    </p:panel>
+                </p:dialog>
+        </ui:define>
+    </ui:composition>
+</html>
+

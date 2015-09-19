@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="panelControl.xhtml">
+        <ui:define name="body">
+            <h:form>
+                <p:panel header="Configuración de Cuenta" styleClass="header">
+                    <p:panel toggleable="true" header="Información Personal">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nombres"/> <p:inputText value="Nombre" />
+                            <p:outputLabel value="Apellido"/> <p:inputText value="Apellido" />
+                            <p:outputLabel value="Correo alternativo"/> <p:inputText value="correo@gmail.com" />
+                            <p:outputLabel value="Número télefonico"/> <p:inputText value="1234567" />
+                            <p:outputLabel value="Dirección Residencia"/> <p:inputText value="Cll 4 # 89-33" />
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel toggleable="true" header="Cambio Contraseña">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Contraseña Actual"/> <p:password/>
+                            <p:outputLabel value="Nueva Contraseña"/> <p:password/>
+                            <p:outputLabel value="Repita Nueva Contraseña"/> <p:password/>
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel toggleable="true" header="Adquirir Cuenta Premium">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Realizar pago en linea"/> 
+                            <p:commandButton value="Adquirir Premium" onclick="PF('idPagoDialog').show()"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:panel>
+            </h:form>
+                <p:dialog header="Pago en linea" widgetVar="idPagoDialog" resizable="false" draggable="false" closeOnEscape="true" modal="false" styleClass="header">                    
+                    <p:panel>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Nombres"/> <p:inputText/>
+                            <p:outputLabel value="Apellidos"/> <p:inputText/>
+                            <p:outputLabel value="Documento identidad"/> <p:inputText/>
+                            <p:outputLabel value="Numero tarjeta credito"/> <p:inputText/>
+                            <p:commandButton value="Pagar" onclick="PF(idPagoDialog).hide()"/>
+                            <p:commandButton value="Cancelar" onclick="PF(idPagoDialog).hide()"/>
+                        </p:panelGrid>                        
+                    </p:panel>
+                </p:dialog>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
