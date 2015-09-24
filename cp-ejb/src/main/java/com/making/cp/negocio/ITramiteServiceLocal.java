@@ -5,7 +5,7 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.cliente.EmisorDto;
+import com.making.cp.cliente.emisor.EmisorDto;
 import java.util.List;
 import javax.ejb.Local;
 
