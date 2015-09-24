@@ -5,9 +5,11 @@
  */
 package com.making.cp.negocio;
 
+import com.making.cp.cliente.EmisorDto;
 import com.making.cp.cliente.EmisorService;
 import com.making.cp.cliente.EmisorService_Service;
 import com.making.cp.cliente.RespuestaEmisor;
+import java.util.List;
 
 /**
  *
@@ -16,7 +18,7 @@ import com.making.cp.cliente.RespuestaEmisor;
 public class TramiteServiceBean implements ITramiteServiceLocal{
 
     @Override
-    public void obtenerEmisores() {
+    public List<EmisorDto> obtenerEmisores() {
         
         try {
             EmisorService_Service service = new EmisorService_Service();
@@ -25,14 +27,13 @@ public class TramiteServiceBean implements ITramiteServiceLocal{
 
             RespuestaEmisor respuestaEmisor = port.obtenerEmisores();
             
-            respuestaEmisor = port.obtenerEmisores();
-            
+            return respuestaEmisor.getEmisores();          
             
             
         } catch (Exception e) {
             //Error de invocación
             
         }
-        
+        return null;
     }  
 }
