@@ -109,24 +109,7 @@
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>macbook-pro-de-camilo.local_8080/projectCentralizador-web/EmisorService.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName>com.making.cp.cliente</packageName>
-                            <wsdlLocation>http://macbook-pro-de-camilo.local:8080/projectCentralizador-web/EmisorService?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/EmisorService.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-EmisorService</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                </executions>
+                <version>2.3</version>                
                 <dependencies>
                     <dependency>
                         <groupId>javax.xml</groupId>
@@ -134,14 +117,7 @@
                         <version>2.0</version>
                     </dependency>
                 </dependencies>
-                <configuration>
-                    <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
-                    <xnocompile>true</xnocompile>
-                    <verbose>true</verbose>
-                    <extension>true</extension>
-                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
-                    <target>2.0</target>
-                </configuration>
+                
             </plugin>
         </plugins>
     </build>
