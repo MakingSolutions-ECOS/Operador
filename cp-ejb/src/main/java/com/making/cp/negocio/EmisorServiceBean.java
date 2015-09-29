@@ -5,7 +5,7 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.cliente.RespuestaEmisor;
+import com.making.cp.cliente.emisor.RespuestaEmisor;
 import com.making.cp.cliente.emisor.EmisorDto;
 import com.making.cp.cliente.emisor.EmisorService;
 import com.making.cp.cliente.emisor.EmisorService_Service;

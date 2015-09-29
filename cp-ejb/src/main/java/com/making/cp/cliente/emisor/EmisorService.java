@@ -1,7 +1,6 @@
 
 package com.making.cp.cliente.emisor;
 
-import com.making.cp.cliente.RespuestaEmisor;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;

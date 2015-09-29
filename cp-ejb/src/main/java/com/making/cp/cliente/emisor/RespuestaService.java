@@ -1,5 +1,5 @@
 
-package com.making.cp.cliente;
+package com.making.cp.cliente.emisor;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
