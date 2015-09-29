@@ -10,11 +10,13 @@ import com.making.cp.cliente.emisor.EmisorDto;
 import com.making.cp.cliente.emisor.EmisorService;
 import com.making.cp.cliente.emisor.EmisorService_Service;
 import java.util.List;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Camilo Marroquin
  */
+@Stateless
 public class EmisorServiceBean implements IEmisorServiceBean{
      @Override
     public List<EmisorDto> obtenerEmisores() {
