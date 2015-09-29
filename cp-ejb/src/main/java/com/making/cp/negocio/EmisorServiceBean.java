@@ -17,7 +17,7 @@ import javax.ejb.Stateless;
  * @author Camilo Marroquin
  */
 @Stateless
-public class EmisorServiceBean implements IEmisorServiceBean{
+public class EmisorServiceBean implements IEmisorServiceLocal{
      @Override
     public List<EmisorDto> obtenerEmisores() {
         
