@@ -5,14 +5,18 @@
  */
 package com.making.cp.controladores;
 
+import com.making.cp.cliente.emisor.EmisorDto;
 import com.making.cp.dto.ArchivoDto;
 import com.making.cp.dto.DocumentoDto;
 import com.making.cp.dto.TramiteDto;
+import com.making.cp.negocio.IEmisorServiceLocal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.Dependent;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.model.SelectItem;
 
 import org.primefaces.component.datatable.DataTable;
 
@@ -21,18 +25,31 @@ import org.primefaces.component.datatable.DataTable;
  * @author Your Name
  */
 @ManagedBean(name = "tramiteManagedBean")
-@Dependent
 public class TramiteManagedBean {
+    
+    @EJB(beanName = "EmisorServiceBean") 
+    private IEmisorServiceLocal emisorServiceBean;
 
-    public List<TramiteDto> tramites;
-    public List<ArchivoDto> selectedFiles;
-    public TramiteDto tramiteSeleccionado;
+    private List<EmisorDto> emisores;
+    private EmisorDto emisorSeleccionado;
+    private List<TramiteDto> tramiteDtos;
+    
+    private List<ArchivoDto> selectedFiles;
+    private TramiteDto tramiteSeleccionado;
     private DataTable bindingDataTable;
     private boolean dialogView;
+    
+    private List<SelectItem> listaEmisores;
+    private List<TramiteDto> tramites;
 
+    
+    
     @PostConstruct
     public void init() {
         iniciarListaTramites();
+        emisores= new ArrayList<>();
+        listaEmisores = new ArrayList<>();
+        emisorSeleccionado = new EmisorDto();
     }
 
     public void iniciarListaTramites() {
@@ -66,14 +83,6 @@ public class TramiteManagedBean {
         dialogView = true;
     }
 
-    public List<TramiteDto> getTramites() {
-        return tramites;
-    }
-
-    public void setTramites(List<TramiteDto> tramites) {
-        this.tramites = tramites;
-    }
-
     public List<ArchivoDto> getSelectedFiles() {
         return selectedFiles;
     }
@@ -105,5 +114,42 @@ public class TramiteManagedBean {
     public void setDialogView(boolean dialogView) {
         this.dialogView = dialogView;
     }
+    public void cargarEntidades(){
+            
+    }
 
+    public List<SelectItem> getListaEmisores() {
+        emisores = emisorServiceBean.obtenerEmisores();
+        for (EmisorDto emisorDto : emisores) {
+            SelectItem selectItem = new SelectItem(emisorDto.getCodigoEntidadEmisora(), emisorDto.getNombreEntidadEmisora());
+            listaEmisores.add(selectItem);
+        }
+        return listaEmisores;
+    }
+
+    public void cargarTramites(ValueChangeEvent valueChangeEvent){
+     valueChangeEvent.getNewValue().toString();
+        
+    }
+    public void setListaEmisores(List<SelectItem> listaEmisores) {
+        this.listaEmisores = listaEmisores;
+    }
+
+    public EmisorDto getEmisorSeleccionado() {
+        return emisorSeleccionado;
+    }
+
+    public void setEmisorSeleccionado(EmisorDto emisorSeleccionado) {
+        this.emisorSeleccionado = emisorSeleccionado;
+    }
+
+    public List<TramiteDto> getTramites() {
+        return tramites;
+    }
+
+    public void setTramites(List<TramiteDto> tramites) {
+        this.tramites = tramites;
+    }
+
+    
 }
