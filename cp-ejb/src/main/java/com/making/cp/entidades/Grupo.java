@@ -8,6 +8,7 @@ package com.making.cp.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -43,9 +44,7 @@ public class Grupo implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "NOMBRE_GRUPO")
     private String nombreGrupo;
-    @OneToMany(mappedBy = "codigoGrupo")
-    private List<GrupoDirectorio> grupoDirectorioList;
-    @OneToMany(mappedBy = "codigoGrupo1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoGrupo")
     private List<GrupoCiudadano> grupoCiudadanoList;
 
     public Grupo() {
@@ -74,15 +73,6 @@ public class Grupo implements Serializable {
 
     public void setNombreGrupo(String nombreGrupo) {
         this.nombreGrupo = nombreGrupo;
-    }
-
-    @XmlTransient
-    public List<GrupoDirectorio> getGrupoDirectorioList() {
-        return grupoDirectorioList;
-    }
-
-    public void setGrupoDirectorioList(List<GrupoDirectorio> grupoDirectorioList) {
-        this.grupoDirectorioList = grupoDirectorioList;
     }
 
     @XmlTransient

@@ -27,8 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "GrupoCiudadano.findAll", query = "SELECT g FROM GrupoCiudadano g"),
-    @NamedQuery(name = "GrupoCiudadano.findByCodigoGrupoCiudadano", query = "SELECT g FROM GrupoCiudadano g WHERE g.codigoGrupoCiudadano = :codigoGrupoCiudadano"),
-    @NamedQuery(name = "GrupoCiudadano.findByCodigoPermiso", query = "SELECT g FROM GrupoCiudadano g WHERE g.codigoPermiso = :codigoPermiso")})
+    @NamedQuery(name = "GrupoCiudadano.findByCodigoGrupoCiudadano", query = "SELECT g FROM GrupoCiudadano g WHERE g.codigoGrupoCiudadano = :codigoGrupoCiudadano")})
 public class GrupoCiudadano implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,14 +35,12 @@ public class GrupoCiudadano implements Serializable {
     @NotNull
     @Column(name = "CODIGO_GRUPO_CIUDADANO")
     private Integer codigoGrupoCiudadano;
-    @Column(name = "CODIGO_PERMISO")
-    private Integer codigoPermiso;
-    @JoinColumn(name = "CODIGO_GRUPO", referencedColumnName = "CODIGO_PERMISO")
-    @ManyToOne
-    private Permiso codigoGrupo;
+    @JoinColumn(name = "CODIGO_PERMISO", referencedColumnName = "CODIGO_PERMISO")
+    @ManyToOne(optional = false)
+    private Permiso codigoPermiso;
     @JoinColumn(name = "CODIGO_GRUPO", referencedColumnName = "CODIGO_GRUPO")
-    @ManyToOne
-    private Grupo codigoGrupo1;
+    @ManyToOne(optional = false)
+    private Grupo codigoGrupo;
 
     public GrupoCiudadano() {
     }
@@ -60,28 +57,20 @@ public class GrupoCiudadano implements Serializable {
         this.codigoGrupoCiudadano = codigoGrupoCiudadano;
     }
 
-    public Integer getCodigoPermiso() {
+    public Permiso getCodigoPermiso() {
         return codigoPermiso;
     }
 
-    public void setCodigoPermiso(Integer codigoPermiso) {
+    public void setCodigoPermiso(Permiso codigoPermiso) {
         this.codigoPermiso = codigoPermiso;
     }
 
-    public Permiso getCodigoGrupo() {
+    public Grupo getCodigoGrupo() {
         return codigoGrupo;
     }
 
-    public void setCodigoGrupo(Permiso codigoGrupo) {
+    public void setCodigoGrupo(Grupo codigoGrupo) {
         this.codigoGrupo = codigoGrupo;
-    }
-
-    public Grupo getCodigoGrupo1() {
-        return codigoGrupo1;
-    }
-
-    public void setCodigoGrupo1(Grupo codigoGrupo1) {
-        this.codigoGrupo1 = codigoGrupo1;
     }
 
     @Override
