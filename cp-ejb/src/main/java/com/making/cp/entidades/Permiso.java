@@ -8,7 +8,6 @@ package com.making.cp.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -47,7 +46,7 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "NOMBRE_PERMISO")
     private String nombrePermiso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoPermiso")
+    @OneToMany(mappedBy = "codigoGrupo")
     private List<GrupoCiudadano> grupoCiudadanoList;
 
     public Permiso() {
