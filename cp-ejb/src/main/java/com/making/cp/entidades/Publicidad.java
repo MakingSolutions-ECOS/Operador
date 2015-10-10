@@ -66,7 +66,7 @@ public class Publicidad implements Serializable {
     @OneToMany(mappedBy = "codigoPublicidad")
     private List<PublicidadImagen> publicidadImagenList;
     @JoinColumn(name = "CODIGO_CIUDADANO", referencedColumnName = "CODIGO_CIUDADANO")
-    @ManyToOne
+    @ManyToOne          
     private Ciudadano codigoCiudadano;
 
     public Publicidad() {

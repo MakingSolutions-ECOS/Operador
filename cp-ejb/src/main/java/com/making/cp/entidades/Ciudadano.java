@@ -29,15 +29,15 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Usuario
  */
-@Entity
+@Entity 
 @Table(name = "CIUDADANO")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Ciudadano.findAll", query = "SELECT c FROM Ciudadano c"),
-    @NamedQuery(name = "Ciudadano.findByCodigoCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.codigoCiudadano = :codigoCiudadano"),
-    @NamedQuery(name = "Ciudadano.findByFechaAfiliacion", query = "SELECT c FROM Ciudadano c WHERE c.fechaAfiliacion = :fechaAfiliacion"),
-    @NamedQuery(name = "Ciudadano.findByEmail", query = "SELECT c FROM Ciudadano c WHERE c.email = :email"),
-    @NamedQuery(name = "Ciudadano.findByAliasCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.aliasCiudadano = :aliasCiudadano")})
+    @NamedQueries({
+        @NamedQuery(name = "Ciudadano.findAll", query = "SELECT c FROM Ciudadano c"),
+        @NamedQuery(name = "Ciudadano.findByCodigoCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.codigoCiudadano = :codigoCiudadano"),
+        @NamedQuery(name = "Ciudadano.findByFechaAfiliacion", query = "SELECT c FROM Ciudadano c WHERE c.fechaAfiliacion = :fechaAfiliacion"),
+        @NamedQuery(name = "Ciudadano.findByEmail", query = "SELECT c FROM Ciudadano c WHERE c.email = :email"),
+        @NamedQuery(name = "Ciudadano.findByAliasCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.aliasCiudadano = :aliasCiudadano")})
 public class Ciudadano implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,7 +67,7 @@ public class Ciudadano implements Serializable {
     private CapacidadAlmacenamiento codigoCapacidadAlmacenamiento;
     @OneToMany(mappedBy = "codigoCiudadano")
     private List<Directorio> directorioList;
-    @OneToMany(mappedBy = "codigoCiudadano")
+        @OneToMany(mappedBy = "codigoCiudadano")
     private List<Publicidad> publicidadList;
 
     public Ciudadano() {
