@@ -19,7 +19,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" styleClass="cabecera">
-                        <center>MI FOLDER</center>
+                    <center>MI FOLDER</center>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="40" closable="true" collapsible="true" style="font-size: 10px;">
@@ -29,14 +29,21 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="west" size="250" header="Menú Principal" collapsible="true" styleClass="header">
-                    <p:menu styleClass="item-menu">
+                    <h:form>
+                        <p:menu styleClass="item-menu">
                             <p:menuitem value="Bandeja de Entrada" outcome="correoUsuario" />
                             <p:menuitem value="Carpeta Ciudadana" outcome="carpetaPersonal"/>
                             <p:menuitem value="Trámites" outcome="tramite" />                            
                             <p:menuitem value="Configuración de Cuenta" outcome="configUsuario" />
                             <p:menuitem value="Publicidad" url="#" />
                             <p:menuitem value="Migración y Baja de Usuario" outcome="MigracionBajaUsuario" />
-                    </p:menu>
+                        </p:menu>
+                        <p:menu styleClass="item-menu" >
+                            <p:menuitem value="CRUD Usuario" outcome="crudUsuario"/>
+                            <p:menuitem value="CRUD Permisos" outcome="crudPermiso"/>
+                            <p:menuitem value="CRUD Roles" outcome="crudRol"/>
+                        </p:menu>
+                    </h:form>                    
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
@@ -46,7 +53,7 @@
             </p:layout>
 
         </h:body>
-        
+
         <ui:insert name="dialogs"></ui:insert>
 
     </f:view>

@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.making.cp.controladores;
+
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+
+/**
+ *
+ * @author Usuario
+ */
+@Named(value = "crudUsuarioManagedBean")
+@SessionScoped
+public class CrudUsuarioManagedBean implements Serializable {
+
+    /**
+     * Creates a new instance of CrudUsuarioManagedBean
+     */
+    public CrudUsuarioManagedBean() {
+    }
+    
+}
