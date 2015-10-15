@@ -15,7 +15,7 @@
         </h:head>
 
         <h:body>
-
+            <p:growl id="growl" life="3000" />
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" styleClass="cabecera">
@@ -39,10 +39,11 @@
                             <p:menuitem value="Migración y Baja de Usuario" outcome="MigracionBajaUsuario" />
                         </p:menu>
                         <p:menu styleClass="item-menu" >
-                            <p:menuitem value="CRUD Usuario" outcome="crudUsuario"/>
-                            <p:menuitem value="CRUD Permisos" outcome="crudPermiso"/>
-                            <p:menuitem value="CRUD Roles" outcome="crudRol"/>
+                            <p:menuitem value="CRUD Usuario" outcome="/usuario/List"/>
+                            <p:menuitem value="CRUD Permisos" outcome="/permiso/List"/>
+                            <p:menuitem value="CRUD Roles" outcome="/rol/List"/>
                         </p:menu>
+                        <h:link outcome="/rol/List" value="Show All Rol Items"/>
                     </h:form>                    
                 </p:layoutUnit>
 
