@@ -1,6 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -8,10 +7,11 @@ package com.making.cp.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Usuario
+ * @author 
  */
 @Entity
 @Table(name = "GRUPO")
@@ -44,8 +44,13 @@ public class Grupo implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "NOMBRE_GRUPO")
     private String nombreGrupo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoGrupo")
+    @OneToMany(mappedBy = "codigoGrupo")
+    private List<GrupoDocumento> grupoDocumentoList;
+    @OneToMany(mappedBy = "codigoGrupo")
     private List<GrupoCiudadano> grupoCiudadanoList;
+    @JoinColumn(name = "CODIGO_PERMISO", referencedColumnName = "CODIGO_PERMISO")
+    @ManyToOne
+    private Permiso codigoPermiso;
 
     public Grupo() {
     }
@@ -76,12 +81,29 @@ public class Grupo implements Serializable {
     }
 
     @XmlTransient
+    public List<GrupoDocumento> getGrupoDocumentoList() {
+        return grupoDocumentoList;
+    }
+
+    public void setGrupoDocumentoList(List<GrupoDocumento> grupoDocumentoList) {
+        this.grupoDocumentoList = grupoDocumentoList;
+    }
+
+    @XmlTransient
     public List<GrupoCiudadano> getGrupoCiudadanoList() {
         return grupoCiudadanoList;
     }
 
     public void setGrupoCiudadanoList(List<GrupoCiudadano> grupoCiudadanoList) {
         this.grupoCiudadanoList = grupoCiudadanoList;
+    }
+
+    public Permiso getCodigoPermiso() {
+        return codigoPermiso;
+    }
+
+    public void setCodigoPermiso(Permiso codigoPermiso) {
+        this.codigoPermiso = codigoPermiso;
     }
 
     @Override

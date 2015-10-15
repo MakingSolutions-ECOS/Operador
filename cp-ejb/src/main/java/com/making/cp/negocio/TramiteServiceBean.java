@@ -9,6 +9,7 @@ package com.making.cp.negocio;
  *
  * @author Camilo Marroquin
  */
-public class TramiteServiceBean implements ITramiteServiceLocal{
+public class TramiteServiceBean implements ITramiteServiceLocal {
+
     
 }

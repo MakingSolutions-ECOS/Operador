@@ -1,6 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -8,7 +7,6 @@ package com.making.cp.entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Usuario
+ * @author 
  */
 @Entity
 @Table(name = "PERMISO")
@@ -47,8 +45,8 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "NOMBRE_PERMISO")
     private String nombrePermiso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoPermiso")
-    private List<GrupoCiudadano> grupoCiudadanoList;
+    @OneToMany(mappedBy = "codigoPermiso")
+    private List<Grupo> grupoList;
 
     public Permiso() {
     }
@@ -87,12 +85,12 @@ public class Permiso implements Serializable {
     }
 
     @XmlTransient
-    public List<GrupoCiudadano> getGrupoCiudadanoList() {
-        return grupoCiudadanoList;
+    public List<Grupo> getGrupoList() {
+        return grupoList;
     }
 
-    public void setGrupoCiudadanoList(List<GrupoCiudadano> grupoCiudadanoList) {
-        this.grupoCiudadanoList = grupoCiudadanoList;
+    public void setGrupoList(List<Grupo> grupoList) {
+        this.grupoList = grupoList;
     }
 
     @Override

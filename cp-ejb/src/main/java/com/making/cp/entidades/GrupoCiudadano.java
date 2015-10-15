@@ -1,6 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Usuario
+ * @author 
  */
 @Entity
 @Table(name = "GRUPO_CIUDADANO")
@@ -35,12 +34,12 @@ public class GrupoCiudadano implements Serializable {
     @NotNull
     @Column(name = "CODIGO_GRUPO_CIUDADANO")
     private Integer codigoGrupoCiudadano;
-    @JoinColumn(name = "CODIGO_PERMISO", referencedColumnName = "CODIGO_PERMISO")
-    @ManyToOne(optional = false)
-    private Permiso codigoPermiso;
     @JoinColumn(name = "CODIGO_GRUPO", referencedColumnName = "CODIGO_GRUPO")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Grupo codigoGrupo;
+    @JoinColumn(name = "CODIGO_CIUDADANO", referencedColumnName = "CODIGO_CIUDADANO")
+    @ManyToOne
+    private Ciudadano codigoCiudadano;
 
     public GrupoCiudadano() {
     }
@@ -57,20 +56,20 @@ public class GrupoCiudadano implements Serializable {
         this.codigoGrupoCiudadano = codigoGrupoCiudadano;
     }
 
-    public Permiso getCodigoPermiso() {
-        return codigoPermiso;
-    }
-
-    public void setCodigoPermiso(Permiso codigoPermiso) {
-        this.codigoPermiso = codigoPermiso;
-    }
-
     public Grupo getCodigoGrupo() {
         return codigoGrupo;
     }
 
     public void setCodigoGrupo(Grupo codigoGrupo) {
         this.codigoGrupo = codigoGrupo;
+    }
+
+    public Ciudadano getCodigoCiudadano() {
+        return codigoCiudadano;
+    }
+
+    public void setCodigoCiudadano(Ciudadano codigoCiudadano) {
+        this.codigoCiudadano = codigoCiudadano;
     }
 
     @Override
