@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioCreateDlg" widgetVar="UsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear usuario">
+            <h:form id="UsuarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="Codigo Usuario" for="codigoUsuario" />
+                        <p:inputText id="codigoUsuario" value="#{usuarioController.selected.codigoUsuario}" required="true" requiredMessage="Campo obligatorio"/>
+                        <p:outputLabel value="Clave usuario" for="claveUsuario" />
+                        <p:inputText id="claveUsuario" value="#{usuarioController.selected.claveUsuario}" required="true" requiredMessage="Campo obligatorio"/>
+                        <p:outputLabel value="Nombres" for="nombres" />
+                        <p:inputText id="nombres" value="#{usuarioController.selected.nombres}" required="true" requiredMessage="Campo obligatorio"/>
+                        <p:outputLabel value="Identificación" for="identificacion" />
+                        <p:inputText id="identificacion" value="#{usuarioController.selected.identificacion}" required="true" requiredMessage="Campo obligatorio"/>
+                        <p:outputLabel value="Codigo rol" for="codigoRol" />
+                        <p:selectOneMenu id="codigoRol" value="#{usuarioController.selected.codigoRol}" >
+                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
+                                           var="codigoRolItem"
+                                           itemValue="#{codigoRolItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.create}" value="Guardar" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'UsuarioCreateDialog');"/>
+                    <p:commandButton value="Cancelar" onclick="UsuarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

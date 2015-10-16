@@ -11,5 +11,10 @@ package com.making.cp.negocio;
  */
 public class TramiteServiceBean implements ITramiteServiceLocal {
 
+    @Override
+    public void iniciarTramite() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
