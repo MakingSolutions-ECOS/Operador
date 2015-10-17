@@ -15,7 +15,7 @@
         </h:head>
 
         <h:body>
-
+            <p:growl id="growl" life="3000" />
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" styleClass="cabecera">
@@ -31,17 +31,17 @@
                 <p:layoutUnit position="west" size="250" header="Menú Principal" collapsible="true" styleClass="header">
                     <h:form>
                         <p:menu styleClass="item-menu">
-                            <p:menuitem value="Bandeja de Entrada" outcome="correoUsuario" />
-                            <p:menuitem value="Carpeta Ciudadana" outcome="carpetaPersonal"/>
-                            <p:menuitem value="Trámites" outcome="tramite" />                            
-                            <p:menuitem value="Configuración de Cuenta" outcome="configUsuario" />
+                            <p:menuitem value="Bandeja de Entrada" outcome="/correoUsuario" />
+                            <p:menuitem value="Carpeta Ciudadana" outcome="/carpetaPersonal"/>
+                            <p:menuitem value="Trámites" outcome="/tramite" />                            
+                            <p:menuitem value="Configuración de Cuenta" outcome="/configUsuario" />
                             <p:menuitem value="Publicidad" url="#" />
-                            <p:menuitem value="Migración y Baja de Usuario" outcome="MigracionBajaUsuario" />
+                            <p:menuitem value="Migración y Baja de Usuario" outcome="/MigracionBajaUsuario" />
                         </p:menu>
                         <p:menu styleClass="item-menu" >
-                            <p:menuitem value="CRUD Usuario" outcome="crudUsuario"/>
-                            <p:menuitem value="CRUD Permisos" outcome="crudPermiso"/>
-                            <p:menuitem value="CRUD Roles" outcome="crudRol"/>
+                            <p:menuitem value="CRUD Usuario" outcome="/usuario/listUsuario"/>
+                            <p:menuitem value="CRUD Permisos" outcome="/permiso/listPermiso"/>
+                            <p:menuitem value="CRUD Roles" outcome="/rol/listRol"/>
                         </p:menu>
                     </h:form>                    
                 </p:layoutUnit>
