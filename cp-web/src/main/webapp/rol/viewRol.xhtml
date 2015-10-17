@@ -8,16 +8,16 @@
 
     <ui:composition>
 
-        <p:dialog id="RolViewDlg" widgetVar="RolViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRolTitle}">
+        <p:dialog id="RolViewDlg" widgetVar="RolViewDialog" modal="true" resizable="false" appendTo="@(body)" header="Ver Rol">
             <h:form id="RolViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <h:outputText value="#{bundle.ViewRolLabel_codigoRol}"/>
-                        <h:outputText value="#{rolController.selected.codigoRol}" title="#{bundle.ViewRolTitle_codigoRol}"/>
-                        <h:outputText value="#{bundle.ViewRolLabel_nombreRol}"/>
-                        <h:outputText value="#{rolController.selected.nombreRol}" title="#{bundle.ViewRolTitle_nombreRol}"/>
+                        <h:outputText value="Codigo Rol"/>
+                        <h:outputText value="#{rolController.selected.codigoRol}" />
+                        <h:outputText value="Nombre rol"/>
+                        <h:outputText value="#{rolController.selected.nombreRol}" />
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="RolViewDialog.hide()"/>
+                    <p:commandButton value="Cancelar" onclick="RolViewDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

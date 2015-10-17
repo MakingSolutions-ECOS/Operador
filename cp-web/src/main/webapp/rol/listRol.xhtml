@@ -8,7 +8,7 @@
     <ui:composition template="/panelControl.xhtml">
         <ui:define name="body">
             <h:form id="RolListForm">
-                <p:panel header="#{bundle.ListRolTitle}">
+                <p:panel header="Lista Roles">
                     <p:dataTable id="datalist" value="#{rolController.items}" var="item"
                                  selectionMode="single" selection="#{rolController.selected}"
                                  paginator="true"
@@ -22,21 +22,21 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRolTitle_codigoRol}"/>
+                                <h:outputText value="Codigo rol"/>
                             </f:facet>
                             <h:outputText value="#{item.codigoRol}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRolTitle_nombreRol}"/>
+                                <h:outputText value="Nombre rol"/>
                             </f:facet>
                             <h:outputText value="#{item.nombreRol}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{rolController.prepareCreate}" update=":RolCreateForm" oncomplete="PF('RolCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":RolViewForm" oncomplete="PF('RolViewDialog').show()" disabled="#{empty rolController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":RolEditForm" oncomplete="PF('RolEditDialog').show()" disabled="#{empty rolController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{rolController.destroy}" update=":growl,datalist" disabled="#{empty rolController.selected}"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Crear" actionListener="#{rolController.prepareCreate}" update=":RolCreateForm" oncomplete="PF('RolCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":RolViewForm" oncomplete="PF('RolViewDialog').show()" disabled="#{empty rolController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":RolEditForm" oncomplete="PF('RolEditDialog').show()" disabled="#{empty rolController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Borrar" actionListener="#{rolController.destroy}" update=":growl,datalist" disabled="#{empty rolController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

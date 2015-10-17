@@ -8,18 +8,18 @@
 
     <ui:composition>
 
-        <p:dialog id="PermisoViewDlg" widgetVar="PermisoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPermisoTitle}">
+        <p:dialog id="PermisoViewDlg" widgetVar="PermisoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="Detalle permiso">
             <h:form id="PermisoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{permisoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPermisoLabel_codigoPermiso}"/>
-                        <h:outputText value="#{permisoController.selected.codigoPermiso}" title="#{bundle.ViewPermisoTitle_codigoPermiso}"/>
-                        <h:outputText value="#{bundle.ViewPermisoLabel_codigoGrupoUsuario}"/>
-                        <h:outputText value="#{permisoController.selected.codigoGrupoUsuario}" title="#{bundle.ViewPermisoTitle_codigoGrupoUsuario}"/>
-                        <h:outputText value="#{bundle.ViewPermisoLabel_nombrePermiso}"/>
-                        <h:outputText value="#{permisoController.selected.nombrePermiso}" title="#{bundle.ViewPermisoTitle_nombrePermiso}"/>
+                        <h:outputText value="Codigo permiso"/>
+                        <h:outputText value="#{permisoController.selected.codigoPermiso}" />
+                        <h:outputText value="Codigo grupo usuario"/>
+                        <h:outputText value="#{permisoController.selected.codigoGrupoUsuario}" />
+                        <h:outputText value="Nombre permiso"/>
+                        <h:outputText value="#{permisoController.selected.nombrePermiso}" />
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="PermisoViewDialog.hide()"/>
+                    <p:commandButton value="Cerrar" onclick="PermisoViewDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

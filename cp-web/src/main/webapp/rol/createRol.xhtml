@@ -8,17 +8,17 @@
 
     <ui:composition>
 
-        <p:dialog id="RolCreateDlg" widgetVar="RolCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRolTitle}">
+        <p:dialog id="RolCreateDlg" widgetVar="RolCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear rol">
             <h:form id="RolCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateRolLabel_codigoRol}" for="codigoRol" />
-                        <p:inputText id="codigoRol" value="#{rolController.selected.codigoRol}" title="#{bundle.CreateRolTitle_codigoRol}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_codigoRol}"/>
-                        <p:outputLabel value="#{bundle.CreateRolLabel_nombreRol}" for="nombreRol" />
-                        <p:inputText id="nombreRol" value="#{rolController.selected.nombreRol}" title="#{bundle.CreateRolTitle_nombreRol}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_nombreRol}"/>
+                        <p:outputLabel value="Codigo rol" for="codigoRol" />
+                        <p:inputText id="codigoRol" value="#{rolController.selected.codigoRol}" required="true" requiredMessage="Campo requerido"/>
+                        <p:outputLabel value="Nombre rol" for="nombreRol" />
+                        <p:inputText id="nombreRol" value="#{rolController.selected.nombreRol}" required="true" requiredMessage="Campo requerido"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{rolController.create}" value="#{bundle.Save}" update="display,:RolListForm:datalist,:growl" oncomplete="handleSubmit(args,'RolCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="RolCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{rolController.create}" value="Guardar" update="display,:RolListForm:datalist,:growl" oncomplete="handleSubmit(args,'RolCreateDialog');"/>
+                    <p:commandButton value="Cancelar" onclick="RolCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

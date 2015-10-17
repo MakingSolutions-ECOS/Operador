@@ -8,19 +8,19 @@
 
     <ui:composition>
 
-        <p:dialog id="PermisoEditDlg" widgetVar="PermisoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPermisoTitle}">
+        <p:dialog id="PermisoEditDlg" widgetVar="PermisoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="Editar permiso">
             <h:form id="PermisoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{permisoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditPermisoLabel_codigoPermiso}" for="codigoPermiso" />
-                        <p:inputText id="codigoPermiso" value="#{permisoController.selected.codigoPermiso}" title="#{bundle.EditPermisoTitle_codigoPermiso}" required="true" requiredMessage="#{bundle.EditPermisoRequiredMessage_codigoPermiso}"/>
-                        <p:outputLabel value="#{bundle.EditPermisoLabel_codigoGrupoUsuario}" for="codigoGrupoUsuario" />
-                        <p:inputText id="codigoGrupoUsuario" value="#{permisoController.selected.codigoGrupoUsuario}" title="#{bundle.EditPermisoTitle_codigoGrupoUsuario}" />
-                        <p:outputLabel value="#{bundle.EditPermisoLabel_nombrePermiso}" for="nombrePermiso" />
-                        <p:inputText id="nombrePermiso" value="#{permisoController.selected.nombrePermiso}" title="#{bundle.EditPermisoTitle_nombrePermiso}" required="true" requiredMessage="#{bundle.EditPermisoRequiredMessage_nombrePermiso}"/>
+                        <p:outputLabel value="Codigo permiso" for="codigoPermiso" />
+                        <p:inputText id="codigoPermiso" value="#{permisoController.selected.codigoPermiso}" required="true" requiredMessage="Campo requerido"/>
+                        <p:outputLabel value="Codigo grupo usuario" for="codigoGrupoUsuario" />
+                        <p:inputText id="codigoGrupoUsuario" value="#{permisoController.selected.codigoGrupoUsuario}" />
+                        <p:outputLabel value="Nombre permiso" for="nombrePermiso" />
+                        <p:inputText id="nombrePermiso" value="#{permisoController.selected.nombrePermiso}" required="true" requiredMessage="Campo requerido"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{permisoController.update}" value="#{bundle.Save}" update="display,:PermisoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PermisoEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="PermisoEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{permisoController.update}" value="Modificar" update="display,:PermisoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PermisoEditDialog');"/>
+                    <p:commandButton value="Cancelar" onclick="PermisoEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -8,5 +8,8 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <locale-config>
+            <default-locale>es_ES</default-locale>
+        </locale-config>
     </application>
 </faces-config>

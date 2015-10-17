@@ -8,7 +8,7 @@
     <ui:composition template="/panelControl.xhtml">
         <ui:define name="body">
             <h:form id="PermisoListForm">
-                <p:panel header="#{bundle.ListPermisoTitle}">
+                <p:panel header="Lista permisos">
                     <p:dataTable id="datalist" value="#{permisoController.items}" var="item"
                                  selectionMode="single" selection="#{permisoController.selected}"
                                  paginator="true"
@@ -22,27 +22,27 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPermisoTitle_codigoPermiso}"/>
+                                <h:outputText value="Codigo permiso"/>
                             </f:facet>
                             <h:outputText value="#{item.codigoPermiso}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPermisoTitle_codigoGrupoUsuario}"/>
+                                <h:outputText value="Codigo grupo usuario"/>
                             </f:facet>
                             <h:outputText value="#{item.codigoGrupoUsuario}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPermisoTitle_nombrePermiso}"/>
+                                <h:outputText value="Nombre permiso"/>
                             </f:facet>
                             <h:outputText value="#{item.nombrePermiso}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{permisoController.prepareCreate}" update=":PermisoCreateForm" oncomplete="PF('PermisoCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PermisoViewForm" oncomplete="PF('PermisoViewDialog').show()" disabled="#{empty permisoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PermisoEditForm" oncomplete="PF('PermisoEditDialog').show()" disabled="#{empty permisoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{permisoController.destroy}" update=":growl,datalist" disabled="#{empty permisoController.selected}"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Crear" actionListener="#{permisoController.prepareCreate}" update=":PermisoCreateForm" oncomplete="PF('PermisoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Ver" update=":PermisoViewForm" oncomplete="PF('PermisoViewDialog').show()" disabled="#{empty permisoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Editar" update=":PermisoEditForm" oncomplete="PF('PermisoEditDialog').show()" disabled="#{empty permisoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Eliminar" actionListener="#{permisoController.destroy}" update=":growl,datalist" disabled="#{empty permisoController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
