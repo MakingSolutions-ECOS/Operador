@@ -5,6 +5,8 @@
  */
 package com.making.cp.negocio;
 
+import com.making.cp.cliente.emisor.EmisorDto;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,6 +16,6 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
     
+    public List<String> GetDocumentosFaltante(List<String> ids, String codigoUsuario);
     
-    public void iniciarTramite();
 }

@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -26,18 +27,21 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
+<<<<<<< HEAD
  * @author Jimmy
+=======
+ * @author Usuario
+>>>>>>> origin/master
  */
-@Entity
+@Entity 
 @Table(name = "CIUDADANO")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Ciudadano.findAll", query = "SELECT c FROM Ciudadano c"),
-    @NamedQuery(name = "Ciudadano.findByCodigoCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.codigoCiudadano = :codigoCiudadano"),
-    @NamedQuery(name = "Ciudadano.findByFechaAfiliacion", query = "SELECT c FROM Ciudadano c WHERE c.fechaAfiliacion = :fechaAfiliacion"),
-    @NamedQuery(name = "Ciudadano.findByEmail", query = "SELECT c FROM Ciudadano c WHERE c.email = :email"),
-    @NamedQuery(name = "Ciudadano.findByNumeroIdentificacion", query = "SELECT c FROM Ciudadano c WHERE c.numeroIdentificacion = :numeroIdentificacion"),
-    @NamedQuery(name = "Ciudadano.findByTipoIdentificacion", query = "SELECT c FROM Ciudadano c WHERE c.tipoIdentificacion = :tipoIdentificacion")})
+    @NamedQueries({
+        @NamedQuery(name = "Ciudadano.findAll", query = "SELECT c FROM Ciudadano c"),
+        @NamedQuery(name = "Ciudadano.findByCodigoCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.codigoCiudadano = :codigoCiudadano"),
+        @NamedQuery(name = "Ciudadano.findByFechaAfiliacion", query = "SELECT c FROM Ciudadano c WHERE c.fechaAfiliacion = :fechaAfiliacion"),
+        @NamedQuery(name = "Ciudadano.findByEmail", query = "SELECT c FROM Ciudadano c WHERE c.email = :email"),
+        @NamedQuery(name = "Ciudadano.findByAliasCiudadano", query = "SELECT c FROM Ciudadano c WHERE c.aliasCiudadano = :aliasCiudadano")})
 public class Ciudadano implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -56,15 +60,9 @@ public class Ciudadano implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "EMAIL")
     private String email;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "NUMERO_IDENTIFICACION")
-    private String numeroIdentificacion;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "TIPO_IDENTIFICACION")
-    private int tipoIdentificacion;
+    @Size(max = 15)
+    @Column(name = "ALIAS_CIUDADANO")
+    private String aliasCiudadano;
     @JoinColumn(name = "CODIGO_TIPO_CIUDADANO", referencedColumnName = "CODIGO_TIPO_CIUDADANO")
     @ManyToOne
     private TipoCiudadano codigoTipoCiudadano;
@@ -72,12 +70,8 @@ public class Ciudadano implements Serializable {
     @ManyToOne
     private CapacidadAlmacenamiento codigoCapacidadAlmacenamiento;
     @OneToMany(mappedBy = "codigoCiudadano")
-    private List<Tramite> tramiteList;
-    @OneToMany(mappedBy = "codigoCiudadano")
-    private List<Documento> documentoList;
-    @OneToMany(mappedBy = "codigoCiudadano")
-    private List<GrupoCiudadano> grupoCiudadanoList;
-    @OneToMany(mappedBy = "codigoCiudadano")
+    private List<Directorio> directorioList;
+        @OneToMany(mappedBy = "codigoCiudadano")
     private List<Publicidad> publicidadList;
 
     public Ciudadano() {
@@ -87,12 +81,10 @@ public class Ciudadano implements Serializable {
         this.codigoCiudadano = codigoCiudadano;
     }
 
-    public Ciudadano(Integer codigoCiudadano, Date fechaAfiliacion, String email, String numeroIdentificacion, int tipoIdentificacion) {
+    public Ciudadano(Integer codigoCiudadano, Date fechaAfiliacion, String email) {
         this.codigoCiudadano = codigoCiudadano;
         this.fechaAfiliacion = fechaAfiliacion;
         this.email = email;
-        this.numeroIdentificacion = numeroIdentificacion;
-        this.tipoIdentificacion = tipoIdentificacion;
     }
 
     public Integer getCodigoCiudadano() {
@@ -119,20 +111,12 @@ public class Ciudadano implements Serializable {
         this.email = email;
     }
 
-    public String getNumeroIdentificacion() {
-        return numeroIdentificacion;
+    public String getAliasCiudadano() {
+        return aliasCiudadano;
     }
 
-    public void setNumeroIdentificacion(String numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
-    }
-
-    public int getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
-
-    public void setTipoIdentificacion(int tipoIdentificacion) {
-        this.tipoIdentificacion = tipoIdentificacion;
+    public void setAliasCiudadano(String aliasCiudadano) {
+        this.aliasCiudadano = aliasCiudadano;
     }
 
     public TipoCiudadano getCodigoTipoCiudadano() {
@@ -152,30 +136,12 @@ public class Ciudadano implements Serializable {
     }
 
     @XmlTransient
-    public List<Tramite> getTramiteList() {
-        return tramiteList;
+    public List<Directorio> getDirectorioList() {
+        return directorioList;
     }
 
-    public void setTramiteList(List<Tramite> tramiteList) {
-        this.tramiteList = tramiteList;
-    }
-
-    @XmlTransient
-    public List<Documento> getDocumentoList() {
-        return documentoList;
-    }
-
-    public void setDocumentoList(List<Documento> documentoList) {
-        this.documentoList = documentoList;
-    }
-
-    @XmlTransient
-    public List<GrupoCiudadano> getGrupoCiudadanoList() {
-        return grupoCiudadanoList;
-    }
-
-    public void setGrupoCiudadanoList(List<GrupoCiudadano> grupoCiudadanoList) {
-        this.grupoCiudadanoList = grupoCiudadanoList;
+    public void setDirectorioList(List<Directorio> directorioList) {
+        this.directorioList = directorioList;
     }
 
     @XmlTransient

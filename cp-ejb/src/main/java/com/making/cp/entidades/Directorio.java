@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -23,7 +24,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
+<<<<<<< HEAD
  * @author Jimmy
+=======
+ * @author Usuario
+>>>>>>> origin/master
  */
 @Entity
 @Table(name = "DIRECTORIO")
@@ -31,13 +36,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Directorio.findAll", query = "SELECT d FROM Directorio d"),
     @NamedQuery(name = "Directorio.findByCodigoMetadata", query = "SELECT d FROM Directorio d WHERE d.codigoMetadata = :codigoMetadata"),
-    @NamedQuery(name = "Directorio.findByCodigoCiudadano", query = "SELECT d FROM Directorio d WHERE d.codigoCiudadano = :codigoCiudadano"),
-    @NamedQuery(name = "Directorio.findByCodigoGrupoDocumento", query = "SELECT d FROM Directorio d WHERE d.codigoGrupoDocumento = :codigoGrupoDocumento"),
     @NamedQuery(name = "Directorio.findByCodigoTipoMetadataCentralizador", query = "SELECT d FROM Directorio d WHERE d.codigoTipoMetadataCentralizador = :codigoTipoMetadataCentralizador"),
     @NamedQuery(name = "Directorio.findByFechaModificacion", query = "SELECT d FROM Directorio d WHERE d.fechaModificacion = :fechaModificacion"),
     @NamedQuery(name = "Directorio.findByNombreDirectorio", query = "SELECT d FROM Directorio d WHERE d.nombreDirectorio = :nombreDirectorio"),
     @NamedQuery(name = "Directorio.findByRutaLogicaDirectorio", query = "SELECT d FROM Directorio d WHERE d.rutaLogicaDirectorio = :rutaLogicaDirectorio"),
     @NamedQuery(name = "Directorio.findByFechaCreacionDirectorio", query = "SELECT d FROM Directorio d WHERE d.fechaCreacionDirectorio = :fechaCreacionDirectorio"),
+    @NamedQuery(name = "Directorio.findByUsuario", query = "SELECT d FROM Directorio d WHERE d.codigoCiudadano = :codigoCiudadano"),
     @NamedQuery(name = "Directorio.findByRutaFisicaDirectorio", query = "SELECT d FROM Directorio d WHERE d.rutaFisicaDirectorio = :rutaFisicaDirectorio")})
 public class Directorio implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -46,10 +50,6 @@ public class Directorio implements Serializable {
     @NotNull
     @Column(name = "CODIGO_METADATA")
     private Integer codigoMetadata;
-    @Column(name = "CODIGO_CIUDADANO")
-    private Integer codigoCiudadano;
-    @Column(name = "CODIGO_GRUPO_DOCUMENTO")
-    private Integer codigoGrupoDocumento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CODIGO_TIPO_METADATA_CENTRALIZADOR")
@@ -77,9 +77,15 @@ public class Directorio implements Serializable {
     @Size(max = 150)
     @Column(name = "RUTA_FISICA_DIRECTORIO")
     private String rutaFisicaDirectorio;
-    @JoinColumn(name = "CODIGO_DIRECTORIO_DOCUMENTO", referencedColumnName = "CODIGO_DIRECTORIO_DOCUMENTO")
+    @JoinColumn(name = "CODIGO_MARCA_DIRECTORIO", referencedColumnName = "CODIGO_MARCA_DIRECTORIO")
     @ManyToOne
-    private DirectorioDocumento codigoDirectorioDocumento;
+    private MarcaDirectorio codigoMarcaDirectorio;
+    @JoinColumn(name = "CODIGO_GRUPO_DIRECTORIO", referencedColumnName = "CODIGO_GRUPO_DIRECTORIO")
+    @ManyToOne
+    private GrupoDirectorio codigoGrupoDirectorio;
+    @JoinColumn(name = "CODIGO_CIUDADANO", referencedColumnName = "CODIGO_CIUDADANO")
+    @ManyToOne
+    private Ciudadano codigoCiudadano;
 
     public Directorio() {
     }
@@ -103,22 +109,6 @@ public class Directorio implements Serializable {
 
     public void setCodigoMetadata(Integer codigoMetadata) {
         this.codigoMetadata = codigoMetadata;
-    }
-
-    public Integer getCodigoCiudadano() {
-        return codigoCiudadano;
-    }
-
-    public void setCodigoCiudadano(Integer codigoCiudadano) {
-        this.codigoCiudadano = codigoCiudadano;
-    }
-
-    public Integer getCodigoGrupoDocumento() {
-        return codigoGrupoDocumento;
-    }
-
-    public void setCodigoGrupoDocumento(Integer codigoGrupoDocumento) {
-        this.codigoGrupoDocumento = codigoGrupoDocumento;
     }
 
     public int getCodigoTipoMetadataCentralizador() {
@@ -169,12 +159,28 @@ public class Directorio implements Serializable {
         this.rutaFisicaDirectorio = rutaFisicaDirectorio;
     }
 
-    public DirectorioDocumento getCodigoDirectorioDocumento() {
-        return codigoDirectorioDocumento;
+    public MarcaDirectorio getCodigoMarcaDirectorio() {
+        return codigoMarcaDirectorio;
     }
 
-    public void setCodigoDirectorioDocumento(DirectorioDocumento codigoDirectorioDocumento) {
-        this.codigoDirectorioDocumento = codigoDirectorioDocumento;
+    public void setCodigoMarcaDirectorio(MarcaDirectorio codigoMarcaDirectorio) {
+        this.codigoMarcaDirectorio = codigoMarcaDirectorio;
+    }
+
+    public GrupoDirectorio getCodigoGrupoDirectorio() {
+        return codigoGrupoDirectorio;
+    }
+
+    public void setCodigoGrupoDirectorio(GrupoDirectorio codigoGrupoDirectorio) {
+        this.codigoGrupoDirectorio = codigoGrupoDirectorio;
+    }
+
+    public Ciudadano getCodigoCiudadano() {
+        return codigoCiudadano;
+    }
+
+    public void setCodigoCiudadano(Ciudadano codigoCiudadano) {
+        this.codigoCiudadano = codigoCiudadano;
     }
 
     @Override

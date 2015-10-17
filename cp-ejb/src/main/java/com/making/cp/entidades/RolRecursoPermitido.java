@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -19,7 +20,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
+<<<<<<< HEAD
  * @author Jimmy
+=======
+ * @author Usuario
+>>>>>>> origin/master
  */
 @Entity
 @Table(name = "ROL_RECURSO_PERMITIDO")

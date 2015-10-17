@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.making.cp.entidades;
@@ -25,7 +26,11 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
+<<<<<<< HEAD
  * @author Jimmy
+=======
+ * @author Usuario
+>>>>>>> origin/master
  */
 @Entity
 @Table(name = "PUBLICIDAD")
@@ -65,7 +70,7 @@ public class Publicidad implements Serializable {
     @OneToMany(mappedBy = "codigoPublicidad")
     private List<PublicidadImagen> publicidadImagenList;
     @JoinColumn(name = "CODIGO_CIUDADANO", referencedColumnName = "CODIGO_CIUDADANO")
-    @ManyToOne
+    @ManyToOne          
     private Ciudadano codigoCiudadano;
 
     public Publicidad() {
