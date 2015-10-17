@@ -20,6 +20,24 @@
     <class>com.making.cp.entidades.GrupoCiudadano</class>
     <class>com.making.cp.entidades.Permiso</class>
     <class>com.making.cp.entidades.GrupoDocumento</class>
+    <class>entidad.PublicidadImagen</class>
+    <class>entidad.Grupo</class>
+    <class>entidad.Ciudadano</class>
+    <class>entidad.Usuario</class>
+    <class>entidad.Rol</class>
+    <class>entidad.RecursoPermitido</class>
+    <class>entidad.CapacidadAlmacenamiento</class>
+    <class>entidad.GrupoDocumento</class>
+    <class>entidad.Documento</class>
+    <class>entidad.LogActividad</class>
+    <class>entidad.TipoCiudadano</class>
+    <class>entidad.Tramite</class>
+    <class>entidad.GrupoCiudadano</class>
+    <class>entidad.DirectorioDocumento</class>
+    <class>entidad.Permiso</class>
+    <class>entidad.Publicidad</class>
+    <class>entidad.Directorio</class>
+    <class>entidad.RolRecursoPermitido</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
