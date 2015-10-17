@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.PublicidadImagen;
+import com.making.cp.entidad.PublicidadImagen;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

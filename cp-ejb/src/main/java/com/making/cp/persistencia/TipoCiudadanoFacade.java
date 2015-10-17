@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.TipoCiudadano;
+import com.making.cp.entidad.TipoCiudadano;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

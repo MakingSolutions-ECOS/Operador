@@ -5,7 +5,7 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.entidades.Directorio;
+import com.making.cp.entidad.Directorio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

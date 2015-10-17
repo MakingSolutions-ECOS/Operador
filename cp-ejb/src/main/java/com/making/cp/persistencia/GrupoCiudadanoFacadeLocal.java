@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.GrupoCiudadano;
+import com.making.cp.entidad.GrupoCiudadano;
 import java.util.List;
 import javax.ejb.Local;
 

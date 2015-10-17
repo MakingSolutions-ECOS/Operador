@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.PublicidadImagen;
+import com.making.cp.entidad.PublicidadImagen;
 import java.util.List;
 import javax.ejb.Local;
 

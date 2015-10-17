@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.Permiso;
+import com.making.cp.entidad.Permiso;
 import java.util.List;
 import javax.ejb.Local;
 

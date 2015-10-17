@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.Rol;
+import com.making.cp.entidad.Rol;
 import java.util.List;
 import javax.ejb.Local;
 

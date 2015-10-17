@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.RolRecursoPermitido;
+import com.making.cp.entidad.RolRecursoPermitido;
 import java.util.List;
 import javax.ejb.Local;
 

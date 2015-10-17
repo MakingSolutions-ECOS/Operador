@@ -1,6 +1,6 @@
 package com.making.cp.controladores;
 
-import com.making.cp.entidades.Permiso;
+import com.making.cp.entidad.Permiso;
 import com.making.cp.persistencia.PermisoFacade;
 import com.making.cp.persistencia.PermisoFacadeLocal;
 import entidades.util.JsfUtil;

@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.Directorio;
+import com.making.cp.entidad.Directorio;
 import java.util.List;
 import javax.ejb.Local;
 

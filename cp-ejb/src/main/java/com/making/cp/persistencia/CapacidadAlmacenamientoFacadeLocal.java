@@ -5,7 +5,7 @@
  */
 package com.making.cp.persistencia;
 
-import com.making.cp.entidades.CapacidadAlmacenamiento;
+import com.making.cp.entidad.CapacidadAlmacenamiento;
 import java.util.List;
 import javax.ejb.Local;
 

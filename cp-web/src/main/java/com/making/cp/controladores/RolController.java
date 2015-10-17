@@ -1,6 +1,6 @@
 package com.making.cp.controladores;
 
-import com.making.cp.entidades.Rol;
+import com.making.cp.entidad.Rol;
 import com.making.cp.persistencia.RolFacadeLocal;
 import entidades.util.JsfUtil;
 import entidades.util.JsfUtil.PersistAction;

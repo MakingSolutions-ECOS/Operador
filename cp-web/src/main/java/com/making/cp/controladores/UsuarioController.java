@@ -1,6 +1,6 @@
 package com.making.cp.controladores;
 
-import com.making.cp.entidades.Usuario;
+import com.making.cp.entidad.Usuario;
 import com.making.cp.persistencia.UsuarioFacadeLocal;
 import entidades.util.JsfUtil;
 import entidades.util.JsfUtil.PersistAction;
