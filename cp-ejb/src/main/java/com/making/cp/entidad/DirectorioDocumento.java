@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Jimmy
+ * 
  */
 @Entity
 @Table(name = "DIRECTORIO_DOCUMENTO")

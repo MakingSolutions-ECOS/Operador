@@ -5,7 +5,7 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="1433"/>
         <property name="databaseName" value="BD_OPERADOR"/>
-        <property name="User" value="sa"/>
+        <property name="User" value="making"/>
         <property name="Password" value="1234"/>
         <property name="URL" value="jdbc:sqlserver://localhost:1433;databaseName=BD_OPERADOR"/>
         <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
