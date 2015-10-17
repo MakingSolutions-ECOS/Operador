@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Directorio.findByNombreDirectorio", query = "SELECT d FROM Directorio d WHERE d.nombreDirectorio = :nombreDirectorio"),
     @NamedQuery(name = "Directorio.findByRutaLogicaDirectorio", query = "SELECT d FROM Directorio d WHERE d.rutaLogicaDirectorio = :rutaLogicaDirectorio"),
     @NamedQuery(name = "Directorio.findByFechaCreacionDirectorio", query = "SELECT d FROM Directorio d WHERE d.fechaCreacionDirectorio = :fechaCreacionDirectorio"),
+    @NamedQuery(name = "Directorio.findByUsuario", query = "SELECT d FROM Directorio d WHERE d.codigoCiudadano = :codigoCiudadano"),
     @NamedQuery(name = "Directorio.findByRutaFisicaDirectorio", query = "SELECT d FROM Directorio d WHERE d.rutaFisicaDirectorio = :rutaFisicaDirectorio")})
 public class Directorio implements Serializable {
     private static final long serialVersionUID = 1L;

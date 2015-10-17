@@ -16,4 +16,6 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
     
+    public List<String> GetDocumentosFaltante(List<String> ids, String codigoUsuario);
+    
 }
