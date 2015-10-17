@@ -22,7 +22,7 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class RolController implements Serializable {
 
-    @EJB
+    @EJB(beanName = "RolFacade")
     private RolFacadeLocal ejbFacade;
     private List<Rol> items = null;
     private Rol selected;

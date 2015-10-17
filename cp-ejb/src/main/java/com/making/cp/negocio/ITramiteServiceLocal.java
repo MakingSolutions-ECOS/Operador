@@ -6,6 +6,8 @@
 package com.making.cp.negocio;
 
 import com.making.cp.cliente.emisor.EmisorDto;
+import com.making.cp.entidad.Documento;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,6 +18,6 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
     
-    public List<String> GetDocumentosFaltante(List<String> ids, String codigoUsuario);
+    public HashMap <Integer,Documento>  getDocumentosValidados(List<Integer> ids, String codigoUsuario) ;
     
 }

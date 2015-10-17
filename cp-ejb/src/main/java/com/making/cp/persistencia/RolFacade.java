@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Usuario
  */
-@Stateless
+@Stateless(mappedName = "RolFacade")
 public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {
     @PersistenceContext(unitName = "com.making.cp_cp-ejb_ejb_1.0PU")
     private EntityManager em;

@@ -21,7 +21,7 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class UsuarioController implements Serializable {
 
-    @EJB
+    @EJB(beanName = "UsuarioFacade")
     private UsuarioFacadeLocal ejbFacade;
     private List<Usuario> items = null;
     private Usuario selected;

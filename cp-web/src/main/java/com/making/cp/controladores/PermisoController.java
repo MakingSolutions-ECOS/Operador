@@ -22,7 +22,7 @@ import javax.faces.convert.FacesConverter;
 @SessionScoped
 public class PermisoController implements Serializable {
 
-    @EJB
+    @EJB(beanName = "PermisoFacade")
     private PermisoFacadeLocal ejbFacade;
     private List<Permiso> items = null;
     private Permiso selected;

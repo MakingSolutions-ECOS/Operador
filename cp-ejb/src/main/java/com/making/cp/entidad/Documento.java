@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Documento.findByNombreDocumento", query = "SELECT d FROM Documento d WHERE d.nombreDocumento = :nombreDocumento"),
     @NamedQuery(name = "Documento.findByRutaLogicaDocumento", query = "SELECT d FROM Documento d WHERE d.rutaLogicaDocumento = :rutaLogicaDocumento"),
     @NamedQuery(name = "Documento.findByFechaCreacionDirectorio", query = "SELECT d FROM Documento d WHERE d.fechaCreacionDirectorio = :fechaCreacionDirectorio"),
+    @NamedQuery(name = "Documento.findDocumentoByUsuario", query = "SELECT d FROM Documento d where d.codigoCiudadano.codigoCiudadano= :codigoCiudadano order by d.fechaModificacion desc"),
     @NamedQuery(name = "Documento.findByRutaFisicaDirectorio", query = "SELECT d FROM Documento d WHERE d.rutaFisicaDirectorio = :rutaFisicaDirectorio")})
 public class Documento implements Serializable {
     private static final long serialVersionUID = 1L;

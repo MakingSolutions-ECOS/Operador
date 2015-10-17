@@ -6,8 +6,12 @@
 package com.making.cp.negocio;
 
 import com.making.cp.entidad.Directorio;
+import com.making.cp.entidad.Documento;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,28 +19,30 @@ import javax.persistence.PersistenceContext;
  *
  * @author Camilo Marroquin
  */
-public class TramiteServiceBean implements ITramiteServiceLocal{
+public class TramiteServiceBean implements ITramiteServiceLocal {
 
-    @PersistenceContext 
+    @PersistenceContext
     EntityManager em;
-    
+
     /**
      * Obtiene los documentos faltantes del tramite a realizar
+     *
      * @param ids
      * @param codigoUsuario
-     * @return 
+     * @return
      */
     @Override
-    public List<String> GetDocumentosFaltante(List<String> ids, String codigoUsuario) {
-        List<String> DocumentosFaltantes = new ArrayList<>();
-        List<Directorio> lista = em.createNamedQuery("Directorio.findByUsuario").setParameter("codigoUsuario", codigoUsuario).getResultList();
-        
-//        for (Directorio documento : lista){
-//            if (documento.getcodi) {
-//                
-//            }
-//        }
-        return DocumentosFaltantes;
+    public HashMap <Integer,Documento>  getDocumentosValidados(List<Integer> ids, String codigoUsuario) {
+        List<Documento> lista = em.createNamedQuery("Documento.findDocumentoByUsuario").setParameter("codigoUsuario", codigoUsuario).getResultList();        
+        HashMap <Integer,Documento> encontrados= new HashMap<>();
+        for (Documento documento : lista) {
+            for (Integer id : ids) {
+                if (documento.getCodigoDocumento().equals(id)){                     
+                    encontrados.put(documento.getCodigoDocumento(), documento);                    
+                }
+            }
+        }        
+        return encontrados;
     }
-    
+
 }

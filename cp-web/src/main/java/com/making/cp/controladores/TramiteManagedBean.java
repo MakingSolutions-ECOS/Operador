@@ -114,23 +114,6 @@ public class TramiteManagedBean {
     public void setDialogView(boolean dialogView) {
         this.dialogView = dialogView;
     }
-    public void cargarEntidades(){
-            
-    }
-
-    public List<SelectItem> getListaEmisores() {
-        emisores = emisorServiceBean.obtenerEmisores();
-        for (EmisorDto emisorDto : emisores) {
-            SelectItem selectItem = new SelectItem(emisorDto.getCodigoEntidadEmisora(), emisorDto.getNombreEntidadEmisora());
-            listaEmisores.add(selectItem);
-        }
-        return listaEmisores;
-    }
-
-    public void cargarTramites(ValueChangeEvent valueChangeEvent){
-     valueChangeEvent.getNewValue().toString();
-        
-    }
     public void setListaEmisores(List<SelectItem> listaEmisores) {
         this.listaEmisores = listaEmisores;
     }
@@ -150,6 +133,21 @@ public class TramiteManagedBean {
     public void setTramites(List<TramiteDto> tramites) {
         this.tramites = tramites;
     }
+    
+    public List<SelectItem> getListaEmisores() {
+        emisores = emisorServiceBean.obtenerEmisores();
+        for (EmisorDto emisorDto : emisores) {
+            SelectItem selectItem = new SelectItem(emisorDto.getCodigoEntidadEmisora(), emisorDto.getNombreEntidadEmisora());
+            listaEmisores.add(selectItem);
+        }
+        return listaEmisores;
+    }
+
+    public void cargarTramites(ValueChangeEvent valueChangeEvent){
+     valueChangeEvent.getNewValue().toString();
+        
+    }
+    
 
     
 }
