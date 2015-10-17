@@ -2,6 +2,24 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.making.cp_cp-ejb_ejb_1.0PU" transaction-type="JTA">
     <jta-data-source>jdbc/operador</jta-data-source>
+    <class>com.making.cp.entidades.Tramite</class>
+    <class>com.making.cp.entidades.RecursoPermitido</class>
+    <class>com.making.cp.entidades.RolRecursoPermitido</class>
+    <class>com.making.cp.entidades.Documento</class>
+    <class>com.making.cp.entidades.TipoCiudadano</class>
+    <class>com.making.cp.entidades.CapacidadAlmacenamiento</class>
+    <class>com.making.cp.entidades.PublicidadImagen</class>
+    <class>com.making.cp.entidades.Publicidad</class>
+    <class>com.making.cp.entidades.Directorio</class>
+    <class>com.making.cp.entidades.Usuario</class>
+    <class>com.making.cp.entidades.DirectorioDocumento</class>
+    <class>com.making.cp.entidades.Rol</class>
+    <class>com.making.cp.entidades.LogActividad</class>
+    <class>com.making.cp.entidades.Grupo</class>
+    <class>com.making.cp.entidades.Ciudadano</class>
+    <class>com.making.cp.entidades.GrupoCiudadano</class>
+    <class>com.making.cp.entidades.Permiso</class>
+    <class>com.making.cp.entidades.GrupoDocumento</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
