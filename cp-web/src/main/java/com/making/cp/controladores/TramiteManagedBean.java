@@ -6,12 +6,17 @@
 package com.making.cp.controladores;
 
 import com.making.cp.cliente.emisor.EmisorDto;
+import com.making.cp.cliente.tramite.TramiteDefinicionDto;
+
 import com.making.cp.dto.ArchivoDto;
 import com.making.cp.dto.DocumentoDto;
 import com.making.cp.dto.TramiteDto;
 import com.making.cp.negocio.IEmisorServiceLocal;
+import com.making.cp.negocio.ITramiteServiceLocal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -29,9 +34,12 @@ public class TramiteManagedBean {
     
     @EJB(beanName = "EmisorServiceBean") 
     private IEmisorServiceLocal emisorServiceBean;
+    @EJB(beanName = "TramiteServiceBean") 
+    private ITramiteServiceLocal iTramiteServiceLocal;
 
     private List<EmisorDto> emisores;
     private EmisorDto emisorSeleccionado;
+    private TramiteDefinicionDto tramiteDefinicionSeleccionado;
     private List<TramiteDto> tramiteDtos;
     
     private List<ArchivoDto> selectedFiles;
@@ -41,12 +49,15 @@ public class TramiteManagedBean {
     
     private List<SelectItem> listaEmisores;
     private List<TramiteDto> tramites;
+    private List<TramiteDefinicionDto> tramiteDefinicion;
+    private List<SelectItem> listaTramiteDefinicion;
 
     
     
     @PostConstruct
     public void init() {
         iniciarListaTramites();
+        getTramiteDefinicion();
         emisores= new ArrayList<>();
         listaEmisores = new ArrayList<>();
         emisorSeleccionado = new EmisorDto();
@@ -133,7 +144,24 @@ public class TramiteManagedBean {
     public void setTramites(List<TramiteDto> tramites) {
         this.tramites = tramites;
     }
+
+    public void getTramiteDefinicion() {
+        try {
+            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
+            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
+            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
+            listaTramiteDefinicion.add(selectItem);
+        }
+        } catch (Exception ex) {
+            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void setTramiteDefinicion(List<TramiteDefinicionDto> tramiteDefinicion) {
+        this.tramiteDefinicion = tramiteDefinicion;
+    } 
     
+
     public List<SelectItem> getListaEmisores() {
         emisores = emisorServiceBean.obtenerEmisores();
         for (EmisorDto emisorDto : emisores) {
@@ -144,10 +172,24 @@ public class TramiteManagedBean {
     }
 
     public void cargarTramites(ValueChangeEvent valueChangeEvent){
-     valueChangeEvent.getNewValue().toString();
-        
+     valueChangeEvent.getNewValue().toString();        
+    }    
+
+    public List<SelectItem> getListaTramiteDefinicion() {
+        return listaTramiteDefinicion;
+    }
+
+    public void setListaTramiteDefinicion(List<SelectItem> listaTramiteDefinicion) {
+        this.listaTramiteDefinicion = listaTramiteDefinicion;
+    }
+
+    public TramiteDefinicionDto getTramiteDefinicionSeleccionado() {
+        return tramiteDefinicionSeleccionado;
+    }
+
+    public void setTramiteDefinicionSeleccionado(TramiteDefinicionDto tramiteDefinicionSeleccionado) {
+        this.tramiteDefinicionSeleccionado = tramiteDefinicionSeleccionado;
     }
     
-
     
 }

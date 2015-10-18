@@ -241,14 +241,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TipoPersonaDto }
-     * 
-     */
-    public TipoPersonaDto createTipoPersonaDto() {
-        return new TipoPersonaDto();
-    }
-
-    /**
      * Create an instance of {@link RespuestaService }
      * 
      */
@@ -257,11 +249,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoriasTramiteDto }
+     * Create an instance of {@link TipoPersonaDto }
      * 
      */
-    public CategoriasTramiteDto createCategoriasTramiteDto() {
-        return new CategoriasTramiteDto();
+    public TipoPersonaDto createTipoPersonaDto() {
+        return new TipoPersonaDto();
     }
 
     /**
@@ -270,6 +262,14 @@ public class ObjectFactory {
      */
     public NacionalidadDto createNacionalidadDto() {
         return new NacionalidadDto();
+    }
+
+    /**
+     * Create an instance of {@link CategoriasTramiteDto }
+     * 
+     */
+    public CategoriasTramiteDto createCategoriasTramiteDto() {
+        return new CategoriasTramiteDto();
     }
 
     /**
@@ -289,19 +289,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CiudadanoDto }
-     * 
-     */
-    public CiudadanoDto createCiudadanoDto() {
-        return new CiudadanoDto();
-    }
-
-    /**
      * Create an instance of {@link TipoIdentificacionDto }
      * 
      */
     public TipoIdentificacionDto createTipoIdentificacionDto() {
         return new TipoIdentificacionDto();
+    }
+
+    /**
+     * Create an instance of {@link CiudadanoDto }
+     * 
+     */
+    public CiudadanoDto createCiudadanoDto() {
+        return new CiudadanoDto();
     }
 
     /**
@@ -313,19 +313,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TramiteDefinicionDto }
-     * 
-     */
-    public TramiteDefinicionDto createTramiteDefinicionDto() {
-        return new TramiteDefinicionDto();
-    }
-
-    /**
      * Create an instance of {@link RolDto }
      * 
      */
     public RolDto createRolDto() {
         return new RolDto();
+    }
+
+    /**
+     * Create an instance of {@link TramiteDefinicionDto }
+     * 
+     */
+    public TramiteDefinicionDto createTramiteDefinicionDto() {
+        return new TramiteDefinicionDto();
     }
 
     /**

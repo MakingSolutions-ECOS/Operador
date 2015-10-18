@@ -22,7 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="codigoSubscripcion" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="detalleSubscripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="vigente" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="vigente" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +46,7 @@ public class SuscripcionDto {
     protected String detalleSubscripcion;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fecha;
-    protected Boolean vigente;
+    protected boolean vigente;
 
     /**
      * Obtiene el valor de la propiedad codigoOperador.
@@ -147,24 +147,16 @@ public class SuscripcionDto {
     /**
      * Obtiene el valor de la propiedad vigente.
      * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
      */
-    public Boolean isVigente() {
+    public boolean isVigente() {
         return vigente;
     }
 
     /**
      * Define el valor de la propiedad vigente.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
      */
-    public void setVigente(Boolean value) {
+    public void setVigente(boolean value) {
         this.vigente = value;
     }
 

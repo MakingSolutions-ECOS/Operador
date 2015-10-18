@@ -5,13 +5,14 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.entidad.Directorio;
+
+import com.making.cp.cliente.tramite.TramiteDefinicionDto;
+import com.making.cp.dto.TramiteDto;
 import com.making.cp.entidad.Documento;
-import java.util.ArrayList;
+import com.making.cp.negocio.Helper.TramiteHelper;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,6 +20,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Camilo Marroquin
  */
+@Stateless(mappedName = "TramiteServiceBean")
 public class TramiteServiceBean implements ITramiteServiceLocal {
 
     @PersistenceContext
@@ -32,17 +34,19 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
      * @return
      */
     @Override
-    public HashMap <Integer,Documento>  getDocumentosValidados(List<Integer> ids, String codigoUsuario) {
-        List<Documento> lista = em.createNamedQuery("Documento.findDocumentoByUsuario").setParameter("codigoUsuario", codigoUsuario).getResultList();        
-        HashMap <Integer,Documento> encontrados= new HashMap<>();
-        for (Documento documento : lista) {
+    public List<Documento>   getDocumentosFaltantes(List<Integer> ids, String codigoUsuario) {
+        List<Documento> lista = em.createNamedQuery("Documento.findDocumentoByUsuario").setParameter("codigoUsuario", codigoUsuario).getResultList(); 
+        for (int i=0; i<lista.size();i++) {
             for (Integer id : ids) {
-                if (documento.getCodigoDocumento().equals(id)){                     
-                    encontrados.put(documento.getCodigoDocumento(), documento);                    
+                if (lista.get(i).equals(id)){                     
+                    lista.remove(i);
                 }
             }
         }        
-        return encontrados;
+        return lista;
     }
-
+    public  List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception{
+        TramiteHelper tramiteHelper = new TramiteHelper();
+        return tramiteHelper.obtenerTramitesDefinicion();        
+    }
 }

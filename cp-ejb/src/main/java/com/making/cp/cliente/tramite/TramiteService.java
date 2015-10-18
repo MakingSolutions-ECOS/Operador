@@ -26,18 +26,33 @@ public interface TramiteService {
 
     /**
      * 
-     * @param codigoCiudadano
+     * @param arg0
      * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaTramite
+     *     returns co.uniandes.edu.ecos.services.RespuestaTramiteDefinicion
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerTramitesPorCiudadano", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesPorCiudadano")
-    @ResponseWrapper(localName = "obtenerTramitesPorCiudadanoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesPorCiudadanoResponse")
-    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesPorCiudadanoRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesPorCiudadanoResponse")
-    public RespuestaTramite obtenerTramitesPorCiudadano(
-        @WebParam(name = "codigoCiudadano", targetNamespace = "")
-        Integer codigoCiudadano);
+    @RequestWrapper(localName = "obtenerTramitesDefinicionPorCategoria", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorCategoria")
+    @ResponseWrapper(localName = "obtenerTramitesDefinicionPorCategoriaResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorCategoriaResponse")
+    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorCategoriaRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorCategoriaResponse")
+    public RespuestaTramiteDefinicion obtenerTramitesDefinicionPorCategoria(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns co.uniandes.edu.ecos.services.RespuestaTramiteDefinicion
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerTramitesDefinicionPorEntidad", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorEntidad")
+    @ResponseWrapper(localName = "obtenerTramitesDefinicionPorEntidadResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorEntidadResponse")
+    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorEntidadRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorEntidadResponse")
+    public RespuestaTramiteDefinicion obtenerTramitesDefinicionPorEntidad(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0);
 
     /**
      * 
@@ -50,6 +65,21 @@ public interface TramiteService {
     @ResponseWrapper(localName = "obtenerTramitesDefinicionResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionResponse")
     public RespuestaTramiteDefinicion obtenerTramitesDefinicion();
+
+    /**
+     * 
+     * @param codigoCiudadano
+     * @return
+     *     returns co.uniandes.edu.ecos.services.RespuestaTramite
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerTramitesPorCiudadano", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesPorCiudadano")
+    @ResponseWrapper(localName = "obtenerTramitesPorCiudadanoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesPorCiudadanoResponse")
+    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesPorCiudadanoRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesPorCiudadanoResponse")
+    public RespuestaTramite obtenerTramitesPorCiudadano(
+        @WebParam(name = "codigoCiudadano", targetNamespace = "")
+        Integer codigoCiudadano);
 
     /**
      * 
@@ -107,35 +137,5 @@ public interface TramiteService {
     @ResponseWrapper(localName = "obtenerTramitesResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesResponse")
     public RespuestaTramite obtenerTramites();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaTramiteDefinicion
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerTramitesDefinicionPorCategoria", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorCategoria")
-    @ResponseWrapper(localName = "obtenerTramitesDefinicionPorCategoriaResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorCategoriaResponse")
-    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorCategoriaRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorCategoriaResponse")
-    public RespuestaTramiteDefinicion obtenerTramitesDefinicionPorCategoria(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Integer arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaTramiteDefinicion
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerTramitesDefinicionPorEntidad", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorEntidad")
-    @ResponseWrapper(localName = "obtenerTramitesDefinicionPorEntidadResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerTramitesDefinicionPorEntidadResponse")
-    @Action(input = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorEntidadRequest", output = "http://services.ecos.edu.uniandes.co/TramiteService/obtenerTramitesDefinicionPorEntidadResponse")
-    public RespuestaTramiteDefinicion obtenerTramitesDefinicionPorEntidad(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Integer arg0);
 
 }

@@ -38,14 +38,12 @@
                                     <p:commandButton icon="ui-icon-document"  update=":tramiteDialog"  oncomplete="PF('idTramiteDlg').show()" actionListener="#{tramiteManagedBean.seleccionarTramite}" />
                                 </p:column>
                             </p:dataTable>
-                        </p:tab>
+                        </p:tab>tramites
                         <p:tab title="Solicitar Ejecución de Trámite">
                             <br/>
                             <h:panelGrid columns="2">
                                 <p:outputLabel  value="Entidad"></p:outputLabel>
-                                <p:selectOneMenu style="font-size: 12px"  value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}" valueChangeListener="#{tramiteManagedBean.cargarTramites}">
-                                    <f:selectItems  value="#{tramiteManagedBean.listaEmisores}" />
-                                </p:selectOneMenu>
+                                
                                 
                                 <p:outputLabel value="Trámite"></p:outputLabel>
                                 <p:selectOneMenu>
@@ -83,8 +81,8 @@
                     </center>
 
                 </p:panel>
-            </p:dialog>
-        </ui:define>
+            </p:dialog>          
+        </ui:define>        
     </ui:composition>
 </html>
 

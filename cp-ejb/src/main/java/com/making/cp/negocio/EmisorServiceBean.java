@@ -21,20 +21,7 @@ public class EmisorServiceBean implements IEmisorServiceLocal{
      @Override
     public List<EmisorDto> obtenerEmisores() {
         
-        try {
-            EmisorService_Service service = new EmisorService_Service();
-        
-            EmisorService port = service.getEmisorServicePort();
-
-            RespuestaEmisor respuestaEmisor = port.obtenerEmisores();
-            
-            return respuestaEmisor.getEmisores();          
-            
-            
-        } catch (Exception e) {
-            //Error de invocación
-            
-        }
+      
         return null;
     }  
 }

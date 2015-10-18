@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="codigoTramite" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="codigoTramiteDefinicion" type="{http://services.ecos.edu.uniandes.co/}tramiteDefinicionDto" minOccurs="0"/>
  *         &lt;element name="codigoTramiteEstado" type="{http://services.ecos.edu.uniandes.co/}tramiteEstadoDto" minOccurs="0"/>
+ *         &lt;element name="codigoTramiteOperador" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="tramiteActividadList" type="{http://services.ecos.edu.uniandes.co/}tramiteActividadDto" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "codigoTramite",
     "codigoTramiteDefinicion",
     "codigoTramiteEstado",
+    "codigoTramiteOperador",
     "tramiteActividadList"
 })
 public class TramiteDto {
@@ -46,6 +48,7 @@ public class TramiteDto {
     protected Integer codigoTramite;
     protected TramiteDefinicionDto codigoTramiteDefinicion;
     protected TramiteEstadoDto codigoTramiteEstado;
+    protected Integer codigoTramiteOperador;
     @XmlElement(nillable = true)
     protected List<TramiteActividadDto> tramiteActividadList;
 
@@ -143,6 +146,30 @@ public class TramiteDto {
      */
     public void setCodigoTramiteEstado(TramiteEstadoDto value) {
         this.codigoTramiteEstado = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad codigoTramiteOperador.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getCodigoTramiteOperador() {
+        return codigoTramiteOperador;
+    }
+
+    /**
+     * Define el valor de la propiedad codigoTramiteOperador.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setCodigoTramiteOperador(Integer value) {
+        this.codigoTramiteOperador = value;
     }
 
     /**
