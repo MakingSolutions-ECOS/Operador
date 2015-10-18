@@ -146,15 +146,18 @@ public class TramiteManagedBean {
     }
 
     public void getTramiteDefinicion() {
-        try {
-            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
-            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
-            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
-            listaTramiteDefinicion.add(selectItem);
-        }
-        } catch (Exception ex) {
-            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
+//            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
+//            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
+//            listaTramiteDefinicion.add(selectItem);
+//        }
+//        } catch (Exception ex) {
+//            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        List <Integer> requeridos= new ArrayList<>();
+        requeridos.add(1);
+        iTramiteServiceLocal.getDocumentosFaltantes(requeridos, 1);
     }
 
     public void setTramiteDefinicion(List<TramiteDefinicionDto> tramiteDefinicion) {

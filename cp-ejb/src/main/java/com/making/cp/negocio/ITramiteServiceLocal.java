@@ -19,7 +19,7 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
     
-     public List<Documento>   getDocumentosFaltantes(List<Integer> ids, String codigoUsuario) ;
+     public List<Integer>   getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario) ;
       public  List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception;
     
 }

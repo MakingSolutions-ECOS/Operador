@@ -10,6 +10,7 @@ import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.dto.TramiteDto;
 import com.making.cp.entidad.Documento;
 import com.making.cp.negocio.Helper.TramiteHelper;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -34,16 +35,19 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
      * @return
      */
     @Override
-    public List<Documento>   getDocumentosFaltantes(List<Integer> ids, String codigoUsuario) {
-        List<Documento> lista = em.createNamedQuery("Documento.findDocumentoByUsuario").setParameter("codigoUsuario", codigoUsuario).getResultList(); 
-        for (int i=0; i<lista.size();i++) {
-            for (Integer id : ids) {
-                if (lista.get(i).equals(id)){                     
-                    lista.remove(i);
+    public List<Integer>  getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario) {
+        List<Documento> lista = em.createNamedQuery("Documento.findDocumentoByUsuario").setParameter("codigoCiudadano", codigoUsuario).getResultList(); 
+        List<Integer> listaFaltante= new ArrayList<>();
+        listaFaltante=new ArrayList(ids);
+        for (int i=0; i<ids.size();i++) {
+            for (Documento documento : lista) {
+                if (lista.get(i).getCodigoDocumento().equals(documento.getCodigoDocumento())){                     
+                    listaFaltante.remove(i);
+                    break;
                 }
             }
         }        
-        return lista;
+        return listaFaltante;
     }
     public  List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception{
         TramiteHelper tramiteHelper = new TramiteHelper();
