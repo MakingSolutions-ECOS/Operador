@@ -11,12 +11,12 @@ import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.dto.ArchivoDto;
 import com.making.cp.dto.DocumentoDto;
 import com.making.cp.dto.TramiteDto;
+import com.making.cp.dto.UsuarioDto;
 import com.making.cp.negocio.IEmisorServiceLocal;
 import com.making.cp.negocio.ITramiteServiceLocal;
+import com.making.cp.negocio.LoginServiceBeanLocal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -51,6 +51,9 @@ public class TramiteManagedBean {
     private List<TramiteDto> tramites;
     private List<TramiteDefinicionDto> tramiteDefinicion;
     private List<SelectItem> listaTramiteDefinicion;
+    
+    @EJB 
+    private LoginServiceBeanLocal loginServiceBeanLocal;
 
     
     
@@ -144,6 +147,15 @@ public class TramiteManagedBean {
     public void setTramites(List<TramiteDto> tramites) {
         this.tramites = tramites;
     }
+    public void ejecutartramite(){
+        List <Integer> requeridos= new ArrayList<>();
+        requeridos.add(1);
+        UsuarioDto usuarioDto =loginServiceBeanLocal.getUsuarioSesion();
+        iTramiteServiceLocal.getDocumentosFaltantes(requeridos, 1,usuarioDto.getCiudadanoDto());
+        
+        
+        
+    }
 
     public void getTramiteDefinicion() {
 //        try {
@@ -154,10 +166,7 @@ public class TramiteManagedBean {
 //        }
 //        } catch (Exception ex) {
 //            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        List <Integer> requeridos= new ArrayList<>();
-        requeridos.add(1);
-        iTramiteServiceLocal.getDocumentosFaltantes(requeridos, 1);
+//        }        
     }
 
     public void setTramiteDefinicion(List<TramiteDefinicionDto> tramiteDefinicion) {

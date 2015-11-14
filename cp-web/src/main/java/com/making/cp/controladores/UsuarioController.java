@@ -28,6 +28,7 @@ public class UsuarioController implements Serializable {
 
     public UsuarioController() {
     }
+    
 
     public Usuario getSelected() {
         return selected;

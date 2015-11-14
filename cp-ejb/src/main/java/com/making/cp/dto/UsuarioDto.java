@@ -19,6 +19,7 @@ public class UsuarioDto {
     private String identificacion;
     private RolDto codigoRol;
     private List<LogActividadDto> logActividadList;
+    private CiudadanoDto ciudadanoDto;
 
     public UsuarioDto() {
     }
@@ -31,6 +32,16 @@ public class UsuarioDto {
         this.codigoRol = codigoRol;
         this.logActividadList = logActividadList;
     }
+
+    public UsuarioDto(Integer codigoUsuario, String claveUsuario, String nombres, String identificacion,  CiudadanoDto ciudadanoDto) {
+        this.codigoUsuario = codigoUsuario;
+        this.claveUsuario = claveUsuario;
+        this.nombres = nombres;
+        this.identificacion = identificacion;        
+        this.ciudadanoDto = ciudadanoDto;
+    }
+    
+    
 
     public Integer getCodigoUsuario() {
         return codigoUsuario;
@@ -78,6 +89,14 @@ public class UsuarioDto {
 
     public void setLogActividadList(List<LogActividadDto> logActividadList) {
         this.logActividadList = logActividadList;
+    }
+
+    public CiudadanoDto getCiudadanoDto() {
+        return ciudadanoDto;
+    }
+
+    public void setCiudadanoDto(CiudadanoDto ciudadanoDto) {
+        this.ciudadanoDto = ciudadanoDto;
     }
 
 }

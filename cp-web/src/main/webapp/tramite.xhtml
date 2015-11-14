@@ -43,13 +43,16 @@
                             <br/>
                             <h:panelGrid columns="2">
                                 <p:outputLabel  value="Entidad"></p:outputLabel>
-                                
+                                <p:selectOneMenu style="font-size: 12px"  value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}" valueChangeListener="#{tramiteManagedBean.cargarTramites}">
+                                    <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
+                                </p:selectOneMenu>
                                 
                                 <p:outputLabel value="Trámite"></p:outputLabel>
                                 <p:selectOneMenu>
 
                                 </p:selectOneMenu>
                             </h:panelGrid>
+                            <p:commandButton value="Solicitar trámite" />
 
 
 

@@ -36,6 +36,12 @@ public class CiudadanoDto {
         this.directorioList = directorioList;
         this.publicidadList = publicidadList;
     }
+     public CiudadanoDto(Integer codigoCiudadano, Date fechaAfiliacion, String email, String aliasCiudadano) {
+        this.codigoCiudadano = codigoCiudadano;
+        this.fechaAfiliacion = fechaAfiliacion;
+        this.email = email;
+        this.aliasCiudadano = aliasCiudadano;      
+    }
 
     public Integer getCodigoCiudadano() {
         return codigoCiudadano;

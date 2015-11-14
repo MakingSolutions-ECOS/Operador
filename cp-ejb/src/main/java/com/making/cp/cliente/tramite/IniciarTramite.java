@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class IniciarTramite {
 
-    protected TramiteDto arg0;
+    protected SolicitudTramiteDto arg0;
 
     /**
      * Obtiene el valor de la propiedad arg0.
@@ -41,7 +41,7 @@ public class IniciarTramite {
      *     {@link TramiteDto }
      *     
      */
-    public TramiteDto getArg0() {
+    public SolicitudTramiteDto getArg0() {
         return arg0;
     }
 
@@ -53,7 +53,7 @@ public class IniciarTramite {
      *     {@link TramiteDto }
      *     
      */
-    public void setArg0(TramiteDto value) {
+    public void setArg0(SolicitudTramiteDto value) {
         this.arg0 = value;
     }
 

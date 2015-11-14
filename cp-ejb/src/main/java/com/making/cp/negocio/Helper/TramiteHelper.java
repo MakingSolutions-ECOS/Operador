@@ -5,10 +5,6 @@
  */
 package com.making.cp.negocio.Helper;
 
-import com.making.cp.cliente.emisor.EmisorDto;
-import com.making.cp.cliente.emisor.EmisorService;
-import com.making.cp.cliente.emisor.EmisorService_Service;
-import com.making.cp.cliente.emisor.RespuestaEmisor;
 import com.making.cp.cliente.tramite.RespuestaTramiteDefinicion;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.cliente.tramite.TramiteService;

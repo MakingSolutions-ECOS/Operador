@@ -5,10 +5,8 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.cliente.emisor.EmisorDto;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
-import com.making.cp.entidad.Documento;
-import java.util.HashMap;
+import com.making.cp.dto.CiudadanoDto;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -19,7 +17,7 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
     
-     public List<Integer>   getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario) ;
+     public List<Integer>   getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario, CiudadanoDto ciudadanoDto) ;
       public  List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception;
     
 }

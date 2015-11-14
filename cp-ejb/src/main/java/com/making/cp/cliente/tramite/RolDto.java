@@ -47,6 +47,17 @@ public class RolDto {
     @XmlElement(nillable = true)
     protected List<UsuarioDto> usuarioList;
 
+    public RolDto(Integer codigoRol, String nombreRol) {
+        this.codigoRol = codigoRol;
+        this.nombreRol = nombreRol;
+    }
+
+    RolDto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
     /**
      * Obtiene el valor de la propiedad codigoRol.
      * 
