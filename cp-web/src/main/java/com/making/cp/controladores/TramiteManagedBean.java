@@ -52,7 +52,7 @@ public class TramiteManagedBean {
     private List<TramiteDefinicionDto> tramiteDefinicion;
     private List<SelectItem> listaTramiteDefinicion;
     
-    @EJB 
+    @EJB (beanName = "LoginServiceBean") 
     private LoginServiceBeanLocal loginServiceBeanLocal;
 
     
