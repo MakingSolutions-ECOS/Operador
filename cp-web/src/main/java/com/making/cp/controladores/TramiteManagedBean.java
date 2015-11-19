@@ -16,6 +16,7 @@ import com.making.cp.negocio.IEmisorServiceLocal;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.negocio.LoginServiceBeanLocal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,27 +74,27 @@ public class TramiteManagedBean {
     public void iniciarListaTramites() {
         tramites = new ArrayList<>();
         List<DocumentoDto> dtos = new ArrayList<>();
-        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
+        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", new Date("01/01/2015"));
         dtos.add(dto);
-        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
+//        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
         TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
         tramites.add(tramiteDto);
-        dtos = new ArrayList<>();
-        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "PLANO DE PROYECTO DE PARCELACIÓN", "Plano con división sucesiva de terrenos", "08/07/2015");
-        dtos.add(dto);
-        tramiteDto = new TramiteDto(2, "EXPEDICIÓN LICENCIA PARCELACIÓN", "01/07/2015", "EN EJECUCIÓN", "CURADURÍA 1", dtos);
-        tramites.add(tramiteDto);
-        dtos = new ArrayList<>();
-        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "COMPROBANTE DE PAGO", "Comprobante de pago", "07/07/2015");
-        dtos.add(dto);
-        tramiteDto = new TramiteDto(3, "EXPEDICIÓN PASAPORTE", "21/07/2015", "FINALIZADO CON ÉXITO", "CANCILLERÍA", dtos);
+//        dtos = new ArrayList<>();
+//        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "PLANO DE PROYECTO DE PARCELACIÓN", "Plano con división sucesiva de terrenos", "08/07/2015");
+//        dtos.add(dto);
+//        tramiteDto = new TramiteDto(2, "EXPEDICIÓN LICENCIA PARCELACIÓN", "01/07/2015", "EN EJECUCIÓN", "CURADURÍA 1", dtos);
+//        tramites.add(tramiteDto);
+//        dtos = new ArrayList<>();
+//        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "COMPROBANTE DE PAGO", "Comprobante de pago", "07/07/2015");
+//        dtos.add(dto);
+//        tramiteDto = new TramiteDto(3, "EXPEDICIÓN PASAPORTE", "21/07/2015", "FINALIZADO CON ÉXITO", "CANCILLERÍA", dtos);
     }
 
     public void seleccionarTramite() {
