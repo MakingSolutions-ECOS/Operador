@@ -1,41 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.making.cp.dto;
 
 import java.util.Date;
 
 /**
- *
- * @author Your Name
+ * Clase que representa un el dto del entity Documento.
+ * @author John Dany
  */
 public class DocumentoDto {
-    private int idDocumento;
+
+    private Integer codigoDocumento;
+    private int codigoTipoMetadataCentralizador;
+    private Date fechaModificacion;
     private String nombreDocumento;
-    private String descripcionDocumento;
-    private String ultimaActualizacion;
+    private String rutaLogicaDocumento;
+    private Date fechaCreacionDirectorio;
+    private String rutaFisicaDirectorio;
+    private GrupoDocumentoDto codigoGrupoDocumento;
+    private DirectorioDocumentoDto codigoDirectorioDocuento;
+    private CiudadanoDto codigoCiudadano;
 
-    public DocumentoDto() {
-    }
-
-    public DocumentoDto(int idDocumento, String nombreDocumento, String descripcionDocumento, String ultimaActualizacion) {
-        this.idDocumento = idDocumento;
+    /**
+     * Inicializa una nueva instancia de DocumentoDto.
+     *
+     * @param codigoDocumento
+     * @param codigoTipoMetadataCentralizador
+     * @param fechaModificacion
+     * @param nombreDocumento
+     * @param rutaLogicaDocumento
+     * @param fechaCreacionDirectorio
+     * @param rutaFisicaDirectorio
+     * @param codigoGrupoDocumento
+     * @param codigoDirectorioDocuento
+     * @param codigoCiudadano
+     */
+    public DocumentoDto(Integer codigoDocumento, int codigoTipoMetadataCentralizador, Date fechaModificacion, String nombreDocumento, String rutaLogicaDocumento, Date fechaCreacionDirectorio, String rutaFisicaDirectorio, GrupoDocumentoDto codigoGrupoDocumento, DirectorioDocumentoDto codigoDirectorioDocuento, CiudadanoDto codigoCiudadano) {
+        this.codigoDocumento = codigoDocumento;
+        this.codigoTipoMetadataCentralizador = codigoTipoMetadataCentralizador;
+        this.fechaModificacion = fechaModificacion;
         this.nombreDocumento = nombreDocumento;
-        this.descripcionDocumento = descripcionDocumento;
-        this.ultimaActualizacion = ultimaActualizacion;
-    }
-    
-    
-    
-
-    public int getIdDocumento() {
-        return idDocumento;
+        this.rutaLogicaDocumento = rutaLogicaDocumento;
+        this.fechaCreacionDirectorio = fechaCreacionDirectorio;
+        this.rutaFisicaDirectorio = rutaFisicaDirectorio;
+        this.codigoGrupoDocumento = codigoGrupoDocumento;
+        this.codigoDirectorioDocuento = codigoDirectorioDocuento;
+        this.codigoCiudadano = codigoCiudadano;
     }
 
-    public void setIdDocumento(int idDocumento) {
-        this.idDocumento = idDocumento;
+    public Integer getCodigoDocumento() {
+        return codigoDocumento;
+    }
+
+    public void setCodigoDocumento(Integer codigoDocumento) {
+        this.codigoDocumento = codigoDocumento;
+    }
+
+    public int getCodigoTipoMetadataCentralizador() {
+        return codigoTipoMetadataCentralizador;
+    }
+
+    public void setCodigoTipoMetadataCentralizador(int codigoTipoMetadataCentralizador) {
+        this.codigoTipoMetadataCentralizador = codigoTipoMetadataCentralizador;
+    }
+
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
 
     public String getNombreDocumento() {
@@ -46,22 +78,51 @@ public class DocumentoDto {
         this.nombreDocumento = nombreDocumento;
     }
 
-    public String getDescripcionDocumento() {
-        return descripcionDocumento;
+    public String getRutaLogicaDocumento() {
+        return rutaLogicaDocumento;
     }
 
-    public void setDescripcionDocumento(String descripcionDocumento) {
-        this.descripcionDocumento = descripcionDocumento;
+    public void setRutaLogicaDocumento(String rutaLogicaDocumento) {
+        this.rutaLogicaDocumento = rutaLogicaDocumento;
     }
 
-    public String getUltimaActualizacion() {
-        return ultimaActualizacion;
+    public Date getFechaCreacionDirectorio() {
+        return fechaCreacionDirectorio;
     }
 
-    public void setUltimaActualizacion(String ultimaActualizacion) {
-        this.ultimaActualizacion = ultimaActualizacion;
+    public void setFechaCreacionDirectorio(Date fechaCreacionDirectorio) {
+        this.fechaCreacionDirectorio = fechaCreacionDirectorio;
     }
-    
-    
-    
+
+    public String getRutaFisicaDirectorio() {
+        return rutaFisicaDirectorio;
+    }
+
+    public void setRutaFisicaDirectorio(String rutaFisicaDirectorio) {
+        this.rutaFisicaDirectorio = rutaFisicaDirectorio;
+    }
+
+    public GrupoDocumentoDto getCodigoGrupoDocumento() {
+        return codigoGrupoDocumento;
+    }
+
+    public void setCodigoGrupoDocumento(GrupoDocumentoDto codigoGrupoDocumento) {
+        this.codigoGrupoDocumento = codigoGrupoDocumento;
+    }
+
+    public DirectorioDocumentoDto getCodigoDirectorioDocuento() {
+        return codigoDirectorioDocuento;
+    }
+
+    public void setCodigoDirectorioDocuento(DirectorioDocumentoDto codigoDirectorioDocuento) {
+        this.codigoDirectorioDocuento = codigoDirectorioDocuento;
+    }
+
+    public CiudadanoDto getCodigoCiudadano() {
+        return codigoCiudadano;
+    }
+
+    public void setCodigoCiudadano(CiudadanoDto codigoCiudadano) {
+        this.codigoCiudadano = codigoCiudadano;
+    }
 }
