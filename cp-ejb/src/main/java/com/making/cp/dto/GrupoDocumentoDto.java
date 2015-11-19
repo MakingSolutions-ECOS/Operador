@@ -15,6 +15,12 @@ public class GrupoDocumentoDto {
 
     /**
      * Inicializa una nueva instancia de GrupoDocumentoDto
+     */
+    public GrupoDocumentoDto() {
+    }
+
+    /**
+     * Inicializa una nueva instancia de GrupoDocumentoDto con parámetros.
      *
      * @param codigoGrupoDocumento
      * @param documentoList
