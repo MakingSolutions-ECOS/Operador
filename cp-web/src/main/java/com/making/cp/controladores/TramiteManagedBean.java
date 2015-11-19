@@ -17,6 +17,8 @@ import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.negocio.LoginServiceBeanLocal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -55,15 +57,17 @@ public class TramiteManagedBean {
     @EJB (beanName = "LoginServiceBean") 
     private LoginServiceBeanLocal loginServiceBeanLocal;
 
-    
+    public TramiteManagedBean() {
+        emisores= new ArrayList<>();
+        listaEmisores = new ArrayList<>();
+        emisorSeleccionado = new EmisorDto();
+        listaTramiteDefinicion= new ArrayList<>();
+    }
     
     @PostConstruct
     public void init() {
         iniciarListaTramites();
         getTramiteDefinicion();
-        emisores= new ArrayList<>();
-        listaEmisores = new ArrayList<>();
-        emisorSeleccionado = new EmisorDto();
     }
 
     public void iniciarListaTramites() {
@@ -158,15 +162,18 @@ public class TramiteManagedBean {
     }
 
     public void getTramiteDefinicion() {
-//        try {
-//            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
-//            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
-//            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
-//            listaTramiteDefinicion.add(selectItem);
-//        }
-//        } catch (Exception ex) {
-//            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }        
+        try {
+            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
+            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
+            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
+                if (listaTramiteDefinicion == null) {
+                    listaTramiteDefinicion =  new ArrayList<>();
+                }
+            listaTramiteDefinicion.add(selectItem);
+        }
+        } catch (Exception ex) {
+            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
 
     public void setTramiteDefinicion(List<TramiteDefinicionDto> tramiteDefinicion) {

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://services.ecos.edu.uniandes.co/}tramiteDto" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://services.ecos.edu.uniandes.co/}solicitudTramiteDto" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,7 +38,7 @@ public class IniciarTramite {
      * 
      * @return
      *     possible object is
-     *     {@link TramiteDto }
+     *     {@link SolicitudTramiteDto }
      *     
      */
     public SolicitudTramiteDto getArg0() {
@@ -50,7 +50,7 @@ public class IniciarTramite {
      * 
      * @param value
      *     allowed object is
-     *     {@link TramiteDto }
+     *     {@link SolicitudTramiteDto }
      *     
      */
     public void setArg0(SolicitudTramiteDto value) {

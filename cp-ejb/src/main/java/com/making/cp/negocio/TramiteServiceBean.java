@@ -36,14 +36,14 @@ import javax.persistence.PersistenceContext;
 @Stateless(mappedName = "TramiteServiceBean")
 public class TramiteServiceBean implements ITramiteServiceLocal {
 
-    @Resource(mappedName = "jms/tramiteQueueFactory")
-    private QueueConnectionFactory queueConnectionFactory;
-    /**
-     * Cola de los correos creada en el servidor
-     */
-    @Resource(mappedName = "jms/ejecucionTramiteQueue")
-    private Queue queue;
-
+//    @Resource(mappedName = "jms/tramiteQueueFactory")
+//    private QueueConnectionFactory queueConnectionFactory;
+//    /**
+//     * Cola de los correos creada en el servidor
+//     */
+//    @Resource(mappedName = "jms/ejecucionTramiteQueue")
+//    private Queue queue;
+//
     @PersistenceContext
     EntityManager em;
 
@@ -68,34 +68,34 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
             }
         }
         if (listaFaltante.isEmpty()) {
-            publicarMensajeTramite(ciudadanoDto);
+//            publicarMensajeTramite(ciudadanoDto);
         }
         return listaFaltante;
     }
 
-    public void publicarMensajeTramite(CiudadanoDto ciudadanoDto) {
-        
-        QueueConnection connection = null;
-        QueueSession session = null;
-        MessageProducer sender = null;
-        SolicitudTramiteDto solicitudTramiteDto = new SolicitudTramiteDto();
-        solicitudTramiteDto.setCiudadano(ciudadanoDto);
-
-      
-        try {
-            connection = queueConnectionFactory.createQueueConnection();
-        } catch (JMSException ex) {
-            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-        } catch (JMSException ex) {
-            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-                     
-
-    }
+//    public void publicarMensajeTramite(CiudadanoDto ciudadanoDto) {
+//        
+//        QueueConnection connection = null;
+//        QueueSession session = null;
+//        MessageProducer sender = null;
+//        SolicitudTramiteDto solicitudTramiteDto = new SolicitudTramiteDto();
+//        solicitudTramiteDto.setCiudadano(ciudadanoDto);
+//
+//      
+//        try {
+//            connection = queueConnectionFactory.createQueueConnection();
+//        } catch (JMSException ex) {
+//            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        try {
+//            session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+//        } catch (JMSException ex) {
+//            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//            
+//                     
+//
+//    }
 
     @Override
     public List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception {

@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the co.uniandes.edu.ecos.services package. 
+ * generated in the com.making.cp.cliente.tramite package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,44 +24,38 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ObtenerTramitesDefinicionPorEntidadResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorEntidadResponse");
-    private final static QName _ObtenerTramitesDefinicionPorCategoria_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorCategoria");
     private final static QName _ObtenerTramitesPorEstado_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorEstado");
+    private final static QName _CambiarEstadoTramiteProcesoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "cambiarEstadoTramiteProcesoResponse");
+    private final static QName _ObtenerTramitesDefinicionPorEntidad_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorEntidad");
     private final static QName _ObtenerTramitesPorEstadoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorEstadoResponse");
-    private final static QName _ObtenerTramitesPorCiudadanoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorCiudadanoResponse");
-    private final static QName _ObtenerTramites_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramites");
-    private final static QName _ObtenerTramitesPorCiudadano_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorCiudadano");
-    private final static QName _ObtenerTramitePorEntidad_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitePorEntidad");
+    private final static QName _ObtenerTramitesDefinicion_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicion");
     private final static QName _IniciarTramite_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "iniciarTramite");
+    private final static QName _ObtenerTramitePorEntidadResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitePorEntidadResponse");
+    private final static QName _ObtenerTramitesDefinicionPorEntidadResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorEntidadResponse");
+    private final static QName _ObtenerTramitesPorCiudadano_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorCiudadano");
+    private final static QName _CambiarEstadoTramiteProceso_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "cambiarEstadoTramiteProceso");
+    private final static QName _ObtenerTramites_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramites");
+    private final static QName _ObtenerTramitesDefinicionResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionResponse");
     private final static QName _ObtenerTramitesResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesResponse");
     private final static QName _IniciarTramiteResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "iniciarTramiteResponse");
-    private final static QName _ObtenerTramitePorEntidadResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitePorEntidadResponse");
+    private final static QName _ObtenerTramitePorEntidad_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitePorEntidad");
+    private final static QName _ObtenerTramitesDefinicionPorCategoria_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorCategoria");
     private final static QName _ObtenerTramitesDefinicionPorCategoriaResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorCategoriaResponse");
-    private final static QName _ObtenerTramitesDefinicionResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionResponse");
-    private final static QName _ObtenerTramitesDefinicionPorEntidad_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicionPorEntidad");
-    private final static QName _ObtenerTramitesDefinicion_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesDefinicion");
+    private final static QName _ObtenerTramitesPorCiudadanoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerTramitesPorCiudadanoResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: co.uniandes.edu.ecos.services
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.making.cp.cliente.tramite
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link ObtenerTramitesDefinicionPorEntidad }
+     * Create an instance of {@link ObtenerTramitesPorCiudadanoResponse }
      * 
      */
-    public ObtenerTramitesDefinicionPorEntidad createObtenerTramitesDefinicionPorEntidad() {
-        return new ObtenerTramitesDefinicionPorEntidad();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerTramitesDefinicion }
-     * 
-     */
-    public ObtenerTramitesDefinicion createObtenerTramitesDefinicion() {
-        return new ObtenerTramitesDefinicion();
+    public ObtenerTramitesPorCiudadanoResponse createObtenerTramitesPorCiudadanoResponse() {
+        return new ObtenerTramitesPorCiudadanoResponse();
     }
 
     /**
@@ -73,11 +67,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerTramitesDefinicionResponse }
+     * Create an instance of {@link ObtenerTramitePorEntidad }
      * 
      */
-    public ObtenerTramitesDefinicionResponse createObtenerTramitesDefinicionResponse() {
-        return new ObtenerTramitesDefinicionResponse();
+    public ObtenerTramitePorEntidad createObtenerTramitePorEntidad() {
+        return new ObtenerTramitePorEntidad();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerTramitesDefinicionPorCategoria }
+     * 
+     */
+    public ObtenerTramitesDefinicionPorCategoria createObtenerTramitesDefinicionPorCategoria() {
+        return new ObtenerTramitesDefinicionPorCategoria();
+    }
+
+    /**
+     * Create an instance of {@link IniciarTramiteResponse }
+     * 
+     */
+    public IniciarTramiteResponse createIniciarTramiteResponse() {
+        return new IniciarTramiteResponse();
     }
 
     /**
@@ -89,11 +99,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IniciarTramiteResponse }
+     * Create an instance of {@link ObtenerTramitesDefinicionResponse }
      * 
      */
-    public IniciarTramiteResponse createIniciarTramiteResponse() {
-        return new IniciarTramiteResponse();
+    public ObtenerTramitesDefinicionResponse createObtenerTramitesDefinicionResponse() {
+        return new ObtenerTramitesDefinicionResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerTramites }
+     * 
+     */
+    public ObtenerTramites createObtenerTramites() {
+        return new ObtenerTramites();
+    }
+
+    /**
+     * Create an instance of {@link CambiarEstadoTramiteProceso }
+     * 
+     */
+    public CambiarEstadoTramiteProceso createCambiarEstadoTramiteProceso() {
+        return new CambiarEstadoTramiteProceso();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerTramitesDefinicionPorEntidadResponse }
+     * 
+     */
+    public ObtenerTramitesDefinicionPorEntidadResponse createObtenerTramitesDefinicionPorEntidadResponse() {
+        return new ObtenerTramitesDefinicionPorEntidadResponse();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerTramitesPorCiudadano }
+     * 
+     */
+    public ObtenerTramitesPorCiudadano createObtenerTramitesPorCiudadano() {
+        return new ObtenerTramitesPorCiudadano();
     }
 
     /**
@@ -113,6 +155,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ObtenerTramitesDefinicion }
+     * 
+     */
+    public ObtenerTramitesDefinicion createObtenerTramitesDefinicion() {
+        return new ObtenerTramitesDefinicion();
+    }
+
+    /**
      * Create an instance of {@link ObtenerTramitesPorEstadoResponse }
      * 
      */
@@ -121,43 +171,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerTramitesPorCiudadanoResponse }
+     * Create an instance of {@link ObtenerTramitesDefinicionPorEntidad }
      * 
      */
-    public ObtenerTramitesPorCiudadanoResponse createObtenerTramitesPorCiudadanoResponse() {
-        return new ObtenerTramitesPorCiudadanoResponse();
+    public ObtenerTramitesDefinicionPorEntidad createObtenerTramitesDefinicionPorEntidad() {
+        return new ObtenerTramitesDefinicionPorEntidad();
     }
 
     /**
-     * Create an instance of {@link ObtenerTramites }
+     * Create an instance of {@link CambiarEstadoTramiteProcesoResponse }
      * 
      */
-    public ObtenerTramites createObtenerTramites() {
-        return new ObtenerTramites();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerTramitesPorCiudadano }
-     * 
-     */
-    public ObtenerTramitesPorCiudadano createObtenerTramitesPorCiudadano() {
-        return new ObtenerTramitesPorCiudadano();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerTramitePorEntidad }
-     * 
-     */
-    public ObtenerTramitePorEntidad createObtenerTramitePorEntidad() {
-        return new ObtenerTramitePorEntidad();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerTramitesDefinicionPorEntidadResponse }
-     * 
-     */
-    public ObtenerTramitesDefinicionPorEntidadResponse createObtenerTramitesDefinicionPorEntidadResponse() {
-        return new ObtenerTramitesDefinicionPorEntidadResponse();
+    public CambiarEstadoTramiteProcesoResponse createCambiarEstadoTramiteProcesoResponse() {
+        return new CambiarEstadoTramiteProcesoResponse();
     }
 
     /**
@@ -169,11 +195,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerTramitesDefinicionPorCategoria }
+     * Create an instance of {@link CategoriasTramiteDto }
      * 
      */
-    public ObtenerTramitesDefinicionPorCategoria createObtenerTramitesDefinicionPorCategoria() {
-        return new ObtenerTramitesDefinicionPorCategoria();
+    public CategoriasTramiteDto createCategoriasTramiteDto() {
+        return new CategoriasTramiteDto();
+    }
+
+    /**
+     * Create an instance of {@link SuscripcionDto }
+     * 
+     */
+    public SuscripcionDto createSuscripcionDto() {
+        return new SuscripcionDto();
+    }
+
+    /**
+     * Create an instance of {@link RespuestaTramite }
+     * 
+     */
+    public RespuestaTramite createRespuestaTramite() {
+        return new RespuestaTramite();
+    }
+
+    /**
+     * Create an instance of {@link RolDto }
+     * 
+     */
+    public RolDto createRolDto() {
+        return new RolDto();
+    }
+
+    /**
+     * Create an instance of {@link TipoPersonaDto }
+     * 
+     */
+    public TipoPersonaDto createTipoPersonaDto() {
+        return new TipoPersonaDto();
+    }
+
+    /**
+     * Create an instance of {@link TramiteDefinicionDto }
+     * 
+     */
+    public TramiteDefinicionDto createTramiteDefinicionDto() {
+        return new TramiteDefinicionDto();
+    }
+
+    /**
+     * Create an instance of {@link TramiteDto }
+     * 
+     */
+    public TramiteDto createTramiteDto() {
+        return new TramiteDto();
     }
 
     /**
@@ -201,91 +275,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EmisorDto }
+     * Create an instance of {@link CiudadanoDto }
      * 
      */
-    public EmisorDto createEmisorDto() {
-        return new EmisorDto();
-    }
-
-    /**
-     * Create an instance of {@link RespuestaTramite }
-     * 
-     */
-    public RespuestaTramite createRespuestaTramite() {
-        return new RespuestaTramite();
-    }
-
-    /**
-     * Create an instance of {@link RolPermisoDto }
-     * 
-     */
-    public RolPermisoDto createRolPermisoDto() {
-        return new RolPermisoDto();
-    }
-
-    /**
-     * Create an instance of {@link TramiteActividadDto }
-     * 
-     */
-    public TramiteActividadDto createTramiteActividadDto() {
-        return new TramiteActividadDto();
-    }
-
-    /**
-     * Create an instance of {@link PermisoDto }
-     * 
-     */
-    public PermisoDto createPermisoDto() {
-        return new PermisoDto();
-    }
-
-    /**
-     * Create an instance of {@link RespuestaService }
-     * 
-     */
-    public RespuestaService createRespuestaService() {
-        return new RespuestaService();
-    }
-
-    /**
-     * Create an instance of {@link TipoPersonaDto }
-     * 
-     */
-    public TipoPersonaDto createTipoPersonaDto() {
-        return new TipoPersonaDto();
-    }
-
-    /**
-     * Create an instance of {@link NacionalidadDto }
-     * 
-     */
-    public NacionalidadDto createNacionalidadDto() {
-        return new NacionalidadDto();
-    }
-
-    /**
-     * Create an instance of {@link CategoriasTramiteDto }
-     * 
-     */
-    public CategoriasTramiteDto createCategoriasTramiteDto() {
-        return new CategoriasTramiteDto();
-    }
-
-    /**
-     * Create an instance of {@link TramiteDto }
-     * 
-     */
-    public TramiteDto createTramiteDto() {
-        return new TramiteDto();
-    }
-
-    /**
-     * Create an instance of {@link TramiteEstadoDto }
-     * 
-     */
-    public TramiteEstadoDto createTramiteEstadoDto() {
-        return new TramiteEstadoDto();
+    public CiudadanoDto createCiudadanoDto() {
+        return new CiudadanoDto();
     }
 
     /**
@@ -297,43 +291,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CiudadanoDto }
-     * 
-     */
-    public CiudadanoDto createCiudadanoDto() {
-        return new CiudadanoDto();
-    }
-
-    /**
-     * Create an instance of {@link UsuarioDto }
-     * 
-     */
-    public UsuarioDto createUsuarioDto() {
-        return new UsuarioDto();
-    }
-
-    /**
-     * Create an instance of {@link RolDto }
-     * 
-     */
-    public RolDto createRolDto() {
-        return new RolDto();
-    }
-
-    /**
-     * Create an instance of {@link TramiteDefinicionDto }
-     * 
-     */
-    public TramiteDefinicionDto createTramiteDefinicionDto() {
-        return new TramiteDefinicionDto();
-    }
-
-    /**
      * Create an instance of {@link DocumentoRequeridoTramiteDto }
      * 
      */
     public DocumentoRequeridoTramiteDto createDocumentoRequeridoTramiteDto() {
         return new DocumentoRequeridoTramiteDto();
+    }
+
+    /**
+     * Create an instance of {@link RespuestaService }
+     * 
+     */
+    public RespuestaService createRespuestaService() {
+        return new RespuestaService();
+    }
+
+    /**
+     * Create an instance of {@link NacionalidadDto }
+     * 
+     */
+    public NacionalidadDto createNacionalidadDto() {
+        return new NacionalidadDto();
     }
 
     /**
@@ -345,11 +323,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SuscripcionDto }
+     * Create an instance of {@link UsuarioDto }
      * 
      */
-    public SuscripcionDto createSuscripcionDto() {
-        return new SuscripcionDto();
+    public UsuarioDto createUsuarioDto() {
+        return new UsuarioDto();
+    }
+
+    /**
+     * Create an instance of {@link RolPermisoDto }
+     * 
+     */
+    public RolPermisoDto createRolPermisoDto() {
+        return new RolPermisoDto();
+    }
+
+    /**
+     * Create an instance of {@link PermisoDto }
+     * 
+     */
+    public PermisoDto createPermisoDto() {
+        return new PermisoDto();
+    }
+
+    /**
+     * Create an instance of {@link TramiteActividadDto }
+     * 
+     */
+    public TramiteActividadDto createTramiteActividadDto() {
+        return new TramiteActividadDto();
     }
 
     /**
@@ -361,21 +363,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorEntidadResponse }{@code >}}
+     * Create an instance of {@link EmisorDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorEntidadResponse")
-    public JAXBElement<ObtenerTramitesDefinicionPorEntidadResponse> createObtenerTramitesDefinicionPorEntidadResponse(ObtenerTramitesDefinicionPorEntidadResponse value) {
-        return new JAXBElement<ObtenerTramitesDefinicionPorEntidadResponse>(_ObtenerTramitesDefinicionPorEntidadResponse_QNAME, ObtenerTramitesDefinicionPorEntidadResponse.class, null, value);
+    public EmisorDto createEmisorDto() {
+        return new EmisorDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorCategoria }{@code >}}
+     * Create an instance of {@link TramiteEstadoDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorCategoria")
-    public JAXBElement<ObtenerTramitesDefinicionPorCategoria> createObtenerTramitesDefinicionPorCategoria(ObtenerTramitesDefinicionPorCategoria value) {
-        return new JAXBElement<ObtenerTramitesDefinicionPorCategoria>(_ObtenerTramitesDefinicionPorCategoria_QNAME, ObtenerTramitesDefinicionPorCategoria.class, null, value);
+    public TramiteEstadoDto createTramiteEstadoDto() {
+        return new TramiteEstadoDto();
+    }
+
+    /**
+     * Create an instance of {@link SolicitudTramiteDto }
+     * 
+     */
+    public SolicitudTramiteDto createSolicitudTramiteDto() {
+        return new SolicitudTramiteDto();
     }
 
     /**
@@ -388,6 +396,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CambiarEstadoTramiteProcesoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "cambiarEstadoTramiteProcesoResponse")
+    public JAXBElement<CambiarEstadoTramiteProcesoResponse> createCambiarEstadoTramiteProcesoResponse(CambiarEstadoTramiteProcesoResponse value) {
+        return new JAXBElement<CambiarEstadoTramiteProcesoResponse>(_CambiarEstadoTramiteProcesoResponse_QNAME, CambiarEstadoTramiteProcesoResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorEntidad }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorEntidad")
+    public JAXBElement<ObtenerTramitesDefinicionPorEntidad> createObtenerTramitesDefinicionPorEntidad(ObtenerTramitesDefinicionPorEntidad value) {
+        return new JAXBElement<ObtenerTramitesDefinicionPorEntidad>(_ObtenerTramitesDefinicionPorEntidad_QNAME, ObtenerTramitesDefinicionPorEntidad.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesPorEstadoResponse }{@code >}}
      * 
      */
@@ -397,21 +423,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesPorCiudadanoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicion }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesPorCiudadanoResponse")
-    public JAXBElement<ObtenerTramitesPorCiudadanoResponse> createObtenerTramitesPorCiudadanoResponse(ObtenerTramitesPorCiudadanoResponse value) {
-        return new JAXBElement<ObtenerTramitesPorCiudadanoResponse>(_ObtenerTramitesPorCiudadanoResponse_QNAME, ObtenerTramitesPorCiudadanoResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicion")
+    public JAXBElement<ObtenerTramitesDefinicion> createObtenerTramitesDefinicion(ObtenerTramitesDefinicion value) {
+        return new JAXBElement<ObtenerTramitesDefinicion>(_ObtenerTramitesDefinicion_QNAME, ObtenerTramitesDefinicion.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramites }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarTramite }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramites")
-    public JAXBElement<ObtenerTramites> createObtenerTramites(ObtenerTramites value) {
-        return new JAXBElement<ObtenerTramites>(_ObtenerTramites_QNAME, ObtenerTramites.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "iniciarTramite")
+    public JAXBElement<IniciarTramite> createIniciarTramite(IniciarTramite value) {
+        return new JAXBElement<IniciarTramite>(_IniciarTramite_QNAME, IniciarTramite.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitePorEntidadResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitePorEntidadResponse")
+    public JAXBElement<ObtenerTramitePorEntidadResponse> createObtenerTramitePorEntidadResponse(ObtenerTramitePorEntidadResponse value) {
+        return new JAXBElement<ObtenerTramitePorEntidadResponse>(_ObtenerTramitePorEntidadResponse_QNAME, ObtenerTramitePorEntidadResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorEntidadResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorEntidadResponse")
+    public JAXBElement<ObtenerTramitesDefinicionPorEntidadResponse> createObtenerTramitesDefinicionPorEntidadResponse(ObtenerTramitesDefinicionPorEntidadResponse value) {
+        return new JAXBElement<ObtenerTramitesDefinicionPorEntidadResponse>(_ObtenerTramitesDefinicionPorEntidadResponse_QNAME, ObtenerTramitesDefinicionPorEntidadResponse.class, null, value);
     }
 
     /**
@@ -424,21 +468,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitePorEntidad }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CambiarEstadoTramiteProceso }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitePorEntidad")
-    public JAXBElement<ObtenerTramitePorEntidad> createObtenerTramitePorEntidad(ObtenerTramitePorEntidad value) {
-        return new JAXBElement<ObtenerTramitePorEntidad>(_ObtenerTramitePorEntidad_QNAME, ObtenerTramitePorEntidad.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "cambiarEstadoTramiteProceso")
+    public JAXBElement<CambiarEstadoTramiteProceso> createCambiarEstadoTramiteProceso(CambiarEstadoTramiteProceso value) {
+        return new JAXBElement<CambiarEstadoTramiteProceso>(_CambiarEstadoTramiteProceso_QNAME, CambiarEstadoTramiteProceso.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IniciarTramite }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramites }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "iniciarTramite")
-    public JAXBElement<IniciarTramite> createIniciarTramite(IniciarTramite value) {
-        return new JAXBElement<IniciarTramite>(_IniciarTramite_QNAME, IniciarTramite.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramites")
+    public JAXBElement<ObtenerTramites> createObtenerTramites(ObtenerTramites value) {
+        return new JAXBElement<ObtenerTramites>(_ObtenerTramites_QNAME, ObtenerTramites.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionResponse")
+    public JAXBElement<ObtenerTramitesDefinicionResponse> createObtenerTramitesDefinicionResponse(ObtenerTramitesDefinicionResponse value) {
+        return new JAXBElement<ObtenerTramitesDefinicionResponse>(_ObtenerTramitesDefinicionResponse_QNAME, ObtenerTramitesDefinicionResponse.class, null, value);
     }
 
     /**
@@ -460,12 +513,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitePorEntidadResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitePorEntidad }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitePorEntidadResponse")
-    public JAXBElement<ObtenerTramitePorEntidadResponse> createObtenerTramitePorEntidadResponse(ObtenerTramitePorEntidadResponse value) {
-        return new JAXBElement<ObtenerTramitePorEntidadResponse>(_ObtenerTramitePorEntidadResponse_QNAME, ObtenerTramitePorEntidadResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitePorEntidad")
+    public JAXBElement<ObtenerTramitePorEntidad> createObtenerTramitePorEntidad(ObtenerTramitePorEntidad value) {
+        return new JAXBElement<ObtenerTramitePorEntidad>(_ObtenerTramitePorEntidad_QNAME, ObtenerTramitePorEntidad.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorCategoria }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorCategoria")
+    public JAXBElement<ObtenerTramitesDefinicionPorCategoria> createObtenerTramitesDefinicionPorCategoria(ObtenerTramitesDefinicionPorCategoria value) {
+        return new JAXBElement<ObtenerTramitesDefinicionPorCategoria>(_ObtenerTramitesDefinicionPorCategoria_QNAME, ObtenerTramitesDefinicionPorCategoria.class, null, value);
     }
 
     /**
@@ -478,30 +540,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesPorCiudadanoResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionResponse")
-    public JAXBElement<ObtenerTramitesDefinicionResponse> createObtenerTramitesDefinicionResponse(ObtenerTramitesDefinicionResponse value) {
-        return new JAXBElement<ObtenerTramitesDefinicionResponse>(_ObtenerTramitesDefinicionResponse_QNAME, ObtenerTramitesDefinicionResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicionPorEntidad }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicionPorEntidad")
-    public JAXBElement<ObtenerTramitesDefinicionPorEntidad> createObtenerTramitesDefinicionPorEntidad(ObtenerTramitesDefinicionPorEntidad value) {
-        return new JAXBElement<ObtenerTramitesDefinicionPorEntidad>(_ObtenerTramitesDefinicionPorEntidad_QNAME, ObtenerTramitesDefinicionPorEntidad.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerTramitesDefinicion }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesDefinicion")
-    public JAXBElement<ObtenerTramitesDefinicion> createObtenerTramitesDefinicion(ObtenerTramitesDefinicion value) {
-        return new JAXBElement<ObtenerTramitesDefinicion>(_ObtenerTramitesDefinicion_QNAME, ObtenerTramitesDefinicion.class, null, value);
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "obtenerTramitesPorCiudadanoResponse")
+    public JAXBElement<ObtenerTramitesPorCiudadanoResponse> createObtenerTramitesPorCiudadanoResponse(ObtenerTramitesPorCiudadanoResponse value) {
+        return new JAXBElement<ObtenerTramitesPorCiudadanoResponse>(_ObtenerTramitesPorCiudadanoResponse_QNAME, ObtenerTramitesPorCiudadanoResponse.class, null, value);
     }
 
 }

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "TramiteService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "https://localhost:8181/projectCentralizador-web/TramiteService?wsdl")
+@WebServiceClient(name = "TramiteService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/TramiteService?wsdl")
 public class TramiteService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class TramiteService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://localhost:8181/projectCentralizador-web/TramiteService?wsdl");
+            url = new URL("http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/TramiteService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

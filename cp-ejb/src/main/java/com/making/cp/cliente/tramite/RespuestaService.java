@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
     "sePresentoError"
 })
 @XmlSeeAlso({
-    RespuestaTramiteDefinicion.class,
-    RespuestaTramite.class
+    RespuestaTramite.class,
+    RespuestaTramiteDefinicion.class
 })
 public class RespuestaService {
 
