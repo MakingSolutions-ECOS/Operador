@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Clase que representa un el dto del entity Documento.
+ *
  * @author John Dany
  */
 public class DocumentoDto {
@@ -18,6 +19,12 @@ public class DocumentoDto {
     private GrupoDocumentoDto codigoGrupoDocumento;
     private DirectorioDocumentoDto codigoDirectorioDocuento;
     private CiudadanoDto codigoCiudadano;
+
+    /**
+     * Inicializa una nueva instancia de DocumentoDto.
+     */
+    public DocumentoDto() {
+    }
 
     /**
      * Inicializa una nueva instancia de DocumentoDto.
@@ -43,7 +50,7 @@ public class DocumentoDto {
         this.codigoDirectorioDocuento = codigoDirectorioDocuento;
         this.codigoCiudadano = codigoCiudadano;
     }
-    
+
     public DocumentoDto(Integer codigoDocumento, String nombreDocumento, Date fechaModificacion) {
         this.codigoDocumento = codigoDocumento;
         this.nombreDocumento = nombreDocumento;
