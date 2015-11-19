@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.making.cp.dto;
 
 import java.util.List;
@@ -15,18 +10,29 @@ class GrupoDto {
 
     private Integer codigoGrupo;
     private String nombreGrupo;
-    private List<GrupoDirectorioDto> grupoDirectorioList;
+    private List<GrupoDocumentoDto> grupoDocumentoList;
     private List<GrupoCiudadanoDto> grupoCiudadanoList;
+    private PermisoDto codigoPermiso;
 
     public GrupoDto() {
     }
 
-    public GrupoDto(Integer codigoGrupo, String nombreGrupo, List<GrupoDirectorioDto> grupoDirectorioList, List<GrupoCiudadanoDto> grupoCiudadanoList) {
+    /**
+     * 
+     * @param codigoGrupo
+     * @param nombreGrupo
+     * @param grupoDocumentoList
+     * @param grupoCiudadanoList
+     * @param codigoPermiso 
+     */
+    public GrupoDto(Integer codigoGrupo, String nombreGrupo, List<GrupoDocumentoDto> grupoDocumentoList, List<GrupoCiudadanoDto> grupoCiudadanoList, PermisoDto codigoPermiso) {
         this.codigoGrupo = codigoGrupo;
         this.nombreGrupo = nombreGrupo;
-        this.grupoDirectorioList = grupoDirectorioList;
+        this.grupoDocumentoList = grupoDocumentoList;
         this.grupoCiudadanoList = grupoCiudadanoList;
-    }
+        this.codigoPermiso = codigoPermiso;
+
+    } 
 
     public Integer getCodigoGrupo() {
         return codigoGrupo;
@@ -44,12 +50,12 @@ class GrupoDto {
         this.nombreGrupo = nombreGrupo;
     }
 
-    public List<GrupoDirectorioDto> getGrupoDirectorioList() {
-        return grupoDirectorioList;
+    public List<GrupoDocumentoDto> getGrupoDocumentoList() {
+        return grupoDocumentoList;
     }
 
-    public void setGrupoDirectorioList(List<GrupoDirectorioDto> grupoDirectorioList) {
-        this.grupoDirectorioList = grupoDirectorioList;
+    public void setGrupoDocumentoList(List<GrupoDocumentoDto> grupoDocumentoList) {
+        this.grupoDocumentoList = grupoDocumentoList;
     }
 
     public List<GrupoCiudadanoDto> getGrupoCiudadanoList() {
@@ -60,4 +66,11 @@ class GrupoDto {
         this.grupoCiudadanoList = grupoCiudadanoList;
     }
 
+    public PermisoDto getCodigoPermiso() {
+        return codigoPermiso;
+    }
+
+    public void setCodigoPermiso(PermisoDto codigoPermiso) {
+        this.codigoPermiso = codigoPermiso;
+    }
 }
