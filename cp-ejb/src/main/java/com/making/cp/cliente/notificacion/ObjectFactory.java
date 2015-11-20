@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the co.uniandes.edu.ecos.services package. 
+ * generated in the com.making.cp.cliente.notificacion package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _CambiarEstadoNotificacionResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "cambiarEstadoNotificacionResponse");
     private final static QName _ObtenerNotificacionEstados_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerNotificacionEstados");
     private final static QName _AsignarNotificacionResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "asignarNotificacionResponse");
     private final static QName _ObtenerNotificacionCiudadano_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerNotificacionCiudadano");
@@ -31,10 +32,11 @@ public class ObjectFactory {
     private final static QName _ObtenerNotificacionCiudadanoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerNotificacionCiudadanoResponse");
     private final static QName _ObtenerNotificacionCiudadanoEstadoResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerNotificacionCiudadanoEstadoResponse");
     private final static QName _AsignarNotificacion_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "asignarNotificacion");
+    private final static QName _CambiarEstadoNotificacion_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "cambiarEstadoNotificacion");
     private final static QName _ObtenerNotificacionEstadosResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerNotificacionEstadosResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: co.uniandes.edu.ecos.services
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.making.cp.cliente.notificacion
      * 
      */
     public ObjectFactory() {
@@ -54,6 +56,14 @@ public class ObjectFactory {
      */
     public ObtenerNotificacionEstados createObtenerNotificacionEstados() {
         return new ObtenerNotificacionEstados();
+    }
+
+    /**
+     * Create an instance of {@link CambiarEstadoNotificacionResponse }
+     * 
+     */
+    public CambiarEstadoNotificacionResponse createCambiarEstadoNotificacionResponse() {
+        return new CambiarEstadoNotificacionResponse();
     }
 
     /**
@@ -94,6 +104,14 @@ public class ObjectFactory {
      */
     public ObtenerNotificacionCiudadanoEstadoResponse createObtenerNotificacionCiudadanoEstadoResponse() {
         return new ObtenerNotificacionCiudadanoEstadoResponse();
+    }
+
+    /**
+     * Create an instance of {@link CambiarEstadoNotificacion }
+     * 
+     */
+    public CambiarEstadoNotificacion createCambiarEstadoNotificacion() {
+        return new CambiarEstadoNotificacion();
     }
 
     /**
@@ -305,6 +323,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CambiarEstadoNotificacionResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "cambiarEstadoNotificacionResponse")
+    public JAXBElement<CambiarEstadoNotificacionResponse> createCambiarEstadoNotificacionResponse(CambiarEstadoNotificacionResponse value) {
+        return new JAXBElement<CambiarEstadoNotificacionResponse>(_CambiarEstadoNotificacionResponse_QNAME, CambiarEstadoNotificacionResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObtenerNotificacionEstados }{@code >}}
      * 
      */
@@ -365,6 +392,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "asignarNotificacion")
     public JAXBElement<AsignarNotificacion> createAsignarNotificacion(AsignarNotificacion value) {
         return new JAXBElement<AsignarNotificacion>(_AsignarNotificacion_QNAME, AsignarNotificacion.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CambiarEstadoNotificacion }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.ecos.edu.uniandes.co/", name = "cambiarEstadoNotificacion")
+    public JAXBElement<CambiarEstadoNotificacion> createCambiarEstadoNotificacion(CambiarEstadoNotificacion value) {
+        return new JAXBElement<CambiarEstadoNotificacion>(_CambiarEstadoNotificacion_QNAME, CambiarEstadoNotificacion.class, null, value);
     }
 
     /**
