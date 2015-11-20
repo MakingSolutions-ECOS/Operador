@@ -75,25 +75,25 @@ public class TramiteManagedBean {
     public void iniciarListaTramites() {
         
         List<DocumentoDto> dtos = new ArrayList<>();
-<<<<<<< HEAD
-//        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
+//<<<<<<< HEAD
+////        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
+////        dtos.add(dto);
+////        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+////        dtos.add(dto);
+////        TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
+////        tramites.add(tramiteDto);
+//=======
+//        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", new Date("01/01/2015"));
 //        dtos.add(dto);
-//        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-//        dtos.add(dto);
+////        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+////        dtos.add(dto);
 //        TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
 //        tramites.add(tramiteDto);
-=======
-        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", new Date("01/01/2015"));
-        dtos.add(dto);
-//        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-//        dtos.add(dto);
-        TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
-        tramites.add(tramiteDto);
->>>>>>> origin/master
-//        dtos = new ArrayList<>();
-//        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-//        dtos.add(dto);
-//        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
+//>>>>>>> origin/master
+////        dtos = new ArrayList<>();
+////        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+////        dtos.add(dto);
+////        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
 //        dtos.add(dto);
 //        dto = new DocumentoDto(2, "PLANO DE PROYECTO DE PARCELACIÓN", "Plano con división sucesiva de terrenos", "08/07/2015");
 //        dtos.add(dto);
