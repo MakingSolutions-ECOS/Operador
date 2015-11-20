@@ -62,38 +62,39 @@ public class TramiteManagedBean {
         listaEmisores = new ArrayList<>();
         emisorSeleccionado = new EmisorDto();
         listaTramiteDefinicion= new ArrayList<>();
-    }
+        tramites = new ArrayList<>();
+    } 
     
     @PostConstruct
     public void init() {
-        iniciarListaTramites();
+//        iniciarListaTramites();
         getTramiteDefinicion();
     }
 
     public void iniciarListaTramites() {
-        tramites = new ArrayList<>();
+        
         List<DocumentoDto> dtos = new ArrayList<>();
-        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
-        TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
-        tramites.add(tramiteDto);
-        dtos = new ArrayList<>();
-        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "PLANO DE PROYECTO DE PARCELACIÓN", "Plano con división sucesiva de terrenos", "08/07/2015");
-        dtos.add(dto);
-        tramiteDto = new TramiteDto(2, "EXPEDICIÓN LICENCIA PARCELACIÓN", "01/07/2015", "EN EJECUCIÓN", "CURADURÍA 1", dtos);
-        tramites.add(tramiteDto);
-        dtos = new ArrayList<>();
-        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
-        dtos.add(dto);
-        dto = new DocumentoDto(2, "COMPROBANTE DE PAGO", "Comprobante de pago", "07/07/2015");
-        dtos.add(dto);
-        tramiteDto = new TramiteDto(3, "EXPEDICIÓN PASAPORTE", "21/07/2015", "FINALIZADO CON ÉXITO", "CANCILLERÍA", dtos);
+//        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
+//        TramiteDto tramiteDto = new TramiteDto(1, "AUTENTICACIÓN DOCUMENTO", "01/07/2015", "EN SOLICITUD A ENTIDAD", "NOTARÍA 33", dtos);
+//        tramites.add(tramiteDto);
+//        dtos = new ArrayList<>();
+//        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "CERTIFICADO LIBERTAD", "Situación actual de bien inmueble", "10/07/2015");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "PLANO DE PROYECTO DE PARCELACIÓN", "Plano con división sucesiva de terrenos", "08/07/2015");
+//        dtos.add(dto);
+//        tramiteDto = new TramiteDto(2, "EXPEDICIÓN LICENCIA PARCELACIÓN", "01/07/2015", "EN EJECUCIÓN", "CURADURÍA 1", dtos);
+//        tramites.add(tramiteDto);
+//        dtos = new ArrayList<>();
+//        dto = new DocumentoDto(1, "CÉDULA CIUDADANÍA", "Documento que identifica ciudadano", "13/01/2003");
+//        dtos.add(dto);
+//        dto = new DocumentoDto(2, "COMPROBANTE DE PAGO", "Comprobante de pago", "07/07/2015");
+//        dtos.add(dto);
+//        tramiteDto = new TramiteDto(3, "EXPEDICIÓN PASAPORTE", "21/07/2015", "FINALIZADO CON ÉXITO", "CANCILLERÍA", dtos);
     }
 
     public void seleccionarTramite() {
@@ -166,9 +167,6 @@ public class TramiteManagedBean {
             tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
             for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
             SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
-                if (listaTramiteDefinicion == null) {
-                    listaTramiteDefinicion =  new ArrayList<>();
-                }
             listaTramiteDefinicion.add(selectItem);
         }
         } catch (Exception ex) {
