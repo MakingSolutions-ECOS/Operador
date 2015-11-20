@@ -44,6 +44,7 @@
                             <h:panelGrid  columns="2">
                                 <p:outputLabel  value="Entidad"></p:outputLabel>
                                 <p:selectOneMenu style="font-size: 12px"  value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}"  valueChangeListener="#{tramiteManagedBean.cargarTramites}">
+                                    <f:selectItem itemLabel="Selecione una" itemValue="" />
                                     <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
                                 </p:selectOneMenu>
                                 
