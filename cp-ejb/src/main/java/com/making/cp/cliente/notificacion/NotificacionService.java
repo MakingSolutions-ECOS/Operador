@@ -29,12 +29,12 @@ public interface NotificacionService {
      * @param codigoEstado
      * @param codigoCiudadano
      * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaNotificacion
+     *     returns com.making.cp.cliente.notificacion.RespuestaNotificacion
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerNotificacionCiudadanoEstado", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionCiudadanoEstado")
-    @ResponseWrapper(localName = "obtenerNotificacionCiudadanoEstadoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionCiudadanoEstadoResponse")
+    @RequestWrapper(localName = "obtenerNotificacionCiudadanoEstado", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionCiudadanoEstado")
+    @ResponseWrapper(localName = "obtenerNotificacionCiudadanoEstadoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionCiudadanoEstadoResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionCiudadanoEstadoRequest", output = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionCiudadanoEstadoResponse")
     public RespuestaNotificacion obtenerNotificacionCiudadanoEstado(
         @WebParam(name = "codigoCiudadano", targetNamespace = "")
@@ -46,12 +46,12 @@ public interface NotificacionService {
      * 
      * @param codigoCiudadano
      * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaNotificacion
+     *     returns com.making.cp.cliente.notificacion.RespuestaNotificacion
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerNotificacionCiudadano", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionCiudadano")
-    @ResponseWrapper(localName = "obtenerNotificacionCiudadanoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionCiudadanoResponse")
+    @RequestWrapper(localName = "obtenerNotificacionCiudadano", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionCiudadano")
+    @ResponseWrapper(localName = "obtenerNotificacionCiudadanoResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionCiudadanoResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionCiudadanoRequest", output = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionCiudadanoResponse")
     public RespuestaNotificacion obtenerNotificacionCiudadano(
         @WebParam(name = "codigoCiudadano", targetNamespace = "")
@@ -59,13 +59,28 @@ public interface NotificacionService {
 
     /**
      * 
+     * @param arg0
      * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaNotificacionEstado
+     *     returns com.making.cp.cliente.notificacion.RespuestaService
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obtenerNotificacionEstados", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionEstados")
-    @ResponseWrapper(localName = "obtenerNotificacionEstadosResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.ObtenerNotificacionEstadosResponse")
+    @RequestWrapper(localName = "cambiarEstadoNotificacion", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.CambiarEstadoNotificacion")
+    @ResponseWrapper(localName = "cambiarEstadoNotificacionResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.CambiarEstadoNotificacionResponse")
+    @Action(input = "http://services.ecos.edu.uniandes.co/NotificacionService/cambiarEstadoNotificacionRequest", output = "http://services.ecos.edu.uniandes.co/NotificacionService/cambiarEstadoNotificacionResponse")
+    public RespuestaService cambiarEstadoNotificacion(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0);
+
+    /**
+     * 
+     * @return
+     *     returns com.making.cp.cliente.notificacion.RespuestaNotificacionEstado
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obtenerNotificacionEstados", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionEstados")
+    @ResponseWrapper(localName = "obtenerNotificacionEstadosResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.ObtenerNotificacionEstadosResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionEstadosRequest", output = "http://services.ecos.edu.uniandes.co/NotificacionService/obtenerNotificacionEstadosResponse")
     public RespuestaNotificacionEstado obtenerNotificacionEstados();
 
@@ -73,12 +88,12 @@ public interface NotificacionService {
      * 
      * @param arg0
      * @return
-     *     returns co.uniandes.edu.ecos.services.RespuestaService
+     *     returns com.making.cp.cliente.notificacion.RespuestaService
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "asignarNotificacion", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.AsignarNotificacion")
-    @ResponseWrapper(localName = "asignarNotificacionResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "co.uniandes.edu.ecos.services.AsignarNotificacionResponse")
+    @RequestWrapper(localName = "asignarNotificacion", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.AsignarNotificacion")
+    @ResponseWrapper(localName = "asignarNotificacionResponse", targetNamespace = "http://services.ecos.edu.uniandes.co/", className = "com.making.cp.cliente.notificacion.AsignarNotificacionResponse")
     @Action(input = "http://services.ecos.edu.uniandes.co/NotificacionService/asignarNotificacionRequest", output = "http://services.ecos.edu.uniandes.co/NotificacionService/asignarNotificacionResponse")
     public RespuestaService asignarNotificacion(
         @WebParam(name = "arg0", targetNamespace = "")
