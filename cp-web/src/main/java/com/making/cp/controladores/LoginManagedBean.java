@@ -44,8 +44,7 @@ public class LoginManagedBean implements Serializable {
         if (resp == true) {
             return "panelControl";
         } else {
-            FacesContext.getCurrentInstance().
-                    addMessage(null,
+            FacesContext.getCurrentInstance().addMessage(null,
                             new FacesMessage(FacesMessage.SEVERITY_WARN,
                                     "INFO!", "Usuario no valido"));
             return "";

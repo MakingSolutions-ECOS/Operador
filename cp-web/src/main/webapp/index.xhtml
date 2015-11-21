@@ -30,7 +30,7 @@ and open the template in the editor.
                 <br/>	
                 <p:messages id="messageLog" showSummary="true" showDetail="true" />
                 <center>
-                    <p:commandButton  value="Ingresar" styleClass="label-button" action="#{loginManagedBean.verificarUsuario}" process="panelLogin"/>
+                    <p:commandButton  value="Ingresar" styleClass="label-button" action="#{loginManagedBean.verificarUsuario}" process="panelLogin" update="messageLog"/>
                     <h:button value="Registrarse" styleClass="label-button" />
                 </center>
             </p:panel>
