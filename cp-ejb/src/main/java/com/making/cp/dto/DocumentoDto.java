@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Clase que representa un el dto del entity Documento.
+ *
  * @author John Dany
  */
 public class DocumentoDto {
@@ -21,8 +22,13 @@ public class DocumentoDto {
 
     /**
      * Inicializa una nueva instancia de DocumentoDto.
+     */
+    public DocumentoDto() {
+    }
+
+    /**
+     * Inicializa una nueva instancia de DocumentoDto.
      *
-     * @param codigoDocumento
      * @param codigoTipoMetadataCentralizador
      * @param fechaModificacion
      * @param nombreDocumento
@@ -33,8 +39,7 @@ public class DocumentoDto {
      * @param codigoDirectorioDocuento
      * @param codigoCiudadano
      */
-    public DocumentoDto(Integer codigoDocumento, int codigoTipoMetadataCentralizador, Date fechaModificacion, String nombreDocumento, String rutaLogicaDocumento, Date fechaCreacionDirectorio, String rutaFisicaDirectorio, GrupoDocumentoDto codigoGrupoDocumento, DirectorioDocumentoDto codigoDirectorioDocuento, CiudadanoDto codigoCiudadano) {
-        this.codigoDocumento = codigoDocumento;
+    public DocumentoDto(int codigoTipoMetadataCentralizador, Date fechaModificacion, String nombreDocumento, String rutaLogicaDocumento, Date fechaCreacionDirectorio, String rutaFisicaDirectorio, GrupoDocumentoDto codigoGrupoDocumento, DirectorioDocumentoDto codigoDirectorioDocuento, CiudadanoDto codigoCiudadano) {
         this.codigoTipoMetadataCentralizador = codigoTipoMetadataCentralizador;
         this.fechaModificacion = fechaModificacion;
         this.nombreDocumento = nombreDocumento;
@@ -44,6 +49,12 @@ public class DocumentoDto {
         this.codigoGrupoDocumento = codigoGrupoDocumento;
         this.codigoDirectorioDocuento = codigoDirectorioDocuento;
         this.codigoCiudadano = codigoCiudadano;
+    }
+
+    public DocumentoDto(Integer codigoDocumento, String nombreDocumento, Date fechaModificacion) {
+        this.codigoDocumento = codigoDocumento;
+        this.nombreDocumento = nombreDocumento;
+        this.fechaModificacion = fechaModificacion;
     }
 
     public Integer getCodigoDocumento() {
