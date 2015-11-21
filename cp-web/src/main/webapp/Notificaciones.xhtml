@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="panelControl.xhtml">
+        <ui:define name="body">
+            <h:form id="form1">
+                <p:panel id="panelNotificaciones" header="Notificaciones" styleClass="header">
+                    <p:dataTable value="#{notificacionManagedBean.notificacionDtos}" var="noti">
+                        <p:column headerText="Codigo">
+                            #{noti.codigoNotificacion}
+                        </p:column>
+                        <p:column headerText="Remitente">
+                            #{noti.remitente}
+                        </p:column>
+                        <p:column headerText="Estado">
+                            #{noti.codigoNotificacionEstado.nombreEstado}
+                        </p:column>
+                        <p:column headerText="Estado">
+                            <p:commandButton actionListener="#{notificacionManagedBean.leerMensaje(noti)}" value="Ver" 
+                                             process="@this" update=":form1:panelNotificaciones"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:panel id="PanelVer" header="Detalle mensaje" >
+                        <br/>
+                        <b><p:outputLabel value="Mensaje: #{notificacionManagedBean.mensajeVer.codigoNotificacion}"/></b>
+                        <br/>
+                        <p:outputLabel value="#{notificacionManagedBean.mensajeVer.mensaje}" />
+                    </p:panel>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
