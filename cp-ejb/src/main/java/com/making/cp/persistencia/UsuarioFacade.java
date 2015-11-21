@@ -6,9 +6,11 @@
 package com.making.cp.persistencia;
 
 import com.making.cp.entidad.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,12 +31,18 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         super(Usuario.class);
     }
 
-    public EntityManager getEm() {
-        return em;
-    }
+    @Override
+    public boolean validarUsuario(String usuario, String contrasenia) {
+        Query q = em.createQuery("SELECT u FROM Usuario u where u.claveUsuario = :claveUsuario AND u.identificacion = :identificacion");
+        q.setParameter("claveUsuario", contrasenia);
+        q.setParameter("identificacion", usuario);
+        List<Usuario> respuesta = q.getResultList();
 
-    public void setEm(EntityManager em) {
-        this.em = em;
+        if (!respuesta.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
