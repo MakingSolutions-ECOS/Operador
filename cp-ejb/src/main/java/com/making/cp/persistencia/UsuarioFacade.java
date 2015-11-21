@@ -16,7 +16,7 @@ import javax.persistence.Query;
  *
  * @author Usuario
  */
-@Stateless
+@Stateless(mappedName = "UsuarioFacade")
 public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFacadeLocal {
 
     @PersistenceContext(unitName = "com.making.cp_cp-ejb_ejb_1.0PU")

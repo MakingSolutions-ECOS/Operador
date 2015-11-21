@@ -25,7 +25,7 @@ public class LoginManagedBean implements Serializable {
     private String usuario = "";
     private String contrasenia = "";
 
-    @EJB
+    @EJB(beanName = "UsuarioFacade")
     private UsuarioFacadeLocal usuarioFacadeLocal;
 
     /**
