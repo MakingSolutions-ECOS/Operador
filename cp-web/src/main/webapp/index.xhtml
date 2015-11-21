@@ -18,19 +18,20 @@ and open the template in the editor.
     <h:body>
         <h:form>
             <br/><br/>
-            <p:panel header="Ingresa a mi Folder" styleClass="header" >
+            <p:panel id="panelLogin" header="Ingresa a mi Folder" styleClass="header" >
                 <center>
                     <p:panelGrid styleClass="label"  columns="1">
                         <p:outputLabel value="Nombre Usuario:" />
-                        <p:inputText size="70" />
+                        <p:inputText size="70" value="#{loginManagedBean.usuario}"/>
                         <p:outputLabel value="Contraseña:" />
-                        <p:password size="70"  />
+                        <p:password size="70"  value="#{loginManagedBean.contrasenia}"/>
                     </p:panelGrid>                
                 </center>	
                 <br/>	
+                <p:messages id="messageLog" showSummary="true" showDetail="true" />
                 <center>
-                    <h:button outcome="panelControl"  value="Ingresar" styleClass="label-button" />
-                    <h:button outcome="panelControl"  value="Registrarse" styleClass="label-button" />
+                    <p:commandButton  value="Ingresar" styleClass="label-button" action="#{loginManagedBean.verificarUsuario}" process="panelLogin"/>
+                    <h:button value="Registrarse" styleClass="label-button" />
                 </center>
             </p:panel>
         </h:form>
