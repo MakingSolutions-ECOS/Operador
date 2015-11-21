@@ -1,11 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.making.cp.persistencia;
 
+import com.making.cp.dto.DocumentoDto;
 import com.making.cp.entidad.Documento;
+import com.making.cp.utilidad.Mapper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,23 @@ public class DocumentoFacade extends AbstractFacade<Documento> implements Docume
 
     public DocumentoFacade() {
         super(Documento.class);
+    }
+
+    @Override
+    public List<DocumentoDto> findByCiudadano(Object id) {
+        List<Documento> documentosPorCiudadano = em.createNamedQuery("findDocumentoByUsuario", Documento.class).setParameter("codigoCiudadano", id).getResultList();
+        List<DocumentoDto> documentoDtos = new ArrayList<DocumentoDto>();
+        if (documentosPorCiudadano != null && documentosPorCiudadano.size() > 0) {
+            for (Documento doc : documentosPorCiudadano) {
+                try {
+                    documentoDtos.add(Mapper.copyCompleto(doc, DocumentoDto.class, false));
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DocumentoFacade.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return  documentoDtos;
     }
     
 }

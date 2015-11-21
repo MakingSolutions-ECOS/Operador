@@ -8,6 +8,7 @@ import entidades.util.JsfUtil;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -23,16 +24,18 @@ public class DocumentoManagedBean implements Serializable {
 
     @EJB(beanName = "DocumentoFacade")
     private DocumentoFacadeLocal ejbDocFacade;
-    
+
     private DocumentoDto selected;
-    
+
+    private List<DocumentoDto> documentoDtos;
+
     /**
      * Creates a new instance of DocumentoManagedBean
      */
     public DocumentoManagedBean() {
     }
-    
-     public DocumentoDto getSelected() {
+
+    public DocumentoDto getSelected() {
         return selected;
     }
 
@@ -45,8 +48,8 @@ public class DocumentoManagedBean implements Serializable {
 
     protected void initializeEmbeddableKey() {
     }
-    
-     private DocumentoFacadeLocal getFacade() {
+
+    private DocumentoFacadeLocal getFacade() {
         return ejbDocFacade;
     }
 
@@ -54,6 +57,10 @@ public class DocumentoManagedBean implements Serializable {
         selected = new DocumentoDto();
         initializeEmbeddableKey();
         return selected;
+    }
+
+    public void findByCiudadano(Integer id) throws ClassNotFoundException {
+        documentoDtos = this.getFacade().findByCiudadano(id);       
     }
 
     public void create() {
@@ -66,14 +73,15 @@ public class DocumentoManagedBean implements Serializable {
         persist(JsfUtil.PersistAction.UPDATE, "Documento modificado exitosamente");
     }
 
-     public void destroy() {
+    public void destroy() {
         persist(JsfUtil.PersistAction.DELETE, "Documento eliminado exitosamentes");
         if (!JsfUtil.isValidationFailed()) {
             selected = null;
         }
     }
-     private void persist(JsfUtil.PersistAction persistAction, String successMessage) {
-        if (selected != null) {            
+
+    private void persist(JsfUtil.PersistAction persistAction, String successMessage) {
+        if (selected != null) {
             setEmbeddableKeys();
             try {
                 if (persistAction != JsfUtil.PersistAction.DELETE) {
@@ -91,11 +99,11 @@ public class DocumentoManagedBean implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, "Error: "+ex.getMessage());
+                    JsfUtil.addErrorMessage(ex, "Error: " + ex.getMessage());
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, "Error: "+ex.getMessage());
+                JsfUtil.addErrorMessage(ex, "Error: " + ex.getMessage());
             }
         }
     }

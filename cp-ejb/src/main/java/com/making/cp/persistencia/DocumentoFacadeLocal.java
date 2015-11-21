@@ -5,6 +5,7 @@
  */
 package com.making.cp.persistencia;
 
+import com.making.cp.dto.DocumentoDto;
 import com.making.cp.entidad.Documento;
 import java.util.List;
 import javax.ejb.Local;
@@ -25,6 +26,8 @@ public interface DocumentoFacadeLocal {
     Documento find(Object id);
 
     List<Documento> findAll();
+    
+    List<DocumentoDto> findByCiudadano(Object id);
 
     List<Documento> findRange(int[] range);
 
