@@ -31,7 +31,7 @@ public class DocumentoFacade extends AbstractFacade<Documento> implements Docume
 
     @Override
     public List<DocumentoDto> findByCiudadano(Object id) {
-        List<Documento> documentosPorCiudadano = em.createNamedQuery("findDocumentoByUsuario", Documento.class).setParameter("codigoCiudadano", id).getResultList();
+        List<Documento> documentosPorCiudadano = em.createNamedQuery("Documento.findDocumentoByUsuario", Documento.class).setParameter("codigoCiudadano", id).getResultList();
         List<DocumentoDto> documentoDtos = new ArrayList<DocumentoDto>();
         if (documentosPorCiudadano != null && documentosPorCiudadano.size() > 0) {
             for (Documento doc : documentosPorCiudadano) {

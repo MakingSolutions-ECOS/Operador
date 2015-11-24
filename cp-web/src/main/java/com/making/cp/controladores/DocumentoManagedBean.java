@@ -11,8 +11,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  *
@@ -33,6 +38,18 @@ public class DocumentoManagedBean implements Serializable {
      * Creates a new instance of DocumentoManagedBean
      */
     public DocumentoManagedBean() {
+    }
+
+    @PostConstruct
+    public void init() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        Integer codCiudadano = (Integer) session.getAttribute("codCiudadano");
+        try {
+            findByCiudadano(codCiudadano);
+        } catch (Exception e) {
+        }
+
     }
 
     public DocumentoDto getSelected() {
@@ -59,8 +76,19 @@ public class DocumentoManagedBean implements Serializable {
         return selected;
     }
 
+    public void handleFileUpload(FileUploadEvent event) {
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        String rootv = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+        //TODO guardar
+        
+    }
+    
     public void findByCiudadano(Integer id) throws ClassNotFoundException {
-        documentoDtos = this.getFacade().findByCiudadano(id);       
+        documentoDtos = this.getFacade().findByCiudadano(id);
+        for (DocumentoDto documentoDto : documentoDtos) {
+            documentoDto.setIcono("ui-icon-document");
+        }
     }
 
     public void create() {
@@ -107,4 +135,21 @@ public class DocumentoManagedBean implements Serializable {
             }
         }
     }
+
+    public DocumentoFacadeLocal getEjbDocFacade() {
+        return ejbDocFacade;
+    }
+
+    public void setEjbDocFacade(DocumentoFacadeLocal ejbDocFacade) {
+        this.ejbDocFacade = ejbDocFacade;
+    }
+
+    public List<DocumentoDto> getDocumentoDtos() {
+        return documentoDtos;
+    }
+
+    public void setDocumentoDtos(List<DocumentoDto> documentoDtos) {
+        this.documentoDtos = documentoDtos;
+    }
+
 }

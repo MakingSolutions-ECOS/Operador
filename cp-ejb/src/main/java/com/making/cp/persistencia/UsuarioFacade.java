@@ -5,6 +5,7 @@
  */
 package com.making.cp.persistencia;
 
+import com.making.cp.entidad.Ciudadano;
 import com.making.cp.entidad.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -32,16 +33,18 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     }
 
     @Override
-    public boolean validarUsuario(String usuario, String contrasenia) {
+    public Integer validarUsuario(String usuario, String contrasenia) {
         Query q = em.createQuery("SELECT u FROM Usuario u where u.claveUsuario = :claveUsuario AND u.identificacion = :identificacion");
         q.setParameter("claveUsuario", contrasenia);
         q.setParameter("identificacion", usuario);
         List<Usuario> respuesta = q.getResultList();
-
         if (!respuesta.isEmpty()) {
-            return true;
+            Query q2 = em.createQuery("SELECT c FROM Ciudadano c WHERE c.numeroIdentificacion = :numeroIdentificacion");
+            q2.setParameter("numeroIdentificacion", usuario);
+            List<Ciudadano> ciudadano = q2.getResultList();
+            return ciudadano.get(0).getCodigoCiudadano();
         } else {
-            return false;
+            return -1;
         }
     }
 

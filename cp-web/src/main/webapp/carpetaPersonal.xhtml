@@ -26,16 +26,16 @@
                             </p:menuButton>
                         </f:facet>
                     </p:toolbar>
-                    <p:dataTable id="tablaArchivos" value="#{carpetaManagedBean.valor}" var="archivo" selection="#{carpetaManagedBean.selectedFiles}" rowKey="#{archivo.id}"> 
+                    <p:dataTable id="tablaArchivos" value="#{documentoManagedBean.documentoDtos}" var="archivo" selection="#{documentoManagedBean.selected}" rowKey="#{archivo.codigoDocumento}"> 
                         <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                         <p:column style="width:16px;text-align:center">
                             <h:outputText  styleClass=" ui-corner-all ui-icon #{archivo.icono}" />                            
                         </p:column> 
                         <p:column headerText="Nombre">
-                            <p:commandLink value="#{archivo.nombreArchivo}" />
+                            <p:commandLink value="#{archivo.nombreDocumento}" />
                         </p:column>
                         <p:column headerText="Fecha actualización" style="width:80px;text-align:center">
-                            <p:outputLabel value="#{archivo.fechaActualizacion}" >
+                            <p:outputLabel value="#{archivo.fechaModificacion}" >
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:outputLabel>
                         </p:column>
@@ -51,7 +51,7 @@
                         </p:column>
                     </p:dataTable>
                 </p:panel> 
-                
+
                 <p:dialog widgetVar="idInfoCarpetaDlg">
                     <p:panel header="Información Carpeta" styleClass="header">
                         <p:panelGrid columns="2" styleClass="label">
@@ -64,12 +64,15 @@
                         </p:panelGrid>
                     </p:panel>
                 </p:dialog>
-                
+
                 <p:dialog widgetVar="idAgregarDlg" resizable="false" draggable="false" closeOnEscape="true">
                     <p:panel header="Subir un archivo" styleClass="header" >
                         <p:outputLabel value="Seleccione un Archivo para subir" styleClass="label" />
-                            <br/>
-                            <p:fileUpload cancelLabel="Cancelar" uploadLabel="Subir" label="Examinar"/>
+                        <br/>
+                        <p:growl id="messages" showDetail="true" />
+                        <p:fileUpload fileUploadListener="#{documentoManagedBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                      cancelLabel="Cancelar" uploadLabel="Subir" label="Examinar"
+                                      update="messages" sizeLimit="9000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     </p:panel>
                 </p:dialog>
             </h:form>

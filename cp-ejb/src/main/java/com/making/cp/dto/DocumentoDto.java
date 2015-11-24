@@ -19,6 +19,8 @@ public class DocumentoDto {
     private GrupoDocumentoDto codigoGrupoDocumento;
     private DirectorioDocumentoDto codigoDirectorioDocuento;
     private CiudadanoDto codigoCiudadano;
+    private String tipoArchivo;
+    private String icono;
 
     /**
      * Inicializa una nueva instancia de DocumentoDto.
@@ -136,4 +138,21 @@ public class DocumentoDto {
     public void setCodigoCiudadano(CiudadanoDto codigoCiudadano) {
         this.codigoCiudadano = codigoCiudadano;
     }
+
+    public String getTipoArchivo() {
+        return tipoArchivo;
+    }
+
+    public void setTipoArchivo(String tipoArchivo) {
+        this.tipoArchivo = tipoArchivo;
+    }
+
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
+    }
+
 }

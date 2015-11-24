@@ -66,7 +66,7 @@ public class CarpetaManagedBean {
         mails.add(new MailDto("tecno@tecnologia.com", "infraestructura", "La infraestructura para la implementación de la solución técnologica", new Date()));        
     }
 
-    public void iniciarListaArchivos() {
+    public void iniciarListaArchivos() { 
         valor = new ArrayList<ArchivoDto>();
         ArchivoDto arch1 = new ArchivoDto();
         arch1.setTipoArchivo("Carpeta");

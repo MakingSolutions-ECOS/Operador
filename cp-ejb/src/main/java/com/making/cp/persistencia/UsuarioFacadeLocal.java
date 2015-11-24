@@ -30,6 +30,6 @@ public interface UsuarioFacadeLocal {
 
     int count();
 
-    public boolean validarUsuario(String usuario, String contrasenia);
+    public Integer validarUsuario(String usuario, String contrasenia);
 
 }

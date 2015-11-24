@@ -14,6 +14,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,7 +46,10 @@ public class NotificacionManagedBean implements Serializable {
     }
 
     public void cargarNotificaciones() {
-        RespuestaNotificacion notificacion = notificacionService.obtenerNotificacionCiudadano(5);
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        Integer codCiudadano = (Integer) session.getAttribute("codCiudadano");
+        RespuestaNotificacion notificacion = notificacionService.obtenerNotificacionCiudadano(codCiudadano);
         notificacionDtos = notificacion.getNotificacionDto();
     }
 

@@ -40,13 +40,15 @@ public class LoginManagedBean implements Serializable {
     }
 
     public String verificarUsuario() {
-        boolean resp = usuarioFacadeLocal.validarUsuario(usuario, contrasenia);
-        if (resp == true) {
+        Integer resp = usuarioFacadeLocal.validarUsuario(usuario, contrasenia);
+        if (resp != -1) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("codCiudadano", resp);
             return "panelControl";
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
-                            new FacesMessage(FacesMessage.SEVERITY_WARN,
-                                    "INFO!", "Usuario no valido"));
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "INFO!", "Usuario no valido"));
             return "";
         }
     }
