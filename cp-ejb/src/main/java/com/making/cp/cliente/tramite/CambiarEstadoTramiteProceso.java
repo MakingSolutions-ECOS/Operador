@@ -29,12 +29,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "cambiarEstadoTramiteProceso", propOrder = {
     "arg0",
-    "arg1"
+    "arg1",
+    "arg2"
 })
 public class CambiarEstadoTramiteProceso {
 
     protected Integer arg0;
     protected Integer arg1;
+    protected Integer arg2;
 
     /**
      * Obtiene el valor de la propiedad arg0.
@@ -83,5 +85,15 @@ public class CambiarEstadoTramiteProceso {
     public void setArg1(Integer value) {
         this.arg1 = value;
     }
+
+    public Integer getArg2() {
+        return arg2;
+    }
+
+    public void setArg2(Integer arg2) {
+        this.arg2 = arg2;
+    }
+    
+    
 
 }
