@@ -1,7 +1,6 @@
 
 package com.making.cp.cliente.emisor;
 
-import com.making.cp.cliente.emisor.EmisorDto;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -11,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.making.cp.cliente package. 
+ * generated in the com.making.cp.cliente.emisor package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -29,7 +28,7 @@ public class ObjectFactory {
     private final static QName _ObtenerEmisoresResponse_QNAME = new QName("http://services.ecos.edu.uniandes.co/", "obtenerEmisoresResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.making.cp.cliente
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.making.cp.cliente.emisor
      * 
      */
     public ObjectFactory() {
@@ -52,6 +51,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TramiteDefinicionDto }
+     * 
+     */
+    public TramiteDefinicionDto createTramiteDefinicionDto() {
+        return new TramiteDefinicionDto();
+    }
+
+    /**
+     * Create an instance of {@link CategoriasTramiteDto }
+     * 
+     */
+    public CategoriasTramiteDto createCategoriasTramiteDto() {
+        return new CategoriasTramiteDto();
+    }
+
+    /**
+     * Create an instance of {@link DocumentoRequeridoTramiteDto }
+     * 
+     */
+    public DocumentoRequeridoTramiteDto createDocumentoRequeridoTramiteDto() {
+        return new DocumentoRequeridoTramiteDto();
+    }
+
+    /**
      * Create an instance of {@link RespuestaService }
      * 
      */
@@ -65,6 +88,14 @@ public class ObjectFactory {
      */
     public EmisorDto createEmisorDto() {
         return new EmisorDto();
+    }
+
+    /**
+     * Create an instance of {@link MetadataTipoDocumentoDto }
+     * 
+     */
+    public MetadataTipoDocumentoDto createMetadataTipoDocumentoDto() {
+        return new MetadataTipoDocumentoDto();
     }
 
     /**

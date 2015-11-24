@@ -1,7 +1,6 @@
 
 package com.making.cp.cliente.emisor;
 
-import com.making.cp.cliente.emisor.EmisorDto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;

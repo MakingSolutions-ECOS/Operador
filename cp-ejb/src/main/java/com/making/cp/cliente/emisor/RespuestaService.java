@@ -3,6 +3,7 @@ package com.making.cp.cliente.emisor;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -34,6 +35,9 @@ import javax.xml.bind.annotation.XmlType;
     "errorOriginal",
     "respuestaService",
     "sePresentoError"
+})
+@XmlSeeAlso({
+    RespuestaEmisor.class
 })
 public class RespuestaService {
 

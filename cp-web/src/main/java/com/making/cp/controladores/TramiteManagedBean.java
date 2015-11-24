@@ -6,7 +6,7 @@
 package com.making.cp.controladores;
 
 import com.making.cp.cliente.emisor.EmisorDto;
-import com.making.cp.cliente.tramite.TramiteDefinicionDto;
+import com.making.cp.cliente.emisor.TramiteDefinicionDto;
 
 import com.making.cp.dto.ArchivoDto;
 import com.making.cp.dto.DocumentoDto;
@@ -15,14 +15,16 @@ import com.making.cp.dto.UsuarioDto;
 import com.making.cp.negocio.IEmisorServiceLocal;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.negocio.LoginServiceBeanLocal;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
@@ -32,48 +34,52 @@ import org.primefaces.component.datatable.DataTable;
  *
  * @author Your Name
  */
+@ViewScoped
 @ManagedBean(name = "tramiteManagedBean")
-public class TramiteManagedBean {
-    
-    @EJB(beanName = "EmisorServiceBean") 
-    private IEmisorServiceLocal emisorServiceBean;
-    @EJB(beanName = "TramiteServiceBean") 
+public class TramiteManagedBean implements  Serializable{
+
+    @EJB(beanName = "EmisorServiceBean")
+    private IEmisorServiceLocal iEmisorServiceBean;
+    @EJB(beanName = "TramiteServiceBean")
     private ITramiteServiceLocal iTramiteServiceLocal;
 
     private List<EmisorDto> emisores;
     private EmisorDto emisorSeleccionado;
     private TramiteDefinicionDto tramiteDefinicionSeleccionado;
-    private List<TramiteDto> tramiteDtos;
-    
+
     private List<ArchivoDto> selectedFiles;
     private TramiteDto tramiteSeleccionado;
     private DataTable bindingDataTable;
     private boolean dialogView;
-    
+
     private List<SelectItem> listaEmisores;
     private List<TramiteDto> tramites;
-    private List<TramiteDefinicionDto> tramiteDefinicion;
+    private List<TramiteDefinicionDto> tramiteDefinicionGeneral;
     private List<SelectItem> listaTramiteDefinicion;
+    //private List<DocuemtoTramiteDto> documentos = new ArrayList<DocuemtoTramiteDto>();
     
-    @EJB (beanName = "LoginServiceBean") 
+
+    @EJB(beanName = "LoginServiceBean")
     private LoginServiceBeanLocal loginServiceBeanLocal;
 
     public TramiteManagedBean() {
-        emisores= new ArrayList<>();
+        emisores = new ArrayList<>();
         listaEmisores = new ArrayList<>();
         emisorSeleccionado = new EmisorDto();
-        listaTramiteDefinicion= new ArrayList<>();
+        listaTramiteDefinicion = new ArrayList<>();
         tramites = new ArrayList<>();
-    } 
-    
+        tramiteSeleccionado = new TramiteDto();
+    }
+
     @PostConstruct
     public void init() {
 //        iniciarListaTramites();
-        getTramiteDefinicion();
+//        getTramiteDefinicion();
+        getEmisores();
     }
 
     public void iniciarListaTramites() {
-        
+
         List<DocumentoDto> dtos = new ArrayList<>();
 //<<<<<<< HEAD
 ////        DocumentoDto dto = new DocumentoDto(1, "DIPLOMA UNIVERSITARIO", "Documento que certifica estudios de pregrado", "01/01/2015");
@@ -143,6 +149,11 @@ public class TramiteManagedBean {
     public void setDialogView(boolean dialogView) {
         this.dialogView = dialogView;
     }
+
+    public List<SelectItem> getListaEmisores(){
+        return listaEmisores;
+    }
+    
     public void setListaEmisores(List<SelectItem> listaEmisores) {
         this.listaEmisores = listaEmisores;
     }
@@ -162,45 +173,60 @@ public class TramiteManagedBean {
     public void setTramites(List<TramiteDto> tramites) {
         this.tramites = tramites;
     }
-    public void ejecutartramite(){
-        List <Integer> requeridos= new ArrayList<>();
+
+    public void ejecutartramite() {
+        List<Integer> requeridos = new ArrayList<>();
         requeridos.add(1);
-        UsuarioDto usuarioDto =loginServiceBeanLocal.getUsuarioSesion();
-        iTramiteServiceLocal.getDocumentosFaltantes(requeridos, 1,usuarioDto.getCiudadanoDto());
-        
-        
-        
+        UsuarioDto usuarioDto = loginServiceBeanLocal.getUsuarioSesion();
+        iTramiteServiceLocal.getDocumentosFaltantes(requeridos, 1, usuarioDto.getCiudadanoDto());
+
     }
 
     public void getTramiteDefinicion() {
         try {
-            tramiteDefinicion=iTramiteServiceLocal.obtenerTramiteDefinicion();            
-            for (TramiteDefinicionDto definicionDto : tramiteDefinicion) {
-            SelectItem selectItem = new SelectItem(definicionDto.getCodigoEntidadEmisora().getCodigoEntidadEmisora(), definicionDto.getCodigoEntidadEmisora().getNombreEntidadEmisora());
-            listaTramiteDefinicion.add(selectItem);
-        }
+            emisores = iEmisorServiceBean.obtenerEmisores();
+            for (EmisorDto emisor : emisores) {
+                SelectItem selectItem = new SelectItem(emisor.getCodigoEntidadEmisora(), emisor.getNombreEntidadEmisora());
+                listaTramiteDefinicion.add(selectItem);
+            }
         } catch (Exception ex) {
-            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+            
+        }
     }
 
     public void setTramiteDefinicion(List<TramiteDefinicionDto> tramiteDefinicion) {
-        this.tramiteDefinicion = tramiteDefinicion;
-    } 
-    
-
-    public List<SelectItem> getListaEmisores() {
-        emisores = emisorServiceBean.obtenerEmisores();
-        for (EmisorDto emisorDto : emisores) {
-            SelectItem selectItem = new SelectItem(emisorDto.getCodigoEntidadEmisora(), emisorDto.getNombreEntidadEmisora());
-            listaEmisores.add(selectItem);
-        }
-        return listaEmisores;
+        this.tramiteDefinicionGeneral = tramiteDefinicion;
     }
 
-    public void cargarTramites(ValueChangeEvent valueChangeEvent){
-     valueChangeEvent.getNewValue().toString();        
-    }    
+    public void getEmisores() {
+        try {
+            emisores = iEmisorServiceBean.obtenerEmisores();
+                for (EmisorDto emisorDto : emisores) {
+                SelectItem selectItem = new SelectItem(emisorDto.getCodigoEntidadEmisora(), emisorDto.getNombreEntidadEmisora());
+                listaEmisores.add(selectItem);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(TramiteManagedBean.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }
+
+    public void cargarTramites(AjaxBehaviorEvent e ) {
+        String codigoEntidad = e.getSource().toString();
+        listaTramiteDefinicion = new ArrayList<>();
+        try {
+            for (EmisorDto emisor : emisores) {
+                if (emisor.getCodigoEntidadEmisora() == emisorSeleccionado.getCodigoEntidadEmisora()) {
+                    for (TramiteDefinicionDto tramiteDefinicionDto : emisor.getTramiteDefinicionList()) {
+                        SelectItem selectItem = new SelectItem(tramiteDefinicionDto.getCodigoTramiteDefinicion(), tramiteDefinicionDto.getDescripcion());
+                        listaTramiteDefinicion.add(selectItem);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+        }
+        
+    }
 
     public List<SelectItem> getListaTramiteDefinicion() {
         return listaTramiteDefinicion;
@@ -217,6 +243,5 @@ public class TramiteManagedBean {
     public void setTramiteDefinicionSeleccionado(TramiteDefinicionDto tramiteDefinicionSeleccionado) {
         this.tramiteDefinicionSeleccionado = tramiteDefinicionSeleccionado;
     }
-    
-    
+
 }
