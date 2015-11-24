@@ -20,6 +20,10 @@ public class TramiteDto {
     private String nombreEntidad;
     private List<DocumentoDto> documentosTramite;
 
+    public TramiteDto() {
+    }
+    
+
     public TramiteDto(int idTramite, String nombreTramite, String fechaTramite, String estadoTramite, String nombreEntidad, List<DocumentoDto> documentosTramite) {
         this.idTramite = idTramite;
         this.nombreTramite = nombreTramite;

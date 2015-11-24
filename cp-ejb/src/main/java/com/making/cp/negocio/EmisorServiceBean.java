@@ -5,10 +5,8 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.cliente.emisor.RespuestaEmisor;
 import com.making.cp.cliente.emisor.EmisorDto;
-import com.making.cp.cliente.emisor.EmisorService;
-import com.making.cp.cliente.emisor.EmisorService_Service;
+import com.making.cp.negocio.Helper.EmisorHelper;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -20,8 +18,7 @@ import javax.ejb.Stateless;
 public class EmisorServiceBean implements IEmisorServiceLocal{
      @Override
     public List<EmisorDto> obtenerEmisores() {
-        
-      
-        return null;
-    }  
+        EmisorHelper emisorHelper = new EmisorHelper();
+        return emisorHelper.obtenerEmisores();
+    }   
 }

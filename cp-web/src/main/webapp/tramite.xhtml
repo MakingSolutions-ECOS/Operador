@@ -43,21 +43,17 @@
                             <br/>
                             <h:panelGrid  columns="2">
                                 <p:outputLabel  value="Entidad"></p:outputLabel>
-                                <p:selectOneMenu style="font-size: 12px"  value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}"  valueChangeListener="#{tramiteManagedBean.cargarTramites}">
-                                    <f:selectItem itemLabel="Selecione una" itemValue="" />
-                                    <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
+                                <p:selectOneMenu  style="font-size: 12px"   value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}">
+                                    <f:selectItem itemLabel="Selecione una" itemValue=""     />
+                                    <f:selectItems  value="#{tramiteManagedBean.listaEmisores}" />
+                                    <p:ajax event="change" update="listtramite" process="@this" listener="#{tramiteManagedBean.cargarTramites}"/>
                                 </p:selectOneMenu>
-                                
                                 <p:outputLabel value="Trámite"></p:outputLabel>
-                                <p:selectOneMenu>
-
+                                <p:selectOneMenu value="#{tramiteManagedBean.tramiteSeleccionado.idTramite}" id="listtramite">
+                                    <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
                                 </p:selectOneMenu>
                             </h:panelGrid>
                             <p:commandButton value="Solicitar trámite" />
-
-
-
-
                         </p:tab>
                     </p:tabView>
                 </p:panel> 

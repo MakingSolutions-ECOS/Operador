@@ -10,17 +10,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para emisorDto complex type.
+ * <p>Clase Java para categoriasTramiteDto complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="emisorDto">
+ * &lt;complexType name="categoriasTramiteDto">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="codigoEntidadEmisora" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="nombreEntidadEmisora" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="codigoCategoria" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="nombreCategoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="tramiteDefinicionList" type="{http://services.ecos.edu.uniandes.co/}tramiteDefinicionDto" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -31,64 +31,64 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "emisorDto", propOrder = {
-    "codigoEntidadEmisora",
-    "nombreEntidadEmisora",
+@XmlType(name = "categoriasTramiteDto", propOrder = {
+    "codigoCategoria",
+    "nombreCategoria",
     "tramiteDefinicionList"
 })
-public class EmisorDto {
+public class CategoriasTramiteDto {
 
-    protected Integer codigoEntidadEmisora;
-    protected String nombreEntidadEmisora;
+    protected Integer codigoCategoria;
+    protected String nombreCategoria;
     @XmlElement(nillable = true)
     protected List<TramiteDefinicionDto> tramiteDefinicionList;
 
     /**
-     * Obtiene el valor de la propiedad codigoEntidadEmisora.
+     * Obtiene el valor de la propiedad codigoCategoria.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getCodigoEntidadEmisora() {
-        return codigoEntidadEmisora;
+    public Integer getCodigoCategoria() {
+        return codigoCategoria;
     }
 
     /**
-     * Define el valor de la propiedad codigoEntidadEmisora.
+     * Define el valor de la propiedad codigoCategoria.
      * 
      * @param value
      *     allowed object is
      *     {@link Integer }
      *     
      */
-    public void setCodigoEntidadEmisora(Integer value) {
-        this.codigoEntidadEmisora = value;
+    public void setCodigoCategoria(Integer value) {
+        this.codigoCategoria = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad nombreEntidadEmisora.
+     * Obtiene el valor de la propiedad nombreCategoria.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNombreEntidadEmisora() {
-        return nombreEntidadEmisora;
+    public String getNombreCategoria() {
+        return nombreCategoria;
     }
 
     /**
-     * Define el valor de la propiedad nombreEntidadEmisora.
+     * Define el valor de la propiedad nombreCategoria.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNombreEntidadEmisora(String value) {
-        this.nombreEntidadEmisora = value;
+    public void setNombreCategoria(String value) {
+        this.nombreCategoria = value;
     }
 
     /**
