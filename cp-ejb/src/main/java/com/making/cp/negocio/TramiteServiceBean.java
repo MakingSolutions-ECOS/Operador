@@ -5,27 +5,17 @@
  */
 package com.making.cp.negocio;
 
+import com.making.cp.cliente.tramite.RespuestaTramite;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
+import com.making.cp.cliente.tramite.TramiteDto;
 import com.making.cp.dto.CiudadanoDto;
-import com.making.cp.dto.SolicitudTramiteDto;
 import com.making.cp.entidad.Documento;
 import com.making.cp.negocio.Helper.TramiteHelper;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.ObjectMessage;
-import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueSender;
-import javax.jms.QueueSession;
-import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -97,15 +87,32 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
 //
 //    }
 
+    
     @Override
     public List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception {
         TramiteHelper tramiteHelper = new TramiteHelper();
         return tramiteHelper.obtenerTramitesDefinicion();
     }
     
+    /**
+     * 
+     * @param estado 
+     */
     @Override
-    public void consultarEstadosTramite(){
-        System.out.println("Consulto trámite");
+    public void consultarEstadosTramite(Integer estado){
+        System.out.println("Inicia consulta de  trámite");
+        TramiteHelper tramiteHelper = new TramiteHelper();
+        List<TramiteDto> tramitesDto=null;
+        try {
+             tramitesDto= tramiteHelper.obtenerTramitesEstado(estado);
+        } catch (Exception ex) {
+            System.out.println("Error en la consulta de tramites por estado");
+            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(TramiteDto tramiteDto:tramitesDto){
+        //Actualización de estados de trámite
+        }
+        //Invocación de servicio de notificación
     }
 
 }
