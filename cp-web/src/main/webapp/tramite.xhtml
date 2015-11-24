@@ -53,6 +53,23 @@
                                     <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
                                 </p:selectOneMenu>
                             </h:panelGrid>
+                            <p:dataTable var="documento" value="#{tramiteManagedBean.documentos}">
+                                <p:column headerText="Id documento">
+                                    <h:outputText value="#{documento.codigoDocumento}" />
+                                </p:column>
+
+                                <p:column headerText="Nombre">
+                                    <h:outputText value="#{documento.nombreDocumento}" />
+                                </p:column>
+
+                                 <p:column headerText="Tipo">
+                                     <h:outputText value="#{documento.tipoArchivo}" />
+                                </p:column>
+
+                                <p:column headerText="Cargado">
+                                    <h:outputText value="#{documento.cargado? "Si" : "No"}" />
+                                </p:column>
+                            </p:dataTable>
                             <p:commandButton value="Solicitar trámite" />
                         </p:tab>
                     </p:tabView>
