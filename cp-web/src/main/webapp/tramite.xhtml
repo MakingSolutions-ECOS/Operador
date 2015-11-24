@@ -51,10 +51,11 @@
                                 <p:outputLabel value="Trámite"></p:outputLabel>
                                 <p:selectOneMenu value="#{tramiteManagedBean.tramiteSeleccionado.idTramite}" id="listtramite">
                                     <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
+                                    <p:ajax event="change" update="listdocumentos" process="@this" listener="#{tramiteManagedBean.cargarDocumentos}"/>
                                 </p:selectOneMenu>
                             </h:panelGrid>
-                            <p:dataTable var="documento" value="#{tramiteManagedBean.documentos}">
-                                <p:column headerText="Id documento">
+                            <p:dataTable id="listdocumentos" var="documento" value="#{tramiteManagedBean.documentos}">
+                                <p:column headerText="Identificacion">
                                     <h:outputText value="#{documento.codigoDocumento}" />
                                 </p:column>
 
@@ -64,10 +65,6 @@
 
                                  <p:column headerText="Tipo">
                                      <h:outputText value="#{documento.tipoArchivo}" />
-                                </p:column>
-
-                                <p:column headerText="Cargado">
-                                    <h:outputText value="#{documento.cargado? "Si" : "No"}" />
                                 </p:column>
                             </p:dataTable>
                             <p:commandButton value="Solicitar trámite" />
