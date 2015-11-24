@@ -142,6 +142,7 @@ public interface TramiteService {
      * 
      * @param arg1
      * @param arg0
+     * @param arg2
      * @return
      *     returns com.making.cp.cliente.tramite.RespuestaService
      */
@@ -154,6 +155,8 @@ public interface TramiteService {
         @WebParam(name = "arg0", targetNamespace = "")
         Integer arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        Integer arg1);
+        Integer arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        Integer arg2);
 
 }
