@@ -102,5 +102,10 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
         TramiteHelper tramiteHelper = new TramiteHelper();
         return tramiteHelper.obtenerTramitesDefinicion();
     }
+    
+    @Override
+    public void consultarEstadosTramite(){
+        System.out.println("Consulto trámite");
+    }
 
 }

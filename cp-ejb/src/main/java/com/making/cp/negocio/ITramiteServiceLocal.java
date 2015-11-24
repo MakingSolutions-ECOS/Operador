@@ -19,5 +19,6 @@ public interface ITramiteServiceLocal {
     
      public List<Integer>   getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario, CiudadanoDto ciudadanoDto) ;
       public  List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception;
+      public void consultarEstadosTramite();
     
 }
