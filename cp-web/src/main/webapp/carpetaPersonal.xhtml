@@ -69,10 +69,10 @@
                     <p:panel header="Subir un archivo" styleClass="header" >
                         <p:outputLabel value="Seleccione un Archivo para subir" styleClass="label" />
                         <br/>
-                        <p:growl id="messages" showDetail="true" />
+                        <p:growl id="idDocuemto" showDetail="true" />
                         <p:fileUpload fileUploadListener="#{documentoManagedBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
                                       cancelLabel="Cancelar" uploadLabel="Subir" label="Examinar"
-                                      update="messages" sizeLimit="9000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                      update="idDocuemto" sizeLimit="9000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     </p:panel>
                 </p:dialog>
             </h:form>

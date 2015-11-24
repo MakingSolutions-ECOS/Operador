@@ -19,6 +19,10 @@ public class GrupoDocumentoDto {
     public GrupoDocumentoDto() {
     }
 
+    public GrupoDocumentoDto(Integer codigoGrupoDocumento) {
+        this.codigoGrupoDocumento = codigoGrupoDocumento;
+    }
+
     /**
      * Inicializa una nueva instancia de GrupoDocumentoDto con parámetros.
      *

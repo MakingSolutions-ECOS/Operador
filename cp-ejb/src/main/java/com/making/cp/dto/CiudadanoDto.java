@@ -26,6 +26,10 @@ public class CiudadanoDto {
     public CiudadanoDto() {
     }
 
+    public CiudadanoDto(Integer codigoCiudadano) {
+        this.codigoCiudadano = codigoCiudadano;
+    }
+
     public CiudadanoDto(Integer codigoCiudadano, Date fechaAfiliacion, String email, String aliasCiudadano, TipoCiudadanoDto codigoTipoCiudadano, CapacidadAlmacenamientoDto codigoCapacidadAlmacenamiento, List<DirectorioDto> directorioList, List<PublicidadDto> publicidadList) {
         this.codigoCiudadano = codigoCiudadano;
         this.fechaAfiliacion = fechaAfiliacion;
@@ -36,11 +40,12 @@ public class CiudadanoDto {
         this.directorioList = directorioList;
         this.publicidadList = publicidadList;
     }
-     public CiudadanoDto(Integer codigoCiudadano, Date fechaAfiliacion, String email, String aliasCiudadano) {
+
+    public CiudadanoDto(Integer codigoCiudadano, Date fechaAfiliacion, String email, String aliasCiudadano) {
         this.codigoCiudadano = codigoCiudadano;
         this.fechaAfiliacion = fechaAfiliacion;
         this.email = email;
-        this.aliasCiudadano = aliasCiudadano;      
+        this.aliasCiudadano = aliasCiudadano;
     }
 
     public Integer getCodigoCiudadano() {

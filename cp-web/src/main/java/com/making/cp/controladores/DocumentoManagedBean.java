@@ -1,13 +1,23 @@
 package com.making.cp.controladores;
 
+import com.making.cp.dto.CiudadanoDto;
+import com.making.cp.dto.DirectorioDocumentoDto;
 import com.making.cp.dto.DocumentoDto;
+import com.making.cp.dto.GrupoDocumentoDto;
 import com.making.cp.entidad.Documento;
 import com.making.cp.persistencia.DocumentoFacadeLocal;
 import com.making.cp.utilidad.Mapper;
 import entidades.util.JsfUtil;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +41,8 @@ public class DocumentoManagedBean implements Serializable {
     private DocumentoFacadeLocal ejbDocFacade;
 
     private DocumentoDto selected;
+
+    private DocumentoDto documentoASubir;
 
     private List<DocumentoDto> documentoDtos;
 
@@ -76,14 +88,55 @@ public class DocumentoManagedBean implements Serializable {
         return selected;
     }
 
-    public void handleFileUpload(FileUploadEvent event) {
+    public void handleFileUpload(FileUploadEvent event) throws IOException {
         FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, message);
-        String rootv = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
-        //TODO guardar
-        
+        String rutaServidor = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+
+        if (rutaServidor != null) {
+            rutaServidor = rutaServidor + "CarpetaCiudadana\\";
+            File directorio = new File(rutaServidor);
+            if (!directorio.isDirectory()) {
+                directorio.mkdir();
+            }
+
+            this.guardarArchivo(rutaServidor, event.getFile().getFileName(), event.getFile().getInputstream());
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+            Integer codCiudadano = (Integer) session.getAttribute("codCiudadano");
+            this.documentoASubir = new DocumentoDto();
+            this.documentoASubir.setCodigoDocumento(9);
+            this.documentoASubir.setCodigoDirectorioDocuento(new DirectorioDocumentoDto(1));
+            this.documentoASubir.setCodigoCiudadano(new CiudadanoDto(codCiudadano));
+            this.documentoASubir.setCodigoTipoMetadataCentralizador(1);
+            this.documentoASubir.setFechaCreacionDirectorio(new Date());
+            this.documentoASubir.setFechaModificacion(new Date());
+            this.documentoASubir.setNombreDocumento(event.getFile().getFileName());
+            this.documentoASubir.setRutaFisicaDirectorio(rutaServidor);
+            this.documentoASubir.setRutaLogicaDocumento(rutaServidor);
+            this.documentoASubir.setCodigoGrupoDocumento(new GrupoDocumentoDto(1));
+            try {
+                this.create();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DocumentoManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }
-    
+
+    public void guardarArchivo(String directorio, String fileName, InputStream in) throws FileNotFoundException, IOException {
+        OutputStream out = new FileOutputStream(new File(directorio + fileName));
+        int read = 0;
+        byte[] bytes = new byte[1024];
+        while ((read = in.read(bytes)) != -1) {
+            out.write(bytes, 0, read);
+        }
+        in.close();
+        out.flush();
+        out.close();
+        System.out.println("New file created!");
+    }
+
     public void findByCiudadano(Integer id) throws ClassNotFoundException {
         documentoDtos = this.getFacade().findByCiudadano(id);
         for (DocumentoDto documentoDto : documentoDtos) {
@@ -91,14 +144,14 @@ public class DocumentoManagedBean implements Serializable {
         }
     }
 
-    public void create() {
-        persist(JsfUtil.PersistAction.CREATE, "Documento creado exitosamente");
-        if (!JsfUtil.isValidationFailed()) {
-        }
+    public void create() throws ClassNotFoundException {
+        Documento doc = Mapper.copyCompleto(documentoASubir, Documento.class, false);
+        getFacade().create(doc);
     }
 
     public void update() {
         persist(JsfUtil.PersistAction.UPDATE, "Documento modificado exitosamente");
+
     }
 
     public void destroy() {
@@ -112,11 +165,13 @@ public class DocumentoManagedBean implements Serializable {
         if (selected != null) {
             setEmbeddableKeys();
             try {
+
                 if (persistAction != JsfUtil.PersistAction.DELETE) {
                     getFacade().edit(Mapper.copyCompleto(selected, Documento.class, false));
                 } else {
                     getFacade().remove(Mapper.copyCompleto(selected, Documento.class, false));
                 }
+
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {
                 String msg = "";

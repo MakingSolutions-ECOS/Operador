@@ -19,6 +19,10 @@ public class DirectorioDocumentoDto {
     public DirectorioDocumentoDto() {
     }
 
+    public DirectorioDocumentoDto(Integer codigoDirectorioDocumento) {
+        this.codigoDirectorioDocumento = codigoDirectorioDocumento;
+    }
+
     /**
      * Inicializa una nueva instancia de DirectorioDocumentoDto con parámetros.
      *
