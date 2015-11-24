@@ -5,6 +5,7 @@
  */
 package com.making.cp.quartz;
 
+import com.making.cp.negocio.Helper.ConstantesOperador;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.quartz.exception.QuartzJEEException;
 import java.util.Date;
@@ -30,14 +31,19 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     private ITramiteServiceLocal iTramiteServiceLocal;
 
   
+    /**
+     * Método ejecutado desde la tarea de quartz, para verificar los trámites que cuentan con el estado FINALIZADO
+     * en la plataforma centralizadora por operador, los trámites son actualizados en su estado a NOTIFICADO, luego de 
+     * invocar el servicio de notificaciones y descargar el documento del repo alojandolo en la carpeta del ciudadano.
+     * @param parametrosJob 
+     */
     @Override
     public void programarLeerEstadosTramite(HashMap parametrosJob) {
 
         try {
             System.out.print("LANZANDO LECTURA DE ESTADOS DE TRAM");
-            //Ejecuta
-            iTramiteServiceLocal.consultarEstadosTramite();
-
+            //Ejecuta la consulta de estados de trámite
+            iTramiteServiceLocal.consultarEstadosTramite(ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
         } catch (Exception e) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, "ERROR AL PROCESAR ESTADOS DE TRAM. " + e.getMessage(), e);
         }
