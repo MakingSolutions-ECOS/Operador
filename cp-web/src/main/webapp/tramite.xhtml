@@ -8,7 +8,7 @@
     <ui:composition template="panelControl.xhtml">
         <ui:define name="body">
             <h:form id="formPanel">
-                <p:growl id="messages" showDetail="false" showSummary="false"/>
+                <p:growl id="messages" showDetail="true" showSummary="true" sticky="true"/>
                 <p:panel header="Trámite" styleClass="header">
                     <p:toolbar>
                         <f:facet name="left">
@@ -44,30 +44,34 @@
                             <h:panelGrid  columns="2">
                                 <p:outputLabel  value="Entidad"></p:outputLabel>
                                 <p:selectOneMenu  style="font-size: 12px"   value="#{tramiteManagedBean.emisorSeleccionado.codigoEntidadEmisora}">
-                                    <f:selectItem itemLabel="Selecione una" itemValue=""     />
+                                    <f:selectItem itemLabel="Selecione una entidad" itemValue=""     />
                                     <f:selectItems  value="#{tramiteManagedBean.listaEmisores}" />
                                     <p:ajax event="change" update="listtramite" process="@this" listener="#{tramiteManagedBean.cargarTramites}"/>
                                 </p:selectOneMenu>
                                 <p:outputLabel value="Trámite"></p:outputLabel>
                                 <p:selectOneMenu value="#{tramiteManagedBean.tramiteSeleccionado.idTramite}" id="listtramite">
+                                    <f:selectItem itemLabel="Selecione un tramite" itemValue=""></f:selectItem>
                                     <f:selectItems  value="#{tramiteManagedBean.listaTramiteDefinicion}" />
-                                    <p:ajax event="change" update="listdocumentos" process="@this" listener="#{tramiteManagedBean.cargarDocumentos}"/>
+                                    <p:ajax event="change" update="listadocumentos, :formPanel:messages" process="@this" listener="#{tramiteManagedBean.cargarDocumentos}"/>
                                 </p:selectOneMenu>
                             </h:panelGrid>
-                            <p:dataTable id="listdocumentos" var="documento" value="#{tramiteManagedBean.documentos}">
+                            <h:panelGroup>
+                            <p:dataTable id="listadocumentos" var="documento" value="#{tramiteManagedBean.documentos}">
                                 <p:column headerText="Identificacion">
-                                    <h:outputText value="#{documento.codigoDocumento}" />
+                                    <h:outputText style="#{documento.estiloFaltante}" value="#{documento.codigoDocumento}" />
                                 </p:column>
 
                                 <p:column headerText="Nombre">
-                                    <h:outputText value="#{documento.nombreDocumento}" />
+                                    <h:outputText  style="#{documento.estiloFaltante}"  value="#{documento.nombreDocumento}" />
                                 </p:column>
 
                                  <p:column headerText="Tipo">
-                                     <h:outputText value="#{documento.tipoArchivo}" />
+                                     <h:outputText style="#{documento.estiloFaltante}"  value="#{documento.tipoArchivo}" />
                                 </p:column>
-                            </p:dataTable>
-                            <p:commandButton value="Solicitar trámite" />
+                                
+                            </p:dataTable>    
+                            </h:panelGroup>
+                                                        <p:commandButton value="Solicitar trámite" />
                         </p:tab>
                     </p:tabView>
                 </p:panel> 

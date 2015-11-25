@@ -12,6 +12,8 @@ import java.util.Date;
  * @author Camilo Marroquin
  */
 public class DocumentoRequeridoDto extends DocumentoDto{
+    
+    
 
     public DocumentoRequeridoDto(boolean Cargado) {
         this.Cargado = Cargado;

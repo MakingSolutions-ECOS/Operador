@@ -25,8 +25,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
@@ -205,8 +207,10 @@ public class TramiteManagedBean implements Serializable {
         } catch (Exception ex) {
         }
     }
-    
+
     public void cargarDocumentos(AjaxBehaviorEvent e) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Advertencia", "Verfique la documentación faltante para continuar el tramite."));
         String codigoTramite = e.getSource().toString();
         documentos = new ArrayList<>();
         try {
@@ -215,12 +219,12 @@ public class TramiteManagedBean implements Serializable {
                     for (TramiteDefinicionDto tramiteDefinicionDto : emisor.getTramiteDefinicionList()) {
                         if (tramiteDefinicionDto.getCodigoTramiteDefinicion() == tramiteSeleccionado.getIdTramite()) {
                             for (DocumentoRequeridoTramiteDto documento : tramiteDefinicionDto.getDocumentoRequeridoTramiteList()) {
-                                
+
                                 /*Validacion de los documentos faltantes*/
                                 //TramiteServiceBean.getDocumentosFaltantes()
                                 
-                                documentos.add(new DocumentoRequeridoDto(true, documento.getCodigoDocumentoRequerido(), 
-                                        documento.getCodigoMetadataTipoDocumento().getNombreMetadataTipoDocumento(), new Date() ));
+                                documentos.add(new DocumentoRequeridoDto(true, documento.getCodigoDocumentoRequerido(),
+                                        documento.getCodigoMetadataTipoDocumento().getNombreMetadataTipoDocumento(), new Date()));
                             }
                         }
                     }

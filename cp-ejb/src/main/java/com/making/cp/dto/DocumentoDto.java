@@ -21,6 +21,7 @@ public class DocumentoDto {
     private CiudadanoDto codigoCiudadano;
     private String tipoArchivo;
     private String icono;
+    private String estiloFaltante;
 
     /**
      * Inicializa una nueva instancia de DocumentoDto.
@@ -154,5 +155,15 @@ public class DocumentoDto {
     public void setIcono(String icono) {
         this.icono = icono;
     }
+
+    public String getEstiloFaltante() {
+        return estiloFaltante;
+    }
+
+    public void setEstiloFaltante(String estiloFaltante) {
+        this.estiloFaltante = estiloFaltante;
+    }
+    
+    
 
 }
