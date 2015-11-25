@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "MetaDataService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/MetaDataService?wsdl")
+@WebServiceClient(name = "MetaDataService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "http://localhost:8080/projectCentralizador-web/MetaDataService?wsdl")
 public class MetaDataService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class MetaDataService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/MetaDataService?wsdl");
+            url = new URL("http://localhost:8080/projectCentralizador-web/MetaDataService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

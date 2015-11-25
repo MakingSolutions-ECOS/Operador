@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "EmisorService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/EmisorService?wsdl")
+@WebServiceClient(name = "EmisorService", targetNamespace = "http://services.ecos.edu.uniandes.co/", wsdlLocation = "http://localhost:8080/projectCentralizador-web/EmisorService?wsdl")
 public class EmisorService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class EmisorService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://MacBook-Pro-de-Camilo.local:8080/projectCentralizador-web/EmisorService?wsdl");
+            url = new URL("http://localhost:8080/projectCentralizador-web/EmisorService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -1,5 +1,8 @@
 package com.making.cp.controladores;
 
+import com.making.cp.cliente.metadata.MetaDataService;
+import com.making.cp.cliente.metadata.MetaDataService_Service;
+import com.making.cp.cliente.metadata.MetadataTipoDocumentoDto;
 import com.making.cp.dto.CiudadanoDto;
 import com.making.cp.dto.DirectorioDocumentoDto;
 import com.making.cp.dto.DocumentoDto;
@@ -9,6 +12,7 @@ import com.making.cp.persistencia.DocumentoFacadeLocal;
 import com.making.cp.utilidad.Mapper;
 import entidades.util.JsfUtil;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,6 +30,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.primefaces.event.FileUploadEvent;
 
@@ -45,6 +50,11 @@ public class DocumentoManagedBean implements Serializable {
     private DocumentoDto documentoASubir;
 
     private List<DocumentoDto> documentoDtos;
+    private List<MetadataTipoDocumentoDto> tipoDocumentoDtos;
+    private MetadataTipoDocumentoDto tipoDocumentoDto;
+
+    private MetaDataService_Service service;
+    private MetaDataService metaDataService;
 
     /**
      * Creates a new instance of DocumentoManagedBean
@@ -60,8 +70,12 @@ public class DocumentoManagedBean implements Serializable {
         try {
             findByCiudadano(codCiudadano);
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
+        tipoDocumentoDto = new MetadataTipoDocumentoDto();
+        service = new MetaDataService_Service();
+        metaDataService = service.getMetaDataServicePort();
+        tipoDocumentoDtos = metaDataService.obtenerMetadataTiposDocumentos().getTiposDocumentoMetaData();
     }
 
     public DocumentoDto getSelected() {
@@ -88,6 +102,53 @@ public class DocumentoManagedBean implements Serializable {
         return selected;
     }
 
+    public void eliminarDocumento(DocumentoDto doucmentoDto) throws ClassNotFoundException {
+        File archivo = new File(doucmentoDto.getRutaFisicaDirectorio()+doucmentoDto.getNombreDocumento());
+        boolean delete = archivo.delete();
+        if (delete) {
+            getFacade().remove(Mapper.copyCompleto(doucmentoDto, Documento.class, false));
+            this.init();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                        FacesMessage.SEVERITY_INFO, "INFO:", "Se elimino el documento exitosamente."));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                        FacesMessage.SEVERITY_ERROR, "INFO:", "No se pudo eliminar el documento."));
+            System.out.println("No se pudo Eliminar el archivo");
+        }
+
+    }
+
+    public void descargarDocumento(DocumentoDto doucmentoDto) throws FileNotFoundException {
+        File ficheroPDF = new File(doucmentoDto.getRutaFisicaDirectorio()+doucmentoDto.getNombreDocumento());
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        FileInputStream fis = new FileInputStream(ficheroPDF);
+        byte[] bytes = new byte[1000];
+        if (!ctx.getResponseComplete()) {
+            try {
+                String fileName2 = ficheroPDF.getName();
+                String contentType = "text/xml";
+                HttpServletResponse response = (HttpServletResponse) ctx.getExternalContext().getResponse();
+                response.setContentType(contentType);
+                response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName2 + "\"");
+                OutputStream out = response.getOutputStream();
+                int read2 = fis.read(bytes);
+                while (read2 >= 0) {
+                    if (read2 > 0) {
+                        out.write(bytes, 0, read2);
+                    }
+                    read2 = fis.read(bytes);
+                }
+
+                out.flush();
+                out.close();
+                fis.close();
+                ctx.responseComplete();
+            } catch (IOException ex) {
+                Logger.getLogger(DocumentoManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public void handleFileUpload(FileUploadEvent event) throws IOException {
         FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, message);
@@ -108,7 +169,7 @@ public class DocumentoManagedBean implements Serializable {
             this.documentoASubir.setCodigoDocumento(9);
             this.documentoASubir.setCodigoDirectorioDocuento(new DirectorioDocumentoDto(1));
             this.documentoASubir.setCodigoCiudadano(new CiudadanoDto(codCiudadano));
-            this.documentoASubir.setCodigoTipoMetadataCentralizador(1);
+            this.documentoASubir.setCodigoTipoMetadataCentralizador(tipoDocumentoDto.getCodigoMetadataTipoDocumento());
             this.documentoASubir.setFechaCreacionDirectorio(new Date());
             this.documentoASubir.setFechaModificacion(new Date());
             this.documentoASubir.setNombreDocumento(event.getFile().getFileName());
@@ -117,6 +178,9 @@ public class DocumentoManagedBean implements Serializable {
             this.documentoASubir.setCodigoGrupoDocumento(new GrupoDocumentoDto(1));
             try {
                 this.create();
+                this.init();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                        FacesMessage.SEVERITY_INFO, "INFO:", "Se guardo el documento exitosamente."));
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(DocumentoManagedBean.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -205,6 +269,30 @@ public class DocumentoManagedBean implements Serializable {
 
     public void setDocumentoDtos(List<DocumentoDto> documentoDtos) {
         this.documentoDtos = documentoDtos;
+    }
+
+    public DocumentoDto getDocumentoASubir() {
+        return documentoASubir;
+    }
+
+    public void setDocumentoASubir(DocumentoDto documentoASubir) {
+        this.documentoASubir = documentoASubir;
+    }
+
+    public List<MetadataTipoDocumentoDto> getTipoDocumentoDtos() {
+        return tipoDocumentoDtos;
+    }
+
+    public void setTipoDocumentoDtos(List<MetadataTipoDocumentoDto> tipoDocumentoDtos) {
+        this.tipoDocumentoDtos = tipoDocumentoDtos;
+    }
+
+    public MetadataTipoDocumentoDto getTipoDocumentoDto() {
+        return tipoDocumentoDto;
+    }
+
+    public void setTipoDocumentoDto(MetadataTipoDocumentoDto tipoDocumentoDto) {
+        this.tipoDocumentoDto = tipoDocumentoDto;
     }
 
 }

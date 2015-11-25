@@ -7,8 +7,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="panelControl.xhtml">
         <ui:define name="body">
-            <h:form>
-                <p:growl id="messages" showDetail="false" showSummary="false"/>
+            <h:form id="formCP">
+                <p:growl id="messages" showDetail="true" showSummary="true"/>
                 <p:panel header="Mi Carpeta" styleClass="header">
                     <p:toolbar>
                         <f:facet name="left">
@@ -26,7 +26,8 @@
                             </p:menuButton>
                         </f:facet>
                     </p:toolbar>
-                    <p:dataTable id="tablaArchivos" value="#{documentoManagedBean.documentoDtos}" var="archivo" selection="#{documentoManagedBean.selected}" rowKey="#{archivo.codigoDocumento}"> 
+                    <p:dataTable id="tablaArchivos" value="#{documentoManagedBean.documentoDtos}" var="archivo" selection="#{documentoManagedBean.selected}" rowKey="#{archivo.codigoDocumento}"
+                                 selectionMode="single"> 
                         <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                         <p:column style="width:16px;text-align:center">
                             <h:outputText  styleClass=" ui-corner-all ui-icon #{archivo.icono}" />                            
@@ -45,7 +46,10 @@
                         <p:column headerText="Acciones" style="width:80px;text-align:center">
                             <p:menuButton value="Acción"  style="width:80px;text-align:center">
                                 <p:menuitem styleClass="item-menu" value="Mover"/>
-                                <p:menuitem styleClass="item-menu" value="Eliminar"/>
+                                <p:menuitem styleClass="item-menu" value="Eliminar" process="@this" update="@form"
+                                            actionListener="#{documentoManagedBean.eliminarDocumento(archivo)}"/>
+                                <p:menuitem styleClass="item-menu" value="Descargar" ajax="false"
+                                            action="#{documentoManagedBean.descargarDocumento(archivo)}"/>
                                 <p:menuitem styleClass="item-menu" value="Compartir"/>
                             </p:menuButton>
                         </p:column>
@@ -66,13 +70,22 @@
                 </p:dialog>
 
                 <p:dialog widgetVar="idAgregarDlg" resizable="false" draggable="false" closeOnEscape="true">
-                    <p:panel header="Subir un archivo" styleClass="header" >
+                    <p:panel header="Subir un archivo" styleClass="header" id="panelSubArchivo">
+                        <p:outputLabel value="Seleccione tipoDocumento" styleClass="label" />
+                        <br/>
+                        <p:selectOneMenu value="#{documentoManagedBean.tipoDocumentoDto.codigoMetadataTipoDocumento}">
+                            <f:selectItem itemLabel="Seleccione" itemValue=""/>
+                            <f:selectItems value="#{documentoManagedBean.tipoDocumentoDtos}" var="tipo"
+                                           itemLabel="#{tipo.nombreMetadataTipoDocumento}" itemValue="#{tipo.codigoMetadataTipoDocumento}"/>
+                            <p:ajax event="change" process="@this"/>
+                        </p:selectOneMenu>
+                        <br/>
                         <p:outputLabel value="Seleccione un Archivo para subir" styleClass="label" />
                         <br/>
                         <p:growl id="idDocuemto" showDetail="true" />
                         <p:fileUpload fileUploadListener="#{documentoManagedBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                      cancelLabel="Cancelar" uploadLabel="Subir" label="Examinar"
-                                      update="idDocuemto" sizeLimit="9000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                      cancelLabel="Cancelar" uploadLabel="Subir" label="Examinar" process="panelSubArchivo"
+                                      update="@form" sizeLimit="9000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     </p:panel>
                 </p:dialog>
             </h:form>
