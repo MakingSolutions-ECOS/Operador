@@ -95,13 +95,15 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
         return tramiteHelper.obtenerTramitesDefinicion();
     }
     
-    /**
+    /**Método que invoca el servicio Trámite Service para obtener los estados 
+     * y actualizar el estado de los trámites
+     * Consume el servicio de notificación para informar al ciudadano sobre el estado del trámite
      * 
      * @param codigoCiudadano
      * @param estado 
      */
     @Override
-    public void consultarEstadosTramite(Integer codigoCiudadano, Integer estado){
+    public void consultarEstadosTramite( Integer estado){
         System.out.println("Inicia consulta de  trámite");
         TramiteHelper tramiteHelper = new TramiteHelper();
         NotificacionHelper notificacionHelper = new NotificacionHelper();
@@ -119,16 +121,16 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
                 //alojarlo en la carpeta ciudadano.
                 System.out.println("Tramite en estado FINALIZADO: " + tramiteDto.getCodigoTramite() + " - Entidad Emisora: " + tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora());
                 tramiteHelper.cambiarEstadoTramiteProceso(tramiteDto.getCodigoTramite(),tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getCodigoEntidadEmisora(),ConstantesOperador.ESTADO_TRAMITE_NOTIFICADO);
-            } catch (Exception ex) {
-                Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        try {
+             try {
             //Invocación de servicio de notificación
             //Notifica al usuario la respuesta de su trámite
-           notificacionHelper.notificarRespuestaTramite(codigoCiudadano);
+           notificacionHelper.notificarRespuestaTramite(tramiteDto.getCodigoCiudadano().getCodigoCiudadano());
         } catch (Exception ex) {
             Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+            } catch (Exception ex) {
+                Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }       
     }
 }
