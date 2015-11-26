@@ -8,6 +8,7 @@ import com.making.cp.dto.DirectorioDocumentoDto;
 import com.making.cp.dto.DocumentoDto;
 import com.making.cp.dto.GrupoDocumentoDto;
 import com.making.cp.entidad.Documento;
+import com.making.cp.negocio.CiudadanoSessionBeanLocal;
 import com.making.cp.persistencia.DocumentoFacadeLocal;
 import com.making.cp.utilidad.Mapper;
 import entidades.util.JsfUtil;
@@ -55,6 +56,8 @@ public class DocumentoManagedBean implements Serializable {
 
     private MetaDataService_Service service;
     private MetaDataService metaDataService;
+    @EJB
+    private CiudadanoSessionBeanLocal ciudadanoSessionBeanLocal;
 
     /**
      * Creates a new instance of DocumentoManagedBean
@@ -76,6 +79,7 @@ public class DocumentoManagedBean implements Serializable {
         service = new MetaDataService_Service();
         metaDataService = service.getMetaDataServicePort();
         tipoDocumentoDtos = metaDataService.obtenerMetadataTiposDocumentos().getTiposDocumentoMetaData();
+        ciudadanoSessionBeanLocal.setCodigoCiudadano(codCiudadano);
     }
 
     public DocumentoDto getSelected() {
