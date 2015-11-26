@@ -22,7 +22,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Stateless(name = "QuartzJEESessionBean", mappedName = "ejb/QuartzJEESessionBean")
 public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {

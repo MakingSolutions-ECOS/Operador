@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @Named(value = "loginManagedBean")
 @SessionScoped

@@ -9,7 +9,7 @@ import javax.ejb.Stateful;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Stateful (mappedName = "CiudadanoSessionBean")
 public class CiudadanoSessionBean implements CiudadanoSessionBeanLocal {

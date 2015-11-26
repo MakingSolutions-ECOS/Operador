@@ -17,7 +17,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class QuartzJEEContextListener implements ServletContextListener {
 

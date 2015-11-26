@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 class GrupoDto {
 

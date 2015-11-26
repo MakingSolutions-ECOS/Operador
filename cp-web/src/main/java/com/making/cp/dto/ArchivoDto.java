@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 public class ArchivoDto {
 

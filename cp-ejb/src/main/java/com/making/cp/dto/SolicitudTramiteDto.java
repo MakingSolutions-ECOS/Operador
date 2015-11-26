@@ -7,7 +7,7 @@ package com.making.cp.dto;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class SolicitudTramiteDto {
     private CiudadanoDto ciudadano;

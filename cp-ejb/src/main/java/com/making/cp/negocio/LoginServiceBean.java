@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Stateless(mappedName = "LoginServiceBean")
 public class LoginServiceBean implements LoginServiceBeanLocal {

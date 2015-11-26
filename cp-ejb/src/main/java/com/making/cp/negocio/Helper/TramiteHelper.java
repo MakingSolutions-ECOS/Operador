@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class TramiteHelper {
     public List<TramiteDefinicionDto> obtenerTramitesDefinicion()throws Exception{

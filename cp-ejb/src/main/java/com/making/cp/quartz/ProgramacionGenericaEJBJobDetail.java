@@ -17,7 +17,7 @@ import org.quartz.TriggerBuilder;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public  class ProgramacionGenericaEJBJobDetail extends QuartzJEEJobDetail {
 

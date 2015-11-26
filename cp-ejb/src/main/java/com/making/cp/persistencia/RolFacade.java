@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @Stateless(mappedName = "RolFacade")
 public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {

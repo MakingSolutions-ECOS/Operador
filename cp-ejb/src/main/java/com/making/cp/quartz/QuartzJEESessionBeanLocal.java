@@ -12,7 +12,7 @@ import org.quartz.Scheduler;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Local
 public interface QuartzJEESessionBeanLocal {

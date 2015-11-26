@@ -20,7 +20,7 @@ import org.quartz.JobExecutionException;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class EJB3InvokerJob implements Job {
 

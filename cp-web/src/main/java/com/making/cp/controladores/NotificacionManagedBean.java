@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @Named(value = "notificacionManagedBean")
 @SessionScoped

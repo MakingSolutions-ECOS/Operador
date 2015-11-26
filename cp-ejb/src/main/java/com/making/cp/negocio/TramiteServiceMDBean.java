@@ -12,7 +12,7 @@ import javax.jms.MessageListener;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 
 @MessageDriven(mappedName = "jms/ejecucionTramiteQueue", activationConfig = {

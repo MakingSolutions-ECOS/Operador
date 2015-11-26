@@ -35,7 +35,7 @@ import org.primefaces.component.datatable.DataTable;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @ViewScoped
 @ManagedBean(name = "tramiteManagedBean")

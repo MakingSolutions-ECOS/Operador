@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Entity
 @Table(name = "RECURSO_PERMITIDO")

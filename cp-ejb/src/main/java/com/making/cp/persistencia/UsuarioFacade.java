@@ -15,7 +15,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @Stateless(mappedName = "UsuarioFacade")
 public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFacadeLocal {

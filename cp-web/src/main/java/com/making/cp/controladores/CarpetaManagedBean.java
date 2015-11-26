@@ -20,7 +20,7 @@ import javax.faces.application.FacesMessage;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @ManagedBean(name = "carpetaManagedBean")
 @Dependent

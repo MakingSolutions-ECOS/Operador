@@ -9,7 +9,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 @Local
 public interface CiudadanoSessionBeanLocal {

@@ -17,7 +17,7 @@ import org.quartz.Trigger;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public abstract class QuartzJEEJobDetail implements Serializable
 {

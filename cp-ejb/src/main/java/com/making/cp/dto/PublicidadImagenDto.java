@@ -7,7 +7,7 @@ package com.making.cp.dto;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 class PublicidadImagenDto {
 

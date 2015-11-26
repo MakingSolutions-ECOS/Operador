@@ -7,7 +7,7 @@ package com.making.cp.quartz.exception;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class QuartzJEEException extends Exception{
 

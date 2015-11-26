@@ -7,7 +7,7 @@ package com.making.cp.negocio.Helper;
 
 /**
  *
- * @author Your Name
+ * @author Sergio Forero
  */
 public class ConstantesOperador {
     public static final Integer ESTADO_TRAMITE_FINALIZADO=3;

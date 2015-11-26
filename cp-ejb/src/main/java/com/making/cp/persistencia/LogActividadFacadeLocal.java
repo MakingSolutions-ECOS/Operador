@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Usuario
+ * @author Sergio Forero
  */
 @Local
 public interface LogActividadFacadeLocal {
