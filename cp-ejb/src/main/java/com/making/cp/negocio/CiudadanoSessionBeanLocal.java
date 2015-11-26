@@ -14,4 +14,7 @@ import javax.ejb.Local;
 @Local
 public interface CiudadanoSessionBeanLocal {
     
+    public Integer getCodigoCiudadano();
+
+    public void setCodigoCiudadano(Integer codigoCiudadano) ;
 }
