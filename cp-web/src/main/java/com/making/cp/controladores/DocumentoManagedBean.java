@@ -56,7 +56,7 @@ public class DocumentoManagedBean implements Serializable {
 
     private MetaDataService_Service service;
     private MetaDataService metaDataService;
-    @EJB
+    @EJB(beanName = "CiudadanoSessionBean")
     private CiudadanoSessionBeanLocal ciudadanoSessionBeanLocal;
 
     /**
@@ -70,6 +70,7 @@ public class DocumentoManagedBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
         Integer codCiudadano = (Integer) session.getAttribute("codCiudadano");
+        System.out.println("INFO: Se envía datos de ciudadano a sesión." + new Date());
         try {
             findByCiudadano(codCiudadano);
         } catch (Exception e) {
