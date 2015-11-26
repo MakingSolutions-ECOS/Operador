@@ -47,7 +47,7 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     public void programarLeerEstadosTramite(HashMap parametrosJob) {
         Calendar calendario = Calendar.getInstance();
         try {
-            System.out.println("INFO: Se ha lanzado la tarea de consulta de estados de trámite finalizados. :" + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
+            System.out.println("INFO: Se ha lanzado la tarea de consulta de estados de trámite finalizados. :" + calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE) + ":" + calendario.get(Calendar.SECOND));
             //Ejecuta la consulta de estados de trámite            
             iTramiteServiceLocal.consultarEstadosTramite(ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
         } catch (Exception e) {
@@ -111,7 +111,7 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
             jobDetail.setJobDetail("LeerEstadosTramiteInvokerEJBJob", Scheduler.DEFAULT_GROUP, EJB3InvokerJob.class, "ejb/QuartzJEESessionBean", "programarLeerEstadosTramite",
                     "com.making.cp.quartz.QuartzJEESessionBean", parametrosTrigger, parametrosJob);
             // Se programa el Job
-            System.out.println("INFO: Se ha programado la tarea de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
+            System.out.println("INFO: Se ha programado la tarea de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE) + ":" + calendario.get(Calendar.SECOND));
             this.scheduleEJBJob(jobDetail);
         } catch (QuartzJEEException ex) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,7 +123,7 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
         try {
 
             Calendar calendario = Calendar.getInstance();
-            System.out.println("INFO: Inicio de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
+            System.out.println("INFO: Inicio de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE) + ":" + calendario.get(Calendar.SECOND));
             scheduler = schedulerCreado;
 
             // Se declara el scheduler
