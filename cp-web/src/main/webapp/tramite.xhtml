@@ -64,9 +64,9 @@
                                 <p:column headerText="Nombre">
                                     <h:outputText  style="#{documento.estiloFaltante}"  value="#{documento.nombreDocumento}" />
                                 </p:column>
-
-                                 <p:column headerText="Tipo">
-                                     <h:outputText style="#{documento.estiloFaltante}"  value="#{documento.tipoArchivo}" />
+                                
+                                <p:column headerText="Descripción">
+                                    <h:outputText  style="#{documento.estiloFaltante}"  value="#{documento.metadataTipoDocumentoDto.descripcionMetadataTipoDocumento}" />
                                 </p:column>
                                 
                             </p:dataTable>    

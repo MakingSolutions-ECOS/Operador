@@ -8,15 +8,19 @@ package com.making.cp.controladores;
 import com.making.cp.cliente.emisor.DocumentoRequeridoTramiteDto;
 import com.making.cp.cliente.emisor.EmisorDto;
 import com.making.cp.cliente.emisor.TramiteDefinicionDto;
+import com.making.cp.cliente.notificacion.CiudadanoDto;
 
 import com.making.cp.dto.ArchivoDto;
 import com.making.cp.dto.DocumentoDto;
 import com.making.cp.dto.DocumentoRequeridoDto;
 import com.making.cp.dto.TramiteDto;
 import com.making.cp.dto.UsuarioDto;
+import com.making.cp.negocio.CiudadanoServiceBean;
+import com.making.cp.negocio.ICiudadanoServiceBean;
 import com.making.cp.negocio.IEmisorServiceLocal;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.negocio.LoginServiceBeanLocal;
+import com.making.cp.utilidad.Mapper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +36,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.component.datatable.DataTable;
 
@@ -47,6 +52,8 @@ public class TramiteManagedBean implements Serializable {
     private IEmisorServiceLocal iEmisorServiceBean;
     @EJB(beanName = "TramiteServiceBean")
     private ITramiteServiceLocal iTramiteServiceLocal;
+    @EJB(beanName = "CiudadanoServiceBean")
+    private ICiudadanoServiceBean iCiudadanoServiceBean;
 
     private List<EmisorDto> emisores;
     private EmisorDto emisorSeleccionado;
@@ -73,6 +80,7 @@ public class TramiteManagedBean implements Serializable {
 
     @EJB(beanName = "LoginServiceBean")
     private LoginServiceBeanLocal loginServiceBeanLocal;
+    
 
     public TramiteManagedBean() {
         emisores = new ArrayList<>();
@@ -221,16 +229,33 @@ public class TramiteManagedBean implements Serializable {
                             for (DocumentoRequeridoTramiteDto documento : tramiteDefinicionDto.getDocumentoRequeridoTramiteList()) {
 
                                 /*Validacion de los documentos faltantes*/
-                                //TramiteServiceBean.getDocumentosFaltantes()
+                                List<Integer> listaTramites = new ArrayList<>();
+                                for (DocumentoRequeridoDto documentoRequeridoDto : documentos) {
+                                    listaTramites.add(documentoRequeridoDto.getCodigoDocumento());
+                                }
+                                
+                                /*Obtener el iddeusuario en sesion*/
+                                
+                                HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+                                Integer codCiudadano = (Integer) session.getAttribute("codCiudadano");
+                                
+                                com.making.co.cliente.ciudadano.CiudadanoDto  ciudadanoDto = iCiudadanoServiceBean.obtenerCiudadanoPorCodigo("123456789", codCiudadano);
+                                
+                                com.making.cp.dto.CiudadanoDto ciudadano = Mapper.copyCompleto(ciudadanoDto, com.making.cp.dto.CiudadanoDto.class, false);
+                                List<Integer>  idsFaltantes = iTramiteServiceLocal.getDocumentosFaltantes(listaTramites, codCiudadano,ciudadano);
+                                
+                                
+                                
                                 
                                 documentos.add(new DocumentoRequeridoDto(true, documento.getCodigoDocumentoRequerido(),
-                                        documento.getCodigoMetadataTipoDocumento().getNombreMetadataTipoDocumento(), new Date()));
+                                       documento.getCodigoMetadataTipoDocumento().getDescripcionMetadataTipoDocumento() , new Date()));
                             }
                         }
                     }
                 }
             }
         } catch (Exception ex) {
+            int i =0;
         }
     }
 

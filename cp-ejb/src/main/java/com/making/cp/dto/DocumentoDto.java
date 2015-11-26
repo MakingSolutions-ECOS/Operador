@@ -22,6 +22,9 @@ public class DocumentoDto {
     private String tipoArchivo;
     private String icono;
     private String estiloFaltante;
+    private MetadataTipoDocumentoDto metadataTipoDocumentoDto;
+
+    
 
     /**
      * Inicializa una nueva instancia de DocumentoDto.
@@ -164,6 +167,12 @@ public class DocumentoDto {
         this.estiloFaltante = estiloFaltante;
     }
     
-    
+    public MetadataTipoDocumentoDto getMetadataTipoDocumentoDto() {
+        return metadataTipoDocumentoDto;
+    }
+
+    public void setMetadataTipoDocumentoDto(MetadataTipoDocumentoDto metadataTipoDocumentoDto) {
+        this.metadataTipoDocumentoDto = metadataTipoDocumentoDto;
+    }
 
 }
