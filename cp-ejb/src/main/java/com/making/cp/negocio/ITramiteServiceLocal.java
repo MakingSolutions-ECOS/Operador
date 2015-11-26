@@ -21,6 +21,6 @@ public interface ITramiteServiceLocal {
 
     public List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception;
 
-    public void consultarEstadosTramite(Integer codigoCiudadano,Integer estado);
+    public void consultarEstadosTramite(Integer estado);
 
 }
