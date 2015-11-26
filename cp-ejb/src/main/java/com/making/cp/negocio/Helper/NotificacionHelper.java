@@ -5,6 +5,7 @@
  */
 package com.making.cp.negocio.Helper;
 
+import com.making.cp.cliente.notificacion.NotificacionDto;
 import com.making.cp.cliente.notificacion.NotificacionService;
 import com.making.cp.cliente.notificacion.NotificacionService_Service;
 import com.making.cp.cliente.notificacion.RespuestaService;
@@ -16,14 +17,13 @@ import com.making.cp.cliente.notificacion.RespuestaService;
 public class NotificacionHelper {
     
     /**
-     * Obtiene los trámites por estado. Este método es  llamado luego de la ejecución de la tarea programada
-     * encargada de verificar qué tramites cuentan con el estado FINALIZADO.     * 
-     * @param estado
+     * Notifica sobre trámite a ciudadano    * 
+     * @param notificacionDto
      * @return
      * @throws Exception 
      */
     
-     public RespuestaService notificarRespuestaTramite(Integer codigoCiudadano)throws Exception{
+     public RespuestaService notificarRespuestaTramite(NotificacionDto notificacionDto)throws Exception{
         RespuestaService respuestaService = null;
 
         try {
@@ -31,7 +31,7 @@ public class NotificacionHelper {
 
             NotificacionService port = service.getNotificacionServicePort();
 
-            respuestaService= port.obtenerNotificacionCiudadano(codigoCiudadano);
+            respuestaService= port.asignarNotificacion(notificacionDto);
         } catch (Exception e) {           
             throw e;
         }
