@@ -9,6 +9,7 @@ import com.making.cp.negocio.CiudadanoSessionBeanLocal;
 import com.making.cp.negocio.Helper.ConstantesOperador;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.quartz.exception.QuartzJEEException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -29,8 +30,9 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     private static Scheduler scheduler;
     @EJB(beanName = "TramiteServiceBean")
     private ITramiteServiceLocal iTramiteServiceLocal;
-    @EJB
+    @EJB(beanName = "CiudadanoSessionBean")
     private CiudadanoSessionBeanLocal ciudadanoSessionBeanLocal;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:MM:ss");
     
 
     /**
@@ -46,15 +48,13 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     public void programarLeerEstadosTramite(HashMap parametrosJob) {
 
         try {
-            System.out.print("LANZANDO LECTURA DE ESTADOS DE TRAM");
-            //Ejecuta la consulta de estados de trámite
-            
-            iTramiteServiceLocal.consultarEstadosTramite(ciudadanoSessionBeanLocal.getCodigoCiudadano(),ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
+            System.out.println("INFO: Se ha lanzado la tarea de consulta de estados de trámite finalizados. :" + dateFormat.format(new Date()));            
+            //Ejecuta la consulta de estados de trámite            
+            iTramiteServiceLocal.consultarEstadosTramite(ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
         } catch (Exception e) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, "ERROR AL PROCESAR ESTADOS DE TRAM. " + e.getMessage(), e);
         }
         try {
-
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.INFO, "PROGRAMANDO QUARTZ ARCHIVOS DE CONSULTA DE ESTADOS DE TRAM");
             //SE VUELVE A ACTIVAR EL QUARTZ
             this.programarLecturaTramite();
@@ -112,6 +112,7 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
             jobDetail.setJobDetail("LeerEstadosTramiteInvokerEJBJob", Scheduler.DEFAULT_GROUP, EJB3InvokerJob.class, "ejb/QuartzJEESessionBean", "programarLeerEstadosTramite",
                     "com.making.cp.quartz.QuartzJEESessionBean", parametrosTrigger, parametrosJob);
             // Se programa el Job
+            System.out.println("INFO: Se ha programado la tarea de quartz.: " + dateFormat.format(new Date()));
             this.scheduleEJBJob(jobDetail);
         } catch (QuartzJEEException ex) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +122,7 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     @Override
     public void iniciarQuartz(Scheduler schedulerCreado) throws QuartzJEEException {
         try {
+            System.out.println("INFO: Inicio de quartz.: " + dateFormat.format(new Date()));
             scheduler = schedulerCreado;
 
             // Se declara el scheduler
