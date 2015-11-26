@@ -5,6 +5,7 @@
  */
 package com.making.cp.negocio;
 
+import com.making.cp.cliente.tramite.SolicitudTramiteDto;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.dto.CiudadanoDto;
 import java.util.List;
@@ -17,10 +18,14 @@ import javax.ejb.Local;
 @Local
 public interface ITramiteServiceLocal {
 
-    public List<Integer> getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario, CiudadanoDto ciudadanoDto);
+   public List<Integer> getDocumentosFaltantes(List<Integer> ids, Integer codigoUsuario, CiudadanoDto ciudadanoDto);
 
     public List<TramiteDefinicionDto> obtenerTramiteDefinicion() throws Exception;
 
     public void consultarEstadosTramite(Integer estado);
+    
+     public void enviarSolicitudTramite(SolicitudTramiteDto solicitudTramiteDto);
+     
+     public void obtenerTramitesCiudadano(Integer codigoCiudadano);
 
 }
