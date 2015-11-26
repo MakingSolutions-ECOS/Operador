@@ -146,7 +146,7 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
                 //Actualización de estados de trámite
                 //Se actualiza estado del trámite y se descarga el documento respuesta relacionado con el trámite para
                 //alojarlo en la carpeta ciudadano.
-                System.out.println("Tramite en estado FINALIZADO: " + tramiteDto.getCodigoTramite() + " - Entidad Emisora: " + tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora());
+                System.out.println("Tramite en estado FINALIZADO: Código Trámite" + tramiteDto.getCodigoTramite() + " - Entidad Emisora: " + tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getNombreEntidadEmisora());
                 tramiteHelper.cambiarEstadoTramiteProceso(tramiteDto.getCodigoTramite(), tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getCodigoEntidadEmisora(), ConstantesOperador.ESTADO_TRAMITE_NOTIFICADO);
                 try {
                     //Invocación de servicio de notificación
@@ -160,6 +160,7 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
             }
         }
     }
+ @Override
     public void obtenerTramitesCiudadano(Integer codigoCiudadano){
     TramiteHelper tramiteHelper = new TramiteHelper();
         try {
