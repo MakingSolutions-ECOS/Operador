@@ -6,13 +6,12 @@
 package com.making.cp.negocio;
 
 import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 
 /**
  *
  * @author Your Name
  */
-@Stateful
+@Stateful (mappedName = "CiudadanoSessionBean")
 public class CiudadanoSessionBean implements CiudadanoSessionBeanLocal {
 
     private Integer codigoCiudadano;
@@ -26,6 +25,7 @@ public class CiudadanoSessionBean implements CiudadanoSessionBeanLocal {
         return codigoCiudadano;
     }
 
+    @Override
     public void setCodigoCiudadano(Integer codigoCiudadano) {
         this.codigoCiudadano = codigoCiudadano;
     }
