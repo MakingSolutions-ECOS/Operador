@@ -10,6 +10,7 @@ import com.making.cp.negocio.Helper.ConstantesOperador;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.quartz.exception.QuartzJEEException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -32,8 +33,6 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     private ITramiteServiceLocal iTramiteServiceLocal;
     @EJB(beanName = "CiudadanoSessionBean")
     private CiudadanoSessionBeanLocal ciudadanoSessionBeanLocal;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:MM:ss");
-    
 
     /**
      * Método ejecutado desde la tarea de quartz, para verificar los trámites
@@ -46,9 +45,9 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
      */
     @Override
     public void programarLeerEstadosTramite(HashMap parametrosJob) {
-
+        Calendar calendario = Calendar.getInstance();
         try {
-            System.out.println("INFO: Se ha lanzado la tarea de consulta de estados de trámite finalizados. :" + dateFormat.format(new Date()));            
+            System.out.println("INFO: Se ha lanzado la tarea de consulta de estados de trámite finalizados. :" + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
             //Ejecuta la consulta de estados de trámite            
             iTramiteServiceLocal.consultarEstadosTramite(ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
         } catch (Exception e) {
@@ -69,8 +68,9 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
 
     /**
      * Elimina job previo y asocia trigger con nuevo job
+     *
      * @param jobDetail
-     * @throws QuartzJEEException 
+     * @throws QuartzJEEException
      */
     public void scheduleEJBJob(QuartzJEEJobDetail jobDetail) throws QuartzJEEException {
         try {
@@ -93,7 +93,6 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
      * Mètodo que programa la tarea de quartz que ejecutarà la consulta de
      * tramites con estado FINALIZADO y que estàn pendientes de notificar
      */
-
     @Override
     public void programarLecturaTramite() {
         try {
@@ -107,12 +106,12 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
             parametrosTrigger.put("triggerName", "LeerEstadosTramiteEJBTrigger");
             parametrosTrigger.put("startTime", new Date());
             parametrosTrigger.put("cronExpression", "0 0/5 * 1/1 * ? *");
-
+            Calendar calendario = Calendar.getInstance();
             // Detalle del job
             jobDetail.setJobDetail("LeerEstadosTramiteInvokerEJBJob", Scheduler.DEFAULT_GROUP, EJB3InvokerJob.class, "ejb/QuartzJEESessionBean", "programarLeerEstadosTramite",
                     "com.making.cp.quartz.QuartzJEESessionBean", parametrosTrigger, parametrosJob);
             // Se programa el Job
-            System.out.println("INFO: Se ha programado la tarea de quartz.: " + dateFormat.format(new Date()));
+            System.out.println("INFO: Se ha programado la tarea de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
             this.scheduleEJBJob(jobDetail);
         } catch (QuartzJEEException ex) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,7 +121,9 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
     @Override
     public void iniciarQuartz(Scheduler schedulerCreado) throws QuartzJEEException {
         try {
-            System.out.println("INFO: Inicio de quartz.: " + dateFormat.format(new Date()));
+
+            Calendar calendario = Calendar.getInstance();
+            System.out.println("INFO: Inicio de quartz.: " + calendario.get(Calendar.HOUR_OF_DAY) + " " + calendario.get(Calendar.MINUTE) + calendario.get(Calendar.SECOND));
             scheduler = schedulerCreado;
 
             // Se declara el scheduler
