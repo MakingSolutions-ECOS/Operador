@@ -5,6 +5,7 @@
  */
 package com.making.cp.quartz;
 
+import com.making.cp.negocio.CiudadanoSessionBeanLocal;
 import com.making.cp.negocio.Helper.ConstantesOperador;
 import com.making.cp.negocio.ITramiteServiceLocal;
 import com.making.cp.quartz.exception.QuartzJEEException;
@@ -22,20 +23,24 @@ import org.quartz.impl.StdSchedulerFactory;
  *
  * @author Your Name
  */
-
 @Stateless(name = "QuartzJEESessionBean", mappedName = "ejb/QuartzJEESessionBean")
 public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
 
     private static Scheduler scheduler;
     @EJB(beanName = "TramiteServiceBean")
     private ITramiteServiceLocal iTramiteServiceLocal;
+    @EJB
+    private CiudadanoSessionBeanLocal ciudadanoSessionBeanLocal;
+    
 
-  
     /**
-     * Método ejecutado desde la tarea de quartz, para verificar los trámites que cuentan con el estado FINALIZADO
-     * en la plataforma centralizadora por operador, los trámites son actualizados en su estado a NOTIFICADO, luego de 
-     * invocar el servicio de notificaciones y descargar el documento del repo alojandolo en la carpeta del ciudadano.
-     * @param parametrosJob 
+     * Método ejecutado desde la tarea de quartz, para verificar los trámites
+     * que cuentan con el estado FINALIZADO en la plataforma centralizadora por
+     * operador, los trámites son actualizados en su estado a NOTIFICADO, luego
+     * de invocar el servicio de notificaciones y descargar el documento del
+     * repo alojandolo en la carpeta del ciudadano.
+     *
+     * @param parametrosJob
      */
     @Override
     public void programarLeerEstadosTramite(HashMap parametrosJob) {
@@ -43,7 +48,8 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
         try {
             System.out.print("LANZANDO LECTURA DE ESTADOS DE TRAM");
             //Ejecuta la consulta de estados de trámite
-            iTramiteServiceLocal.consultarEstadosTramite(ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
+            
+            iTramiteServiceLocal.consultarEstadosTramite(ciudadanoSessionBeanLocal.getCodigoCiudadano(),ConstantesOperador.ESTADO_TRAMITE_FINALIZADO);
         } catch (Exception e) {
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, "ERROR AL PROCESAR ESTADOS DE TRAM. " + e.getMessage(), e);
         }
@@ -58,8 +64,14 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
             //ERROR AL ACTIVAR QUARTZ
             Logger.getLogger(QuartzJEESessionBean.class.getName()).log(Level.SEVERE, "ERROR AL PROCESAR ESTADOS DE TRÁMITE. " + e.getMessage(), e);
 
-        }      
+        }
     }
+
+    /**
+     * Elimina job previo y asocia trigger con nuevo job
+     * @param jobDetail
+     * @throws QuartzJEEException 
+     */
     public void scheduleEJBJob(QuartzJEEJobDetail jobDetail) throws QuartzJEEException {
         try {
             if (scheduler != null) {
@@ -77,6 +89,11 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
         }
     }
 
+    /**
+     * Mètodo que programa la tarea de quartz que ejecutarà la consulta de
+     * tramites con estado FINALIZADO y que estàn pendientes de notificar
+     */
+
     @Override
     public void programarLecturaTramite() {
         try {
@@ -89,10 +106,10 @@ public class QuartzJEESessionBean implements QuartzJEESessionBeanLocal {
 
             parametrosTrigger.put("triggerName", "LeerEstadosTramiteEJBTrigger");
             parametrosTrigger.put("startTime", new Date());
-            parametrosTrigger.put("cronExpression", "0 0/5 * 1/1 * ? *"); 
+            parametrosTrigger.put("cronExpression", "0 0/5 * 1/1 * ? *");
 
             // Detalle del job
-            jobDetail.setJobDetail("LeerEstadosTramiteInvokerEJBJob", Scheduler.DEFAULT_GROUP, EJB3InvokerJob.class,"ejb/QuartzJEESessionBean", "programarLeerEstadosTramite",
+            jobDetail.setJobDetail("LeerEstadosTramiteInvokerEJBJob", Scheduler.DEFAULT_GROUP, EJB3InvokerJob.class, "ejb/QuartzJEESessionBean", "programarLeerEstadosTramite",
                     "com.making.cp.quartz.QuartzJEESessionBean", parametrosTrigger, parametrosJob);
             // Se programa el Job
             this.scheduleEJBJob(jobDetail);

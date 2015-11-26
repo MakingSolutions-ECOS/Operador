@@ -21,6 +21,7 @@ public class CiudadanoSessionBean implements CiudadanoSessionBeanLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    @Override
     public Integer getCodigoCiudadano() {
         return codigoCiudadano;
     }

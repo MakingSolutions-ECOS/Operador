@@ -101,7 +101,7 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
      * @param estado 
      */
     @Override
-    public void consultarEstadosTramite( Integer estado){
+    public void consultarEstadosTramite(Integer codigoCiudadano, Integer estado){
         System.out.println("Inicia consulta de  trámite");
         TramiteHelper tramiteHelper = new TramiteHelper();
         NotificacionHelper notificacionHelper = new NotificacionHelper();
@@ -126,7 +126,7 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
         try {
             //Invocación de servicio de notificación
             //Notifica al usuario la respuesta de su trámite
-           // notificacionHelper.notificarRespuestaTramite(codigoCiudadano);
+           notificacionHelper.notificarRespuestaTramite(codigoCiudadano);
         } catch (Exception ex) {
             Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
         }
