@@ -5,11 +5,12 @@
  */
 package com.making.cp.negocio;
 
-import com.making.cp.cliente.tramite.RespuestaTramite;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.cliente.tramite.TramiteDto;
 import com.making.cp.dto.CiudadanoDto;
 import com.making.cp.entidad.Documento;
+import com.making.cp.negocio.Helper.ConstantesOperador;
+import com.making.cp.negocio.Helper.NotificacionHelper;
 import com.making.cp.negocio.Helper.TramiteHelper;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,12 +97,14 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
     
     /**
      * 
+     * @param codigoCiudadano
      * @param estado 
      */
     @Override
-    public void consultarEstadosTramite(Integer estado){
+    public void consultarEstadosTramite( Integer estado){
         System.out.println("Inicia consulta de  trámite");
         TramiteHelper tramiteHelper = new TramiteHelper();
+        NotificacionHelper notificacionHelper = new NotificacionHelper();
         List<TramiteDto> tramitesDto=null;
         try {
              tramitesDto= tramiteHelper.obtenerTramitesEstado(estado);
@@ -110,9 +113,22 @@ public class TramiteServiceBean implements ITramiteServiceLocal {
             Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         for(TramiteDto tramiteDto:tramitesDto){
-        //Actualización de estados de trámite
+            try {
+                //Actualización de estados de trámite
+                //Se actualiza estado del trámite y se descarga el documento respuesta relacionado con el trámite para
+                //alojarlo en la carpeta ciudadano.
+                System.out.println("Tramite en estado FINALIZADO: " + tramiteDto.getCodigoTramite() + " - Entidad Emisora: " + tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora());
+                tramiteHelper.cambiarEstadoTramiteProceso(tramiteDto.getCodigoTramite(),tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getCodigoEntidadEmisora(),ConstantesOperador.ESTADO_TRAMITE_NOTIFICADO);
+            } catch (Exception ex) {
+                Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        //Invocación de servicio de notificación
+        try {
+            //Invocación de servicio de notificación
+            //Notifica al usuario la respuesta de su trámite
+           // notificacionHelper.notificarRespuestaTramite(codigoCiudadano);
+        } catch (Exception ex) {
+            Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
 }

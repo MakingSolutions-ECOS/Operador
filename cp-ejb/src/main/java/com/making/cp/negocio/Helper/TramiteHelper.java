@@ -5,6 +5,7 @@
  */
 package com.making.cp.negocio.Helper;
 
+import com.making.cp.cliente.tramite.RespuestaService;
 import com.making.cp.cliente.tramite.RespuestaTramite;
 import com.making.cp.cliente.tramite.RespuestaTramiteDefinicion;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
@@ -53,6 +54,21 @@ public class TramiteHelper {
             throw e;
         }
         return respuestaTramite.getTramiteDtos();
+    }
+     
+     public RespuestaService cambiarEstadoTramiteProceso(Integer idTramite,Integer idEntidadEmisora,Integer idEstado)throws Exception{
+         RespuestaService respuestaTramite = null;
+
+        try {
+            TramiteService_Service service = new TramiteService_Service();
+
+            TramiteService port = service.getTramiteServicePort();
+
+            respuestaTramite= port.cambiarEstadoTramiteProceso(idTramite, idEntidadEmisora, idEstado);
+        } catch (Exception e) {           
+            throw e;
+        }
+        return respuestaTramite;
     }
 
 }

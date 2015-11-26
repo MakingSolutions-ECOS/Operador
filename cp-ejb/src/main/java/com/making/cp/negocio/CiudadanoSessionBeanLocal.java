@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.making.cp.negocio.Helper;
+package com.making.cp.negocio;
+
+import javax.ejb.Local;
 
 /**
  *
  * @author Your Name
  */
-public class ConstantesOperador {
-    public static final Integer ESTADO_TRAMITE_FINALIZADO=3;
-    public static final Integer ESTADO_TRAMITE_NOTIFICADO=4;
+@Local
+public interface CiudadanoSessionBeanLocal {
     
 }
