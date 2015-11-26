@@ -155,7 +155,7 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
                     NotificacionDto notificacionDto = new NotificacionDto();
                     notificacionDto.setUrlAdjunto("urlRepositorio");
                     notificacionDto.setRemitente(tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getNombreEntidadEmisora());
-                    notificacionDto.setMensaje("Su trámite fué respondido por la entidad emisora, consulte sus documentos en la ubicación: Docuemntos recibidos de su carpeta ciudadana");
+                    notificacionDto.setMensaje("Su trámite fué respondido por la entidad emisora, consulte sus documentos en la ubicación: Documentos recibidos de su carpeta ciudadana");
                     com.making.cp.cliente.notificacion.CiudadanoDto ciudadanoDto  = new com.making.cp.cliente.notificacion.CiudadanoDto();
                     ciudadanoDto.setCodigoCiudadano(tramiteDto.getCodigoCiudadano().getCodigoCiudadano());
                     notificacionDto.setCodigoCiudadano(ciudadanoDto);
