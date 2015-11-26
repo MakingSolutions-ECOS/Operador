@@ -5,6 +5,7 @@
  */
 package com.making.cp.negocio;
 
+import com.making.cp.cliente.notificacion.NotificacionDto;
 import com.making.cp.cliente.tramite.SolicitudTramiteDto;
 import com.making.cp.cliente.tramite.TramiteDefinicionDto;
 import com.making.cp.cliente.tramite.TramiteDto;
@@ -151,7 +152,14 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
                 try {
                     //Invocación de servicio de notificación
                     //Notifica al usuario la respuesta de su trámite
-                    notificacionHelper.notificarRespuestaTramite(tramiteDto.getCodigoCiudadano().getCodigoCiudadano());
+                    NotificacionDto notificacionDto = new NotificacionDto();
+                    notificacionDto.setUrlAdjunto("urlRepositorio");
+                    notificacionDto.setRemitente(tramiteDto.getCodigoTramiteDefinicion().getCodigoEntidadEmisora().getNombreEntidadEmisora());
+                    notificacionDto.setMensaje("Su trámite fué respondido por la entidad emisora, consulte sus documentos en la ubicación: Docuemntos recibidos de su carpeta ciudadana");
+                    com.making.cp.cliente.notificacion.CiudadanoDto ciudadanoDto  = new com.making.cp.cliente.notificacion.CiudadanoDto();
+                    ciudadanoDto.setCodigoCiudadano(tramiteDto.getCodigoCiudadano().getCodigoCiudadano());
+                    notificacionDto.setCodigoCiudadano(ciudadanoDto);
+                    notificacionHelper.notificarRespuestaTramite(notificacionDto);
                 } catch (Exception ex) {
                     Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
                 }
