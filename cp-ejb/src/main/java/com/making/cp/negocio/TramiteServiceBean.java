@@ -126,9 +126,7 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
      * Método que invoca el servicio Trámite Service para obtener los estados y
      * actualizar el estado de los trámites Consume el servicio de notificación
      * para informar al ciudadano sobre el estado del trámite
-     *
-     * @param
-     * @param estado
+     *@param estado
      */
     @Override
     public void consultarEstadosTramite(Integer estado) {
@@ -158,7 +156,9 @@ public String publicarMensajeTramite(Integer ciudadanoDto, TramiteDto dto) {
                     notificacionDto.setMensaje("Su trámite fué respondido por la entidad emisora, consulte sus documentos en la ubicación: Documentos recibidos de su carpeta ciudadana");
                     com.making.cp.cliente.notificacion.CiudadanoDto ciudadanoDto  = new com.making.cp.cliente.notificacion.CiudadanoDto();
                     ciudadanoDto.setCodigoCiudadano(tramiteDto.getCodigoCiudadano().getCodigoCiudadano());
+                    
                     notificacionDto.setCodigoCiudadano(ciudadanoDto);
+                    notificacionDto.setCodigoNotificacion(1);
                     notificacionHelper.notificarRespuestaTramite(notificacionDto);
                 } catch (Exception ex) {
                     Logger.getLogger(TramiteServiceBean.class.getName()).log(Level.SEVERE, null, ex);
